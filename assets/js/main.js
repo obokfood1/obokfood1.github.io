@@ -1,11 +1,1 @@
-const button=document.querySelector('.menu-button');
-const nav=document.querySelector('.main-nav');
-button?.addEventListener('click',()=>{
-  const open=button.getAttribute('aria-expanded')==='true';
-  button.setAttribute('aria-expanded',String(!open));
-  nav.classList.toggle('open');
-});
-document.querySelectorAll('.main-nav a').forEach(a=>a.addEventListener('click',()=>{
-  nav.classList.remove('open');button?.setAttribute('aria-expanded','false');
-}));
-document.getElementById('year').textContent=new Date().getFullYear();
+const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');toggle.addEventListener('click',()=>{const o=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',o)});document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));const cert=document.querySelector('.certificate'),modal=document.querySelector('.modal');function close(){modal.classList.remove('open')}cert.addEventListener('click',()=>modal.classList.add('open'));modal.querySelector('button').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
