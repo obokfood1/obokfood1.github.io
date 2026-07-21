@@ -29,7 +29,7 @@
 @media(max-width:570px){.hero .eyebrow{font-size:14px}.hero h1{font-size:38px}.product-grid-four{grid-template-columns:1fr}.product-grid-four .product-image{min-height:0}.product-grid-four .product-image img{height:300px}.gift-grid .product-image img{height:270px}}
 /* Heritage background position adjustment */
 .heritage > img {
-  transform: scale(1.08) translateX(5%);
+  transform: scale(1.08) translateX(10%);
   transform-origin: center center;
 }
 
