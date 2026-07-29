@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://obokfood1.github.io/obok-china/sitemap.xml
+Sitemap: https://obokfood1.github.io/sitemap.xml

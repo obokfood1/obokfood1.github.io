@@ -1,16 +1,217 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#1a1311" name="theme-color"/><title>OBOK FOODS | Korean Sauce Manufacturer | OEM &amp; Private Label</title><link href="assets/style.css" rel="stylesheet"/>
+<style>
+/* OBOK two-video section */
+.obok-philosophy-video-section{
+  padding:80px 0;
+  background:#f7f4ee;
+}
+.obok-video-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);
+  gap:34px;
+  align-items:center;
+}
+.obok-video-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  background:#17130f;
+  box-shadow:0 20px 60px rgba(35,25,18,.14);
+}
+.obok-video-card video{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.obok-philosophy-video{
+  aspect-ratio:16/10;
+}
+.obok-video-copy h2{
+  margin:.15em 0 .45em;
+}
+.obok-video-copy p{
+  line-height:1.85;
+}
+.obok-values{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:30px;
+}
+.obok-values div{
+  padding:18px;
+  border:1px solid rgba(70,55,40,.13);
+  border-radius:16px;
+  background:rgba(255,255,255,.62);
+}
+.obok-values b{
+  display:block;
+  margin-bottom:7px;
+  font-size:12px;
+  letter-spacing:.08em;
+}
+.obok-values span{
+  display:block;
+  color:#776f68;
+  font-size:12px;
+  line-height:1.5;
+}
+.obok-brand-film{
+  padding:90px 0 100px;
+  background:#17130f;
+  color:#fff;
+}
+.obok-brand-film .section-head p{
+  color:rgba(255,255,255,.68);
+}
+.obok-brand-film .kicker{
+  color:#d8b46a;
+}
+.obok-brand-video{
+  margin-top:34px;
+  aspect-ratio:16/9;
+  border-radius:26px;
+}
+.obok-brand-video video{
+  object-fit:contain;
+}
+@media (max-width:900px){
+  .obok-video-grid{
+    grid-template-columns:1fr;
+  }
+  .obok-values{
+    grid-template-columns:1fr;
+  }
+}
+@media (max-width:600px){
+  .obok-philosophy-video-section,
+  .obok-brand-film{
+    padding:58px 0;
+  }
+  .obok-video-card{
+    border-radius:17px;
+  }
+  .obok-video-copy p br{
+    display:none;
+  }
+}
 
-<title>O'BOK Foods | Korean Fermented Sauce Manufacturer</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
-<link href="styles.css" rel="stylesheet"/>
-<meta content="O'BOK Foods is a Korean manufacturer of soy sauce, gochujang, doenjang and fermented sauces, with HACCP-managed production and global OEM support." name="description"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="index, follow" name="googlebot"/><meta content="9da4c206c8c1f98967bfab53ee171966640bceee" name="naver-site-verification"/><link href="https://obokfood1.github.io/" rel="canonical"/><link href="https://obokfood1.github.io/en/" hreflang="en" rel="alternate"/><link href="https://obokfood1.github.io/cn/" hreflang="zh-CN" rel="alternate"/><link href="https://obokfood1.github.io/ru/" hreflang="ru" rel="alternate"/><link href="https://obokfood1.github.io/es/" hreflang="es" rel="alternate"/><link href="https://obokfood1.github.io/en/" hreflang="x-default" rel="alternate"/><link href="https://obokfood1.github.io/favicon.ico" rel="icon" type="image/x-icon"/><link href="https://obokfood1.github.io/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="https://obokfood1.github.io/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="https://obokfood1.github.io/site.webmanifest" rel="manifest"/><meta content="website" property="og:type"/><meta content="OBOK Foods" property="og:site_name"/><meta content="O'BOK Foods | Korean Fermented Sauce Manufacturer" property="og:title"/><meta content="O'BOK Foods is a Korean manufacturer of soy sauce, gochujang, doenjang and fermented sauces, with HACCP-managed production and global OEM support." property="og:description"/><meta content="https://obokfood1.github.io/" property="og:url"/><meta content="https://obokfood1.github.io/assets/obok-hero-en.png" property="og:image"/><meta content="OBOK Foods Korean fermented sauce manufacturer" property="og:image:alt"/><meta content="en_US" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="O'BOK Foods | Korean Fermented Sauce Manufacturer" name="twitter:title"/><meta content="O'BOK Foods is a Korean manufacturer of soy sauce, gochujang, doenjang and fermented sauces, with HACCP-managed production and global OEM support." name="twitter:description"/><meta content="https://obokfood1.github.io/assets/obok-hero-en.png" name="twitter:image"/><script id="obok-organization-schema" type="application/ld+json">{
+/* Contact headline size adjustment */
+.contact .contact-grid h2{
+  font-size:clamp(30px,3.2vw,44px);
+  line-height:1.14;
+  max-width:760px;
+}
+@media (max-width:600px){
+  .contact .contact-grid h2{
+    font-size:30px;
+  }
+}
+
+</style>
+<style id="obok-logo-image-style">
+.brand img.logo-mark,.footer-brand img.logo-mark{width:46px;height:46px;object-fit:contain;border-radius:50%;background:#fff;}
+.photo img{width:100%;height:100%;object-fit:contain;background:#fff;}
+</style>
+<style id="obok-unified-hero-style">
+.hero{min-height:0!important;padding:0!important;display:block!important;background:none!important}
+.hero::before,.hero::after{display:none!important}
+.hero>.container{width:100%!important;max-width:none!important;padding:0!important}
+.obok-main-hero-image{display:block;width:100%;height:auto}
+.contact .contact-grid h2{font-size:clamp(26px,2.8vw,38px);line-height:1.18;max-width:760px}
+.brand img.logo-mark,.footer-brand img.logo-mark{width:46px;height:46px;object-fit:contain;border-radius:50%;background:#fff}
+.photo img{width:100%;height:100%;object-fit:contain;background:#fff}
+</style>
+<style id="obok-final-polish">
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:88px}
+.hero{position:relative}
+.hero .container{position:relative}
+.hero-cta-overlay{position:absolute;inset:0;z-index:5;pointer-events:none}
+.hero-cta-overlay a{position:absolute;display:block;pointer-events:auto;border-radius:8px;outline-offset:4px}
+.hero-cta-overlay a:focus-visible{outline:3px solid #ffd86b;background:rgba(255,216,107,.16)}
+.hero-contact-link{left:33.3%;top:80.5%;width:12%;height:7.2%}
+.hero-products-link{left:46.1%;top:80.5%;width:16%;height:7.2%}
+.gift-gallery{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;align-items:stretch!important}
+.gift-gallery img{display:block!important;width:100%!important;height:100%!important;aspect-ratio:4/5!important;object-fit:contain!important;object-position:center!important;padding:18px!important;box-sizing:border-box!important;background:#fff!important}
+.nav a.is-active{color:#d8b46a!important}
+@media(max-width:900px){section[id]{scroll-margin-top:72px}}
+@media(max-width:600px){
+  .gift-gallery{gap:10px!important}
+  .gift-gallery img{padding:9px!important}
+  .hero-contact-link{left:33%;top:80%;width:12.8%;height:8%}
+  .hero-products-link{left:45.8%;top:80%;width:16.8%;height:8%}
+}
+</style>
+<style id="obok-mobile-hero-gap-fix">
+@media (max-width: 768px){
+  .hero{
+    height:auto !important;
+    min-height:0 !important;
+    padding:0 !important;
+    display:block !important;
+  }
+
+  .hero > .container{
+    height:auto !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .obok-main-hero-image{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    margin:0 !important;
+  }
+
+  .hero .stats{
+    position:static !important;
+    inset:auto !important;
+    transform:none !important;
+    margin:0 !important;
+  }
+}
+</style>
+<style id="obok-video-sound-style">
+.obok-philosophy-video{position:relative}
+.obok-sound-toggle{
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  z-index:5;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:999px;
+  padding:10px 15px;
+  background:rgba(25,20,18,.72);
+  color:#fff;
+  font:600 14px/1.1 Arial,sans-serif;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+.obok-sound-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(max-width:768px){
+  .obok-sound-toggle{right:10px;bottom:10px;padding:9px 12px;font-size:13px}
+}
+</style>
+<style id="obok-final-white-header-style">
+.header{background:#fff!important;color:#111!important;border-bottom:1px solid rgba(0,0,0,.08)!important;box-shadow:0 2px 12px rgba(0,0,0,.06)!important}
+.header .brand span b,.header .brand span small{color:#111!important;text-shadow:none!important}
+.header .nav>a,.header .lang{color:#111!important;text-shadow:none!important}
+.header .nav>a:hover,.header .nav>a.active{color:#b88a2a!important}
+.header .lang{border-color:rgba(0,0,0,.22)!important;background:#fff!important}
+.header .menu{color:#111!important}
+.hero{margin-top:0!important;background:#fff!important}
+.obok-main-hero-image{display:block;width:100%!important;height:auto!important;object-fit:cover!important}
+.hero-cta-overlay{display:none!important}
+@media(max-width:900px){.header{background:#fff!important}.nav{background:#fff!important}.nav a,.lang{color:#111!important}}
+</style>
+<meta content="Korean soy sauce and fermented sauce manufacturer since 1952. HACCP-managed OEM and private-label production for global markets." name="description"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="index, follow" name="googlebot"/><meta content="9da4c206c8c1f98967bfab53ee171966640bceee" name="naver-site-verification"/><link href="https://obokfood1.github.io/" rel="canonical"/><link href="https://obokfood1.github.io/" hreflang="en" rel="alternate"/><link href="https://obokfood1.github.io/cn/" hreflang="zh-CN" rel="alternate"/><link href="https://obokfood1.github.io/ru/" hreflang="ru" rel="alternate"/><link href="https://obokfood1.github.io/es/" hreflang="es" rel="alternate"/><link href="https://obokfood1.github.io/" hreflang="x-default" rel="alternate"/><link href="https://obokfood1.github.io/favicon.ico" rel="icon" type="image/x-icon"/><link href="https://obokfood1.github.io/assets/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="https://obokfood1.github.io/assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="https://obokfood1.github.io/site.webmanifest" rel="manifest"/><meta content="website" property="og:type"/><meta content="OBOK Foods" property="og:site_name"/><meta content="OBOK FOODS | Korean Sauce Manufacturer | OEM &amp; Private Label" property="og:title"/><meta content="Korean soy sauce and fermented sauce manufacturer since 1952. HACCP-managed OEM and private-label production for global markets." property="og:description"/><meta content="https://obokfood1.github.io/" property="og:url"/><meta content="https://obokfood1.github.io/assets/obok-hero-en.png" property="og:image"/><meta content="OBOK Foods Korean fermented sauce manufacturer" property="og:image:alt"/><meta content="en_US" property="og:locale"/><meta content="summary_large_image" name="twitter:card"/><meta content="OBOK FOODS | Korean Sauce Manufacturer | OEM &amp; Private Label" name="twitter:title"/><meta content="Korean soy sauce and fermented sauce manufacturer since 1952. HACCP-managed OEM and private-label production for global markets." name="twitter:description"/><meta content="https://obokfood1.github.io/assets/obok-hero-en.png" name="twitter:image"/><script id="obok-organization-schema" type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "OBOK Foods",
@@ -47,87 +248,152 @@
     "ru",
     "es"
   ]
-}</script></head>
-<body>
-<main>
-<section aria-labelledby="quality-title" class="quality-section section-shell">
-<div class="quality-copy">
-<p class="eyebrow">QUALITY &amp; FACTORY</p>
-<h1 id="quality-title">Food safety is the foundation of every partnership.</h1>
-<p class="body-copy">
-          Systematic sanitation management and critical process control help maintain
-          consistent quality from incoming ingredients to finished-product shipment.
-        </p>
-<div aria-label="Quality process" class="process-tags">
-<span>HACCP</span><span>RAW MATERIAL CONTROL</span><span>TRACEABILITY</span><span>FINAL INSPECTION</span>
-</div>
-<a class="primary-button" href="#brand-film">CLEAN PRODUCTION <span>→</span></a>
-</div>
-<div class="certificate-card">
-<div class="card-topline">
-<div>
-<p class="eyebrow">CERTIFIED QUALITY SYSTEM</p>
-<h2>HACCP Certification</h2>
-</div>
-<img alt="O'BOK Foods logo" class="logo" src="assets/obok-logo.png"/>
-</div>
-<div class="certificate-image-wrap">
-<img src="assets/haccp.webp" alt="O'BOK Foods HACCP certificates" class="certificate-image" loading="lazy"/>
-</div>
-</div>
-</section>
-<section aria-labelledby="philosophy-title" class="philosophy-section section-shell">
-<div class="video-card philosophy-video">
-<video aria-label="Traditional Korean fermentation atmosphere" autoplay="" loop="" muted="" playsinline="" poster="assets/philosophy-poster.jpg" preload="metadata">
-<source src="assets/fermentation-philosophy.mp4" type="video/mp4"/>
-</video>
-<div class="video-shade"></div>
-<button aria-label="Turn video sound on" class="sound-toggle" type="button">Sound on</button>
-</div>
-<div class="philosophy-copy">
-<p class="eyebrow">OUR FERMENTATION PHILOSOPHY</p>
-<h2 id="philosophy-title">Tradition made with a mother’s care</h2>
-<div class="accent-line"></div>
-<p>
-          Though times have changed, our commitment has not.<br/>
-          We continue to honor Korea’s traditional fermentation principles<br/>
-          with patience, care and respect for nature.
-        </p>
-<div class="values">
-<article><span>01</span><div><strong>TRADITION</strong><small>Preserving time-honored fermentation principles</small></div></article>
-<article><span>02</span><div><strong>PATIENCE</strong><small>Allowing time to create deep and rich flavor</small></div></article>
-<article><span>03</span><div><strong>NATURAL FERMENTATION</strong><small>Respecting nature for authentic taste</small></div></article>
-</div>
-</div>
-</section>
-<section aria-labelledby="film-title" class="brand-film-section" id="brand-film">
-<div class="brand-film-heading">
-<p class="eyebrow light">O’BOK FOODS BRAND FILM</p>
-<h2 id="film-title">Tradition, quality and care in every product.</h2>
-<p>Discover the values, production standards and craftsmanship behind O’BOK Foods.</p>
-</div>
-<div class="video-card brand-video">
-<video controls="" playsinline="" poster="assets/brand-film-poster.jpg" preload="metadata">
-<source src="assets/obok-brand-film.mp4" type="video/mp4"/>
-</video>
-</div>
-</section>
-</main>
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y15YXB2DE8"></script>
 <script>
-    const philosophyVideo = document.querySelector('.philosophy-video video');
-    const soundButton = document.querySelector('.sound-toggle');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y15YXB2DE8');
+</script>
+</head><body>
+<header class="header"><a class="brand" href="#top"><img alt="OBOK logo" class="logo-mark" decoding="async" loading="lazy" src="assets/obok-logo.png"/><span><b>OBOK FOOD</b><small>SINCE 1952</small></span></a><button aria-label="Menu" class="menu">☰</button><nav class="nav"><a href="#about">About</a><a href="#products">Products</a><a href="#bulk">Bulk &amp; OEM</a><a href="#gifts">Gift Sets</a><a href="#quality">Factory</a><a href="#contact">Contact</a><div class="lang-wrap"><button class="lang">🌐 English ▾</button><div class="lang-menu"><a data-language="en" href="/">English</a><a data-language="cn" href="/cn/">简体中文</a><a data-language="ru" href="/ru/">Русский</a><a data-language="es" href="/es/">Español</a></div></div></nav></header>
+<main id="top"><section class="hero"><div class="container"><img alt="OBOK Foods — over 70 years of Korean fermentation" class="obok-main-hero-image" src="assets/obok-hero-en.png"/></div><div class="stats"><div class="stat"><b>1952</b><span>Established</span></div><div class="stat"><b>70+</b><span>Years of experience</span></div><div class="stat"><b>HACCP</b><span>Quality management</span></div><div class="stat"><b>OEM</b><span>Custom manufacturing</span></div></div></section>
+<section class="section" id="about"><div class="container split"><div class="photo reveal"><img alt="OBOK Foods" decoding="async" loading="lazy" src="assets/headquarters.webp"/><span class="photo-tag">BUSAN · KOREA</span></div><div class="reveal"><p class="kicker">ABOUT OBOK</p><h2>Korean fermentation heritage,<br/>made for global markets</h2><p class="muted">With more than seven decades of sauce-making experience, OBOK combines traditional fermentation know-how with modern food technology. We develop and manufacture soy sauce, gochujang, doenjang and a wide range of sauces for international partners.</p><div class="facts"><div><b>Made in Korea</b><span>Reliable manufacturing and supply</span></div><div><b>Product Development</b><span>Market-focused recipe development</span></div><div><b>Quality Control</b><span>Managed from raw materials to shipment</span></div><div><b>Export Support</b><span>Custom sizes, labels and packaging</span></div></div></div></div></section>
+<section class="section products" id="products"><div class="container"><div class="section-head reveal"><div><p class="kicker">PRODUCT CENTER</p><h2>Core Products</h2></div><p>From traditional Korean fermented sauces to products customized for global markets, OBOK offers flexible product development and manufacturing solutions.</p></div><div class="product-grid"><article class="product-card reveal"><div class="product-image"><img alt="Brewed Soy Sauce" decoding="async" loading="lazy" src="assets/soy.webp"/></div><div class="product-body"><span class="num">01</span><h3>Brewed Soy Sauce</h3><p>Balanced aroma and savory flavor for food service, retail and OEM development.</p><small>KOREAN BREWED SOY SAUCE</small></div></article><article class="product-card reveal"><div class="product-image"><img alt="Gochujang" decoding="async" loading="lazy" src="assets/gochujang.webp"/></div><div class="product-body"><span class="num">02</span><h3>Gochujang</h3><p>A balanced blend of sweetness, heat and umami for rice, barbecue and sauce applications.</p><small>GOCHUJANG</small></div></article><article class="product-card reveal"><div class="product-image"><img alt="Doenjang" decoding="async" loading="lazy" src="assets/doenjang.webp"/></div><div class="product-body"><span class="num">03</span><h3>Doenjang</h3><p>Deep soybean fermentation flavor for soups, stews and seasoning products.</p><small>DOENJANG</small></div></article><article class="product-card reveal"><div class="product-image"><img alt="Chunjang" decoding="async" loading="lazy" src="assets/chunjang.webp"/></div><div class="product-body"><span class="num">04</span><h3>Chunjang</h3><p>Ideal for Korean-style black bean noodles and diverse food-service recipes.</p><small>CHUNJANG</small></div></article><article class="product-card reveal"><div class="product-image"><img alt="Ssamjang" decoding="async" loading="lazy" src="assets/ssamjang.webp"/></div><div class="product-body"><span class="num">05</span><h3>Ssamjang</h3><p>Sweet, savory and gently spicy; ideal for barbecue, lettuce wraps and dipping.</p><small>SSAMJANG</small></div></article></div></div></section>
+<section class="factory-band"><div class="reveal"><img alt="OBOK factory" decoding="async" loading="lazy" src="assets/factory.webp"/></div><div class="factory-copy reveal"><p class="kicker">MANUFACTURING STRENGTH</p><h2>Scalable production,<br/>built on fermentation experience</h2><p>Dedicated fermentation and storage facilities, standardized processes and an experienced team support consistent quality and reliable delivery.</p><ul><li>Fermentation and storage facilities</li><li>Standardized production management</li><li>Multiple packaging formats</li><li>Stable supply and export support</li></ul></div></section>
+<section class="section" id="bulk"><div class="container"><div class="section-head reveal"><div><p class="kicker">FOOD SERVICE &amp; BULK</p><h2>Built for restaurants,<br/>food manufacturers and distributors</h2></div><p>We supply professional and bulk formats for food service, industrial use and overseas distribution. Packaging and specifications can be discussed for each market.</p></div><div class="bulk-grid"><article class="bulk-main reveal"><img alt="14 kg gochujang" decoding="async" loading="lazy" src="assets/bulk-gochujang-box.webp"/><div class="bulk-copy"><p class="kicker">BULK SUPPLY</p><h3>14 kg Food-Service Gochujang</h3><p class="muted">We supply professional and bulk formats for food service, industrial use and overseas distribution. Packaging and specifications can be discussed for each market.</p><div class="chips"><span>14 kg pail</span><span>14 kg carton</span><span>15 L container</span><span>OEM packaging</span><span>Private label</span></div></div></article><div class="bulk-side reveal"><div class="bulk-item"><img decoding="async" loading="lazy" src="assets/bulk-gochujang-pail.webp"/><b>14 kg Gochujang Pail</b></div><div class="bulk-item"><img decoding="async" loading="lazy" src="assets/bulk-doenjang-pail.webp"/><b>14 kg Doenjang Pail</b></div><div class="bulk-item"><img decoding="async" loading="lazy" src="assets/bulk-doenjang-box.webp"/><b>14 kg Traditional Doenjang</b></div><div class="bulk-item"><img decoding="async" loading="lazy" src="assets/bulk-gochujang-box.webp"/><b>OEM / PRIVATE LABEL</b></div></div></div></div></section>
+<section class="section gift" id="gifts"><div class="container gift-grid"><div class="reveal"><p class="kicker">PREMIUM GIFT COLLECTION</p><h2>Korean flavor,<br/>presented with care</h2><p>Premium soy sauce gift sets for seasonal campaigns, corporate gifting and overseas retail programs. Product composition and packaging can be customized.</p><div class="gift-list"><span>Holiday Gift</span><span>Corporate Gift</span><span>Export Collection</span></div></div><div class="gift-gallery reveal"><img alt="OBOK gift set" decoding="async" loading="lazy" src="assets/gift-premium.webp"/><img alt="OBOK gift set" decoding="async" loading="lazy" src="assets/gift-duo.webp"/></div></div></section>
+<section class="section" id="oem"><div class="container"><div class="section-head reveal"><div><p class="kicker">OEM &amp; PRIVATE LABEL</p><h2>From concept to export,<br/>one trusted partner</h2></div><p>We support product planning, sample development, quotation, production and export delivery based on your target market, flavor and packaging needs.</p></div><div class="process"><div class="step reveal"><strong>01</strong><h3>Consultation</h3><p>Product, market, size and target price.</p></div><div class="step reveal"><strong>02</strong><h3>Sample Development</h3><p>Flavor and recipe adjustment.</p></div><div class="step reveal"><strong>03</strong><h3>Quotation</h3><p>MOQ, packaging, lead time and terms.</p></div><div class="step reveal"><strong>04</strong><h3>Production</h3><p>Manufacturing and quality control.</p></div><div class="step reveal"><strong>05</strong><h3>Export Delivery</h3><p>Documents, shipping and follow-up.</p></div></div></div></section>
+<section class="section quality" id="quality"><div class="container split"><div class="reveal"><p class="kicker">QUALITY &amp; FACTORY</p><h2>Food safety is the foundation<br/>of every partnership</h2><p class="muted">Systematic sanitation management and critical-process control help maintain consistent quality from incoming ingredients to finished-product shipment.</p><div class="chips"><span>HACCP</span><span>RAW MATERIAL CONTROL</span><span>TRACEABILITY</span><span>FINAL INSPECTION</span></div></div><div class="photo reveal"><img alt="OBOK HACCP certificates" decoding="async" loading="lazy" src="assets/haccp-certificates.jpg"/><span class="photo-tag">HACCP CERTIFIED PRODUCTS</span></div></div></section>
+<section class="obok-philosophy-video-section" id="philosophy">
+<div class="container obok-video-grid">
+<div class="obok-video-card obok-philosophy-video reveal">
+<video aria-label="Traditional Korean fermentation atmosphere" autoplay="" controls="" loop="" muted="" playsinline="" poster="assets/philosophy-poster.jpg" preload="metadata">
+<source src="assets/fermentation-philosophy.mp4" type="video/mp4"/>
+        Your browser does not support HTML5 video.
+      </video>
+<button aria-pressed="false" class="obok-sound-toggle" data-off-label="🔇 Mute" data-on-label="🔊 Turn sound on" type="button">🔊 Turn sound on</button></div>
+<div class="obok-video-copy reveal">
+<p class="kicker">OUR FERMENTATION PHILOSOPHY</p>
+<h2>Tradition made with a mother’s care</h2>
+<p class="muted">
+        Though times have changed, our commitment has not.<br/>
+        We continue to honor Korea’s traditional fermentation principles<br/>
+        with patience, care and respect for nature.
+      </p>
+<div class="obok-values">
+<div>
+<b>TRADITION</b>
+<span>Preserving time-honored fermentation principles</span>
+</div>
+<div>
+<b>PATIENCE</b>
+<span>Allowing time to create deep and rich flavor</span>
+</div>
+<div>
+<b>RESPECT FOR NATURE</b>
+<span>Following natural principles for authentic taste</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="obok-brand-film" id="brand-film">
+<div class="container">
+<div class="section-head reveal">
+<div>
+<p class="kicker">O’BOK FOODS BRAND FILM</p>
+<h2>Tradition, quality and care<br/>in every product</h2>
+</div>
+<p>
+        Discover the values, production standards and craftsmanship
+        behind O’BOK Foods.
+      </p>
+</div>
+<div class="obok-video-card obok-brand-video reveal">
+<video aria-label="O'BOK Foods brand film" controls="" playsinline="" poster="assets/brand-film-poster.jpg" preload="metadata">
+<source src="assets/obok-brand-film.mp4" type="video/mp4"/>
+        Your browser does not support HTML5 video.
+      </video>
+</div>
+</div>
+</section>
+<section class="contact" id="contact"><div class="container"><div class="contact-grid reveal"><div><p class="kicker">CONTACT US</p><h2>Your Reliable Korean Sauce Manufacturing Partner</h2><p>Send us your product type, target size, quantity and destination market.</p><div class="benefits"><div class="benefit"><i>◇</i><b>Diverse Products</b><small>Solutions for different markets</small></div><div class="benefit"><i>✓</i><b>OEM Development</b><small>Products made for your brand</small></div><div class="benefit"><i>◎</i><b>Global Export</b><small>Connecting global tables</small></div><div class="benefit"><i>◆</i><b>Quality Assurance</b><small>HACCP-managed factory</small></div></div></div><div class="contact-info"><span class="kicker">Export &amp; OEM Inquiry</span><a class="mail" href="mailto:info@obok.co.kr">info@obok.co.kr</a><div class="details"><div><i>⌖</i><span>OBOK FOODS CO., LTD.<br/>Busan, Republic of Korea</span></div><div><i>☎</i><span>+82-51-293-2231</span></div><div><i>✉</i><span>info@obok.co.kr</span></div></div><div class="actions"><a class="btn btn-primary" href="mailto:info@obok.co.kr?subject=OBOK%20Export%20and%20OEM%20Inquiry">Send Inquiry →</a></div></div></div><footer class="footer"><div><nav class="footer-links"><a href="#about">About</a><a href="#products">Products</a><a href="#oem">OEM/ODM</a><a href="#gifts">Gift Sets</a><a href="#quality">Quality</a><a href="#contact">Contact</a></nav><div>© <span id="year"></span> OBOK FOODS CO., LTD. All rights reserved.</div></div><div class="footer-brand"><img alt="OBOK logo" class="logo-mark" decoding="async" loading="lazy" src="assets/obok-logo.png"/><span><b>OBOK FOOD</b><small>SINCE 1952</small></span></div></footer></div></section></main><script src="assets/main.js"></script>
+<script id="obok-final-navigation">
+document.addEventListener('DOMContentLoaded',function(){
+  const header=document.querySelector('.header');
+  const menuButton=document.querySelector('.menu');
+  const nav=document.querySelector('.nav');
 
-    soundButton.addEventListener('click', async () => {
-      philosophyVideo.muted = !philosophyVideo.muted;
-      soundButton.textContent = philosophyVideo.muted ? 'Sound on' : 'Sound off';
-      soundButton.setAttribute(
-        'aria-label',
-        philosophyVideo.muted ? 'Turn video sound on' : 'Turn video sound off'
-      );
-      if (philosophyVideo.paused) {
-        try { await philosophyVideo.play(); } catch (error) {}
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click',function(event){
+      const id=this.getAttribute('href');
+      if(!id||id==='#')return;
+      const target=document.querySelector(id);
+      if(!target)return;
+      event.preventDefault();
+      const headerHeight=header?header.offsetHeight:0;
+      const y=target.getBoundingClientRect().top+window.scrollY-headerHeight;
+      window.scrollTo({top:y,behavior:'smooth'});
+      if(nav)nav.classList.remove('open');
+      if(menuButton)menuButton.setAttribute('aria-expanded','false');
+    });
+  });
+
+  const sections=Array.from(document.querySelectorAll('main section[id]'));
+  const navLinks=Array.from(document.querySelectorAll('.nav > a[href^="#"]'));
+  if('IntersectionObserver' in window&&sections.length){
+    const observer=new IntersectionObserver(function(entries){
+      const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!visible)return;
+      navLinks.forEach(function(link){
+        link.classList.toggle('is-active',link.getAttribute('href')==='#'+visible.target.id);
+      });
+    },{rootMargin:'-25% 0px -60% 0px',threshold:[0.05,0.2,0.5]});
+    sections.forEach(section=>observer.observe(section));
+  }
+});
+</script>
+<script id="obok-language-hash">
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.lang-menu a').forEach(function(link){
+    link.addEventListener('click',function(e){
+      const hash=window.location.hash||'';
+      if(hash){e.preventDefault();window.location.href=this.getAttribute('href')+hash;}
+    });
+  });
+});
+</script>
+<script id="obok-video-sound-script">
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.obok-philosophy-video').forEach(function(card){
+    const video = card.querySelector('video');
+    const button = card.querySelector('.obok-sound-toggle');
+    if (!video || !button) return;
+
+    const onLabel = button.dataset.onLabel;
+    const offLabel = button.dataset.offLabel;
+
+    button.addEventListener('click', async function () {
+      video.muted = !video.muted;
+      if (!video.paused) {
+        button.textContent = video.muted ? onLabel : offLabel;
+        button.setAttribute('aria-pressed', String(!video.muted));
+        return;
+      }
+      try {
+        await video.play();
+        button.textContent = video.muted ? onLabel : offLabel;
+        button.setAttribute('aria-pressed', String(!video.muted));
+      } catch (e) {
+        video.muted = true;
+        button.textContent = onLabel;
+        button.setAttribute('aria-pressed', 'false');
       }
     });
-  </script>
-</body>
-</html>
+  });
+});
+</script>
+</body></html>
