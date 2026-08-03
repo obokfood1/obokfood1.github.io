@@ -381,6 +381,70 @@ section[id]{scroll-margin-top:88px}
   #bulk .section-head h2{font-size:31px!important}
 }
 </style>
+
+<style id="obok-v8-hero-natural">
+/* V8: 자연스러운 한국어 히어로 균형 조정 */
+@media (min-width:901px){
+  .hero>.container{
+    position:relative!important;
+    height:clamp(620px,43vw,760px)!important;
+    min-height:620px!important;
+    overflow:hidden!important;
+    background:#f8f3ea!important;
+  }
+  .obok-main-hero-image{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:72% center!important;
+  }
+  .obok-ko-hero-copy{
+    position:absolute!important;
+    inset:0 auto 0 0!important;
+    width:54%!important;
+    padding:0 4.2% 0 3.4%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:center!important;
+    transform:translateY(-2.5%)!important;
+    background:linear-gradient(90deg,
+      rgba(255,253,247,1) 0%,
+      rgba(255,253,247,.99) 58%,
+      rgba(255,253,247,.92) 75%,
+      rgba(255,253,247,.58) 89%,
+      rgba(255,253,247,0) 100%)!important;
+  }
+  .obok-ko-est{margin:0 0 24px!important;font-size:clamp(18px,1.45vw,28px)!important}
+  .obok-ko-est:before,.obok-ko-est:after{width:72px!important;margin:0 14px!important}
+  .obok-ko-hero-copy h1{
+    font-size:clamp(48px,4.05vw,72px)!important;
+    line-height:1.08!important;
+    letter-spacing:-.055em!important;
+  }
+  .obok-ko-sub{
+    margin:24px 0 16px!important;
+    font-size:clamp(23px,1.75vw,31px)!important;
+    line-height:1.36!important;
+  }
+  .obok-ko-desc{
+    max-width:620px!important;
+    font-size:clamp(16px,1.05vw,20px)!important;
+    line-height:1.75!important;
+  }
+}
+@media (max-width:1100px) and (min-width:901px){
+  .hero>.container{height:640px!important;min-height:640px!important}
+  .obok-ko-hero-copy{width:58%!important;padding-left:3.2%!important}
+  .obok-main-hero-image{object-position:76% center!important}
+}
+@media (max-width:900px){
+  .hero>.container{height:auto!important;min-height:0!important}
+  .obok-main-hero-image{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;object-fit:cover!important;object-position:center!important}
+  .obok-ko-hero-copy{transform:none!important}
+}
+</style>
 </head><body>
 <header class="header"><a class="brand" href="#top"><img alt="OBOK logo" class="logo-mark" decoding="async" loading="lazy" src="assets/obok-logo.png"/><span><b>오복식품</b><small>SINCE 1952</small></span></a><button aria-label="메뉴" class="menu">☰</button><nav class="nav"><a href="#about">회사소개</a><a href="#products">제품소개</a><a href="#bulk">OEM 생산</a><a href="#gifts">선물세트</a><a href="#quality">품질관리</a><a href="#contact">문의하기</a><div class="lang-wrap"><button class="lang">🌐 한국어 ▾</button><div class="lang-menu"><a data-language="ko" href="/">한국어</a><a data-language="en" href="/en/">English</a><a data-language="cn" href="/cn/">简体中文</a><a data-language="ru" href="/ru/">Русский</a><a data-language="es" href="/es/">Español</a></div></div></nav></header>
 <main id="top"><section class="hero"><div class="container"><img alt="오복식품 — 70년 이상 이어온 한국 발효 전통과 장류 제조 경험" class="obok-main-hero-image" src="assets/obok-hero-en.png"/><div aria-label="오복식품 한국어 소개" class="obok-ko-hero-copy"><p class="obok-ko-est">EST. 1952</p><h1>70년을 이어온<br/><strong>한국 발효의 전통</strong></h1><p class="obok-ko-sub">정통 한국 장류를 만드는<br/>믿을 수 있는 파트너</p><p class="obok-ko-desc">1952년부터 오복식품은 한국 발효의 전통과 현대 식품기술을 결합하여<br/>세계 시장에 신뢰를 전하고 있습니다.</p></div></div><div class="stats"><div class="stat"><b>1952</b><span>설립</span></div><div class="stat"><b>70+</b><span>제조 경험</span></div><div class="stat"><b>HACCP</b><span>품질 관리</span></div><div class="stat"><b>OEM</b><span>맞춤 생산</span></div></div></section>
