@@ -612,10 +612,25 @@ section[id]{scroll-margin-top:88px}
 .obok-v10-products-link{left:19.5%;top:63.3%;width:11.5%;height:6.8%}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:700px){
-  .obok-v10-hero-wrap{overflow-x:auto;overscroll-behavior-x:contain}
-  .obok-v10-hero-image{width:1180px;max-width:none;height:auto}
-  .obok-v10-about-link{left:79px;top:648px;width:138px;height:70px}
-  .obok-v10-products-link{left:230px;top:648px;width:138px;height:70px}
+  /* Mobile: show the complete hero at the phone width without horizontal enlargement */
+  .obok-v10-hero-wrap{
+    width:100%;
+    overflow:hidden;
+    background:#f8f1e7;
+  }
+  .obok-v10-hero-image{
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+    object-position:center top;
+  }
+  .obok-v10-about-link{left:6.7%;top:63.3%;width:11.7%;height:6.8%}
+  .obok-v10-products-link{left:19.5%;top:63.3%;width:11.5%;height:6.8%}
+}
+@media(max-width:420px){
+  .obok-v10-hero-image{width:100%;max-width:100%}
 }
 </style>
 </head><body>
