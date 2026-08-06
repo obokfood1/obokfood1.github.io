@@ -381,7 +381,6 @@ section[id]{scroll-margin-top:88px}
   #bulk .section-head h2{font-size:31px!important}
 }
 </style>
-
 <style id="obok-v8-hero-natural">
 /* V8: 자연스러운 한국어 히어로 균형 조정 */
 @media (min-width:901px){
@@ -445,7 +444,6 @@ section[id]{scroll-margin-top:88px}
   .obok-ko-hero-copy{transform:none!important}
 }
 </style>
-
 <style id="obok-v9-premium-fullscreen-hero">
 /* V9: full-image premium hero with a dark warm reading gradient */
 @media (min-width: 901px){
@@ -591,8 +589,6 @@ section[id]{scroll-margin-top:88px}
   .obok-ko-sub{font-size:21px!important}
 }
 </style>
-
-
 <style id="obok-v10-generated-hero-final">
 /* V10: 새로 제작한 한국어 전용 히어로 샘플을 그대로 적용 */
 .hero.obok-v10-hero{
@@ -633,7 +629,6 @@ section[id]{scroll-margin-top:88px}
   .obok-v10-hero-image{width:100%;max-width:100%}
 }
 </style>
-
 <style id="obok-v12-2-about-final">
 /* V12.2 Premium Final — Korean About section */
 #about .obok-about-title{
@@ -668,23 +663,57 @@ section[id]{scroll-margin-top:88px}
   #about .obok-about-copy{line-height:1.78}
 }
 </style>
+
+<style id="obok-v12-3-stats-fix">
+/* V12.3: 히어로 이미지에 포함되어 잘리던 핵심 정보 4개를 독립 영역으로 분리 */
+.obok-v10-hero-wrap{overflow:hidden!important}
+.obok-v10-hero-image{width:100%!important;height:auto!important;display:block!important}
+.obok-v10-about-link{left:6.7%!important;top:77.0%!important;width:11.7%!important;height:8.4%!important}
+.obok-v10-products-link{left:19.5%!important;top:77.0%!important;width:11.5%!important;height:8.4%!important}
+.obok-v12-stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  max-width:1180px;margin:0 auto;padding:12px 24px 22px;
+  background:#fbf6ed;color:#2d190f;border-top:1px solid #eadfce;
+}
+.obok-v12-stat{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:150px;padding:0 20px;text-align:center}
+.obok-v12-stat:not(:last-child)::after{content:"";position:absolute;right:0;top:35px;width:1px;height:92px;background:#dfd1bf}
+.obok-v12-stat img{width:82px;height:82px;object-fit:cover;object-position:center;margin:-4px 0 2px;border-radius:50%}
+.obok-v12-stat strong{font-family:Georgia,'Times New Roman',serif;font-size:31px;line-height:1.05;letter-spacing:-.02em}
+.obok-v12-stat span{margin-top:7px;font-size:15px;line-height:1.3}
+@media(max-width:700px){
+  .obok-v10-about-link{top:77%!important;height:8.5%!important}
+  .obok-v10-products-link{top:77%!important;height:8.5%!important}
+  .obok-v12-stats{grid-template-columns:repeat(2,1fr);padding:14px 10px 18px}
+  .obok-v12-stat{min-height:132px;padding:0 8px}
+  .obok-v12-stat:nth-child(2)::after{display:none}
+  .obok-v12-stat:not(:last-child)::after{top:28px;height:80px}
+  .obok-v12-stat img{width:68px;height:68px}
+  .obok-v12-stat strong{font-size:25px}
+  .obok-v12-stat span{font-size:13px}
+}
+</style>
 </head><body>
 <header class="header"><a class="brand" href="#top"><img alt="OBOK logo" class="logo-mark" decoding="async" loading="lazy" src="assets/obok-logo.png"/><span><b>오복식품</b><small>SINCE 1952</small></span></a><button aria-label="메뉴" class="menu">☰</button><nav class="nav"><a href="#about">회사소개</a><a href="#products">제품소개</a><a href="#bulk">OEM 생산</a><a href="#gifts">선물세트</a><a href="#quality">품질관리</a><a href="#contact">문의하기</a><div class="lang-wrap"><button class="lang">🌐 한국어 ▾</button><div class="lang-menu"><a data-language="ko" href="/">한국어</a><a data-language="en" href="/en/">English</a><a data-language="cn" href="/cn/">简体中文</a><a data-language="ru" href="/ru/">Русский</a><a data-language="es" href="/es/">Español</a></div></div></nav></header>
-<main id="top"><section class="hero obok-v10-hero" aria-label="오복식품 한국어 메인 소개">
-  <div class="obok-v10-hero-wrap">
-    <img class="obok-v10-hero-image" src="assets/obok-hero-ko-v10.png" alt="70년을 이어온 한국 발효의 전통, 오복식품 한국어 메인 이미지" fetchpriority="high" decoding="async"/>
-    <div class="obok-v10-hero-links" aria-label="히어로 바로가기">
-      <a class="obok-v10-about-link" href="#about" aria-label="회사소개로 이동"><span class="sr-only">회사소개</span></a>
-      <a class="obok-v10-products-link" href="#products" aria-label="제품소개로 이동"><span class="sr-only">제품소개</span></a>
-    </div>
-    <div class="sr-only">
-      <p>Since 1952</p>
-      <h1>70년을 이어온 한국 발효의 전통</h1>
-      <p>정통 한국 장류를 만드는 믿을 수 있는 파트너</p>
-      <p>1952년부터 이어온 장인정신과 현대 식품기술을 바탕으로 간장, 된장, 고추장과 다양한 소스를 세계 시장에 공급하고 있습니다.</p>
-      <ul><li>1952년 설립</li><li>70년 이상 제조 경험</li><li>HACCP 식품 안전관리</li><li>OEM 맞춤 생산</li></ul>
-    </div>
-  </div>
+<main id="top"><section aria-label="오복식품 한국어 메인 소개" class="hero obok-v10-hero">
+<div class="obok-v10-hero-wrap">
+<img alt="70년을 이어온 한국 발효의 전통, 오복식품 한국어 메인 이미지" class="obok-v10-hero-image" decoding="async" fetchpriority="high" src="assets/obok-hero-ko-v12-3.png"/>
+<div aria-label="히어로 바로가기" class="obok-v10-hero-links">
+<a aria-label="회사소개로 이동" class="obok-v10-about-link" href="#about"><span class="sr-only">회사소개</span></a>
+<a aria-label="제품소개로 이동" class="obok-v10-products-link" href="#products"><span class="sr-only">제품소개</span></a>
+</div>
+<div class="sr-only">
+<p>Since 1952</p>
+<h1>70년을 이어온 한국 발효의 전통</h1>
+<p>정통 한국 장류를 만드는 믿을 수 있는 파트너</p>
+<p>1952년부터 이어온 장인정신과 현대 식품기술을 바탕으로 간장, 된장, 고추장과 다양한 소스를 세계 시장에 공급하고 있습니다.</p>
+<ul><li>1952년 설립</li><li>70년 이상 제조 경험</li><li>HACCP 식품 안전관리</li><li>OEM 맞춤 생산</li></ul>
+</div>
+</div><div aria-label="오복식품 핵심 정보" class="obok-v12-stats">
+<div class="obok-v12-stat"><img alt="" src="assets/obok-stat-icon-1.png"/><strong>1952</strong><span>설립</span></div>
+<div class="obok-v12-stat"><img alt="" src="assets/obok-stat-icon-2.png"/><strong>70+</strong><span>제조 경험</span></div>
+<div class="obok-v12-stat"><img alt="" src="assets/obok-stat-icon-3.png"/><strong>HACCP</strong><span>식품 안전관리</span></div>
+<div class="obok-v12-stat"><img alt="" src="assets/obok-stat-icon-4.png"/><strong>OEM</strong><span>맞춤 생산</span></div>
+</div>
 </section>
 <section class="section" id="about"><div class="container split"><div class="photo reveal"><img alt="오복식품 장류 생산 현장과 제품" decoding="async" loading="lazy" src="assets/obok-production-heritage.webp"/><span class="photo-tag">SINCE 1952 · KOREA</span></div><div class="reveal"><p class="kicker">ABOUT OBOK</p><h2 class="obok-about-title"><span>한국 발효의 전통을 이어</span><span>세계 시장으로</span></h2><p class="muted obok-about-copy">1952년 설립된 오복식품은 70년이 넘는 한국 장류 발효 기술과 현대 식품 제조 시스템을 바탕으로, 국내외 고객의 성공적인 브랜드와 안정적인 공급을 함께 만들어가고 있습니다.</p><div class="facts"><div><b>한국 제조</b><span>안정적인 생산과 공급</span></div><div><b>제품 개발</b><span>시장 맞춤형 레시피 개발</span></div><div><b>품질 관리</b><span>원료부터 출하까지 관리</span></div><div><b>수출 지원</b><span>규격·라벨·포장 맞춤 대응</span></div></div></div></div></section><section class="section obok-why" id="why-obok">
 <div class="container">
