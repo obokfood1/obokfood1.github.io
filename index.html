@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년을 이어온 한국 발효의 전통">
 <meta property="og:description" content="정통 한국 장류와 다양한 소스를 생산하는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v14-final.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v15.webp">
 <meta property="og:url" content="https://obokfood1.github.io/">
 <style>
 :root{
@@ -25,7 +25,7 @@ a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
 .nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:28px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-.brand-mark{width:38px;height:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font-size:18px}
+.brand-logo{width:42px;height:42px;object-fit:contain;flex:0 0 auto}
 .brand small{display:block;font-size:10px;letter-spacing:.18em;color:#777;margin-top:4px}
 .menu{display:flex;align-items:center;gap:28px;font-size:14px}
 .lang{position:relative}
@@ -107,13 +107,32 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
   .products-head{display:block}
   .product,.card{min-height:0}
 }
+
+.philosophy{padding:74px 0;background:#f8f4ee}
+.philosophy-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
+.video-poster{position:relative;overflow:hidden;border-radius:16px;background:#ddd;aspect-ratio:16/10}
+.video-poster img{width:100%;height:100%;object-fit:cover}
+.play-badge{position:absolute;left:22px;bottom:18px;background:rgba(20,15,12,.78);color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700}
+.philosophy h2{font-size:clamp(28px,3vw,44px);margin:10px 0 16px}
+.philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.philosophy-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+.philosophy-card b{display:block;margin-bottom:7px}
+.philosophy-card span{font-size:13px;color:var(--muted);line-height:1.55}
+.ceo{padding:74px 0}
+.ceo-wrap{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbf7f2}
+.ceo-copy{padding:48px}
+.ceo-copy h2{font-size:clamp(30px,3.2vw,48px);margin:10px 0 20px}
+.ceo-sign{margin-top:28px;font-weight:800}
+.ceo-photo img{width:100%;height:100%;min-height:420px;object-fit:cover}
+@media(max-width:950px){.philosophy-wrap,.ceo-wrap{grid-template-columns:1fr}.ceo-photo{order:-1}.philosophy-cards{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <header>
   <div class="container nav">
     <a class="brand" href="/">
-      <span class="brand-mark">◆</span>
+      <img class="brand-logo" src="assets/obok-logo-mark.png" alt="오복식품 로고">
       <span>오복식품<small>SINCE 1952</small></span>
     </a>
     <nav class="menu">
@@ -138,7 +157,27 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
 
 <main>
   <section class="hero" aria-label="오복식품 한국어 히어로">
-    <img src="assets/obok-hero-ko-v14-final.webp" alt="70년을 이어온 한국 발효의 전통">
+    <img src="assets/obok-hero-ko-v15.webp" alt="70년 전통의 장맛을 담다">
+  </section>
+
+
+  <section class="philosophy" aria-labelledby="philosophy-title">
+    <div class="container philosophy-wrap">
+      <div class="video-poster" aria-label="오복식품 발효 철학 영상 영역">
+        <img src="assets/fermentation-philosophy-poster.webp" alt="전통 발효의 맛을 살피는 모습">
+        <div class="play-badge">▶ 발효 철학 영상</div>
+      </div>
+      <div>
+        <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
+        <h2 id="philosophy-title">70년 전통의 발효 철학</h2>
+        <p class="section-copy">시대는 변해도 오복식품의 발효 철학은 변하지 않았습니다. 자연을 존중하고, 시간을 기다리며, 정성을 다하는 마음으로 전통 장맛을 이어갑니다.</p>
+        <div class="philosophy-cards">
+          <div class="philosophy-card"><b>전통</b><span>70년 동안 이어온 장맛</span></div>
+          <div class="philosophy-card"><b>기다림</b><span>시간이 만드는 깊은 맛</span></div>
+          <div class="philosophy-card"><b>자연</b><span>좋은 원료에서 시작되는 발효</span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="about">
@@ -158,6 +197,19 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
           <div class="feature"><b>수출 지원</b><span>규격·라벨·포장 맞춤 대응</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <section class="ceo" aria-labelledby="ceo-title">
+    <div class="container ceo-wrap">
+      <div class="ceo-copy">
+        <div class="kicker">MESSAGE</div>
+        <h2 id="ceo-title">전통을 지키고,<br>미래를 만들어갑니다.</h2>
+        <p class="section-copy">오복식품은 1952년 창립 이래 한결같은 마음으로 전통 장맛을 지켜왔습니다. 앞으로도 최고의 품질과 정직한 식품으로 고객의 신뢰에 보답하며, 세계 시장에서 한국 장류의 가치를 넓혀가겠습니다.</p>
+        <div class="ceo-sign">채경석 팀원 · 오복식품</div>
+      </div>
+      <div class="ceo-photo"><img src="assets/obok-representative-production.webp" alt="오복식품 생산 현장에서 제품을 소개하는 모습"></div>
     </div>
   </section>
 
