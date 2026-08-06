@@ -5,141 +5,179 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
 <title>오복식품 | 한국 장류·소스 제조업체 | OEM·PB 생산</title>
-<meta name="description" content="1952년 설립된 오복식품은 간장, 된장, 고추장과 다양한 소스를 생산하는 한국 장류 전문기업입니다. OEM·PB·학교급식·대용량 제품 상담을 제공합니다.">
+<meta name="description" content="1952년 설립된 오복식품. 간장, 된장, 고추장, 춘장과 다양한 소스를 생산하며 OEM·PB·학교급식·대용량 제품을 제공합니다.">
 <link rel="canonical" href="https://obokfood1.github.io/">
-<meta property="og:title" content="오복식품 | 70년을 이어온 한국 발효의 전통">
-<meta property="og:description" content="정통 한국 장류와 다양한 소스를 생산하는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v15.webp">
-<meta property="og:url" content="https://obokfood1.github.io/">
+<meta property="og:title" content="오복식품 | 70년 전통의 장맛">
+<meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v15-final-clean.webp">
 <style>
 :root{
-  --red:#b31721;--brown:#321f16;--gold:#c79a4b;--cream:#f7f1e8;
-  --ink:#211915;--muted:#6e625a;--line:#e7ddd2;--white:#fff;
+  --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
+  --ink:#211915;--muted:#6f6259;--line:#e7ddd2;--white:#fff;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;background:#fff}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
+body{margin:0;color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo",Arial,sans-serif;background:#fff}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
 .container{width:min(1180px,calc(100% - 40px));margin:auto}
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #eee}
-.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800}
-.brand-logo{width:42px;height:42px;object-fit:contain;flex:0 0 auto}
-.brand small{display:block;font-size:10px;letter-spacing:.18em;color:#777;margin-top:4px}
-.menu{display:flex;align-items:center;gap:28px;font-size:14px}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid #eee}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand img{width:40px;height:40px;object-fit:contain}
+.brand small{display:block;font-size:10px;letter-spacing:.18em;color:#777;margin-top:3px}
+.menu{display:flex;gap:26px;font-size:14px}
 .lang{position:relative}
-.lang summary{cursor:pointer;list-style:none;border:1px solid #d7d7d7;padding:10px 14px;border-radius:4px}
-.lang-list{display:none;position:absolute;right:0;top:48px;width:150px;background:#fff;border:1px solid #ddd;box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.lang summary{cursor:pointer;list-style:none;border:1px solid #d6d6d6;padding:10px 14px;border-radius:4px}
+.lang-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #ddd;width:150px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
 .lang[open] .lang-list{display:block}
 .lang-list a{display:block;padding:11px 14px}
-.lang-list a:hover{background:#f5f5f5}
 
-/* Hero: exactly one element, no pseudo-element, no background duplication */
-.hero{margin:0;padding:0;background:#fff;line-height:0}
-.hero img{width:100%;height:auto;display:block;margin:0;padding:0}
+/* HERO */
+.hero{
+  position:relative;
+  min-height:610px;
+  background:url("assets/obok-hero-v15-final-clean.webp") center/cover no-repeat;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(255,249,239,.25) 0%,rgba(255,249,239,.04) 46%,transparent 62%);
+  pointer-events:none;
+}
+.hero-copy{
+  position:relative;z-index:2;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  padding-top:190px;
+}
+.hero-copy-inner{max-width:560px}
+.hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#523323;margin-bottom:16px}
+.hero h1{
+  font-family:"Nanum Myeongjo","Batang",serif;
+  margin:0;
+  font-size:clamp(42px,4.2vw,66px);
+  line-height:1.12;
+  letter-spacing:-.045em;
+  font-weight:700;color:#2f1d15;
+}
+.hero h1 strong{display:block;color:#ad1720;font-weight:700;margin-top:5px}
+.hero-lead{font-size:23px;font-weight:700;line-height:1.55;margin:24px 0 14px}
+.hero-desc{font-size:16px;line-height:1.85;color:#433730;margin:0}
 
-/* Shared */
-section{padding:88px 0}
-.kicker{font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
-h2{font-family:"Noto Serif KR","Nanum Myeongjo",serif;font-size:clamp(34px,4vw,58px);line-height:1.2;letter-spacing:-.04em;margin:14px 0 22px}
-.section-copy{color:var(--muted);line-height:1.9;font-size:17px}
-.grid-2{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}
-.photo-card{position:relative}
-.photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
-.photo-label{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;padding:15px 20px;font-size:12px;font-weight:700;letter-spacing:.12em}
-.features{display:grid;grid-template-columns:repeat(2,1fr);gap:0 24px;margin-top:34px}
-.feature{padding:18px 0;border-top:1px solid var(--line)}
-.feature b{display:block;margin-bottom:6px;font-size:18px}
-.feature span{color:var(--muted);font-size:14px}
+/* SECTIONS */
+section.content{padding:88px 0}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--gold)}
+h2{
+  font-family:"Nanum Myeongjo","Batang",serif;
+  font-size:clamp(34px,4vw,54px);line-height:1.22;letter-spacing:-.04em;
+  margin:12px 0 20px;font-weight:500;
+}
+.section-copy{font-size:17px;line-height:1.85;color:var(--muted)}
 
-.why{background:var(--cream)}
-.why-head{text-align:center;max-width:760px;margin:0 auto 50px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:#fff;padding:30px 24px;border:1px solid #eadfd5;min-height:190px}
-.card em{font-style:normal;color:var(--red);font:700 28px Georgia,serif}
-.card h3{font-size:20px;margin:18px 0 10px}
-.card p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+/* Philosophy video */
+.philosophy{background:var(--cream)}
+.philosophy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.video-shell{border-radius:20px;overflow:hidden;background:#16120f;box-shadow:0 18px 45px rgba(39,26,17,.14)}
+.video-shell video{width:100%;aspect-ratio:16/10;object-fit:cover}
+.philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.philosophy-card{padding:18px;border:1px solid #dfd2c4;background:rgba(255,255,255,.65);border-radius:12px}
+.philosophy-card b{display:block;margin-bottom:8px}
+.philosophy-card span{font-size:13px;color:var(--muted);line-height:1.55}
 
-.products-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:38px}
-.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.product{border:1px solid var(--line);padding:26px;background:#fff;transition:.25s}
-.product:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(55,35,20,.1)}
-.product .tag{font-size:11px;color:var(--red);font-weight:800;letter-spacing:.1em}
-.product h3{margin:12px 0 8px;font-size:22px}
-.product p{margin:0;color:var(--muted);line-height:1.7;font-size:14px}
+/* Why */
+.why-head{text-align:center;max-width:750px;margin:0 auto 42px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-card{padding:28px 22px;border:1px solid var(--line);background:#fff}
+.why-card strong{display:block;color:var(--red);font:700 26px Georgia,serif;margin-bottom:12px}
+.why-card h3{margin:0 0 8px;font-size:19px}
+.why-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
 
+/* Products */
+.products{background:#fff}
+.products-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{border:1px solid var(--line);background:#fff;padding:18px;transition:.25s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(38,24,15,.1)}
+.product-image{height:255px;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:contain}
+.product-card .tag{font-size:10px;color:var(--red);font-weight:800;letter-spacing:.12em;display:block;margin-top:16px}
+.product-card h3{font-size:18px;margin:7px 0 5px}
+.product-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+/* Gift */
+.gifts{background:var(--cream)}
+.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.gift-card{background:#fff;border:1px solid #e3d7cb;padding:20px}
+.gift-card img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff}
+.gift-card h3{font-size:22px;margin:16px 0 7px}
+.gift-card p{margin:0;color:var(--muted);line-height:1.7}
+
+/* OEM */
 .oem{background:var(--brown);color:#fff}
 .oem .section-copy{color:rgba(255,255,255,.72)}
-.oem-list{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.18);margin-top:40px}
-.oem-list div{padding:30px 24px;background:var(--brown)}
-.oem-list b{display:block;color:#e0b86e;font-size:18px;margin-bottom:10px}
-.oem-list span{color:rgba(255,255,255,.72);font-size:14px;line-height:1.6}
+.oem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.18);margin-top:34px}
+.oem-grid div{background:var(--brown);padding:28px 22px}
+.oem-grid b{color:#e4b86a;display:block;margin-bottom:10px}
+.oem-grid span{color:rgba(255,255,255,.72);font-size:14px;line-height:1.6}
 
-.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.quality-box{padding:34px;border:1px solid var(--line)}
-.quality-box h3{font-size:24px;margin:0 0 12px}
-.quality-box p{color:var(--muted);line-height:1.8;margin:0}
-.contact{background:#19100d;color:#fff}
-.contact-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:60px}
-.contact h2{margin-top:10px}
-.contact p{color:rgba(255,255,255,.72);line-height:1.8}
-.contact-info{border-left:1px solid rgba(255,255,255,.22);padding-left:44px}
-.email{font-size:clamp(28px,3vw,42px);color:#ff3340;font-weight:800;word-break:break-all}
-.contact-info ul{list-style:none;padding:0;margin:26px 0 0}
-.contact-info li{margin:14px 0;color:rgba(255,255,255,.88)}
-footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:12px}
+/* Story / history */
+.story-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+.story-video{border-radius:18px;overflow:hidden;background:#12100e;box-shadow:0 18px 45px rgba(39,26,17,.14)}
+.story-video video{width:100%;aspect-ratio:16/9;object-fit:cover}
+.story-copy .quote{font-size:18px;color:var(--muted);line-height:1.85}
 
-@media(max-width:950px){
+/* Quality / Contact */
+.quality{background:#fff}
+.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.quality-box{border:1px solid var(--line);padding:30px}
+.quality-box h3{font-size:22px;margin:0 0 10px}
+.quality-box p{margin:0;color:var(--muted);line-height:1.8}
+.contact{background:#17100d;color:#fff}
+.contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
+.contact p{color:rgba(255,255,255,.7);line-height:1.8}
+.contact-info{border-left:1px solid rgba(255,255,255,.2);padding-left:40px}
+.email{color:#ff3440;font-size:clamp(27px,3vw,40px);font-weight:800;word-break:break-all}
+.contact-info div:not(.email){margin-top:12px;color:rgba(255,255,255,.82)}
+footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12px}
+
+@media(max-width:960px){
   .menu{display:none}
-  .grid-2,.contact-inner{grid-template-columns:1fr}
-  .cards{grid-template-columns:repeat(2,1fr)}
-  .products-grid{grid-template-columns:repeat(2,1fr)}
-  .oem-list{grid-template-columns:repeat(2,1fr)}
-  .contact-info{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.22);padding-top:28px}
+  .philosophy-wrap,.story-wrap,.contact-wrap{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid,.oem-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-info{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:28px 0 0}
 }
-@media(max-width:640px){
+@media(max-width:650px){
   .nav{height:68px}
-  .container{width:min(100% - 28px,1180px)}
-  section{padding:60px 0}
-  h2{font-size:36px}
-  .features,.cards,.products-grid,.quality-grid,.oem-list{grid-template-columns:1fr}
+  .container,.hero-copy{width:calc(100% - 28px)}
+  .hero{min-height:590px;background-position:62% top}
+  .hero-copy{padding-top:300px}
+  .hero-copy-inner{max-width:100%}
+  .hero h1{font-size:38px}
+  .hero-lead{font-size:19px}
+  .hero-desc{font-size:14px}
+  section.content{padding:58px 0}
+  .philosophy-cards,.product-grid,.why-grid,.gift-grid,.oem-grid,.quality-grid{grid-template-columns:1fr}
   .products-head{display:block}
-  .product,.card{min-height:0}
+  .product-image{height:235px}
 }
-
-.philosophy{padding:74px 0;background:#f8f4ee}
-.philosophy-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
-.video-poster{position:relative;overflow:hidden;border-radius:16px;background:#ddd;aspect-ratio:16/10}
-.video-poster img{width:100%;height:100%;object-fit:cover}
-.play-badge{position:absolute;left:22px;bottom:18px;background:rgba(20,15,12,.78);color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700}
-.philosophy h2{font-size:clamp(28px,3vw,44px);margin:10px 0 16px}
-.philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
-.philosophy-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
-.philosophy-card b{display:block;margin-bottom:7px}
-.philosophy-card span{font-size:13px;color:var(--muted);line-height:1.55}
-.ceo{padding:74px 0}
-.ceo-wrap{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbf7f2}
-.ceo-copy{padding:48px}
-.ceo-copy h2{font-size:clamp(30px,3.2vw,48px);margin:10px 0 20px}
-.ceo-sign{margin-top:28px;font-weight:800}
-.ceo-photo img{width:100%;height:100%;min-height:420px;object-fit:cover}
-@media(max-width:950px){.philosophy-wrap,.ceo-wrap{grid-template-columns:1fr}.ceo-photo{order:-1}.philosophy-cards{grid-template-columns:1fr}}
-
 </style>
 </head>
 <body>
 <header>
   <div class="container nav">
     <a class="brand" href="/">
-      <img class="brand-logo" src="assets/obok-logo-mark.png" alt="오복식품 로고">
+      <img src="assets/obok-logo-mark.png" alt="오복식품 로고">
       <span>오복식품<small>SINCE 1952</small></span>
     </a>
     <nav class="menu">
-      <a href="#about">회사소개</a>
+      <a href="#philosophy">발효철학</a>
       <a href="#products">제품소개</a>
+      <a href="#gifts">선물세트</a>
       <a href="#oem">OEM 생산</a>
-      <a href="#quality">품질관리</a>
+      <a href="#story">회사 이야기</a>
       <a href="#contact">문의하기</a>
     </nav>
     <details class="lang">
@@ -156,20 +194,28 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
 </header>
 
 <main>
-  <section class="hero" aria-label="오복식품 한국어 히어로">
-    <img src="assets/obok-hero-ko-v15.webp" alt="70년 전통의 장맛을 담다">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="hero-copy-inner">
+        <div class="hero-kicker">SINCE 1952</div>
+        <h1>70년 전통의 <strong>장맛을 담다</strong></h1>
+        <p class="hero-lead">정통 한국 장류를 만드는<br>믿을 수 있는 파트너</p>
+        <p class="hero-desc">오복식품은 1952년 창립 이후 전통의 장맛을 지켜왔습니다.<br>엄선된 원료와 축적된 기술로 건강한 식문화를 만들어갑니다.</p>
+      </div>
+    </div>
   </section>
 
-
-  <section class="philosophy" aria-labelledby="philosophy-title">
+  <section id="philosophy" class="content philosophy">
     <div class="container philosophy-wrap">
-      <div class="video-poster" aria-label="오복식품 발효 철학 영상 영역">
-        <img src="assets/fermentation-philosophy-poster.webp" alt="전통 발효의 맛을 살피는 모습">
-        <div class="play-badge">▶ 발효 철학 영상</div>
+      <div class="video-shell">
+        <video controls playsinline preload="metadata" poster="assets/fermentation-philosophy-poster.webp">
+          <source src="assets/obok-brand-20s.mp4" type="video/mp4">
+          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+        </video>
       </div>
       <div>
         <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
-        <h2 id="philosophy-title">70년 전통의 발효 철학</h2>
+        <h2>70년 전통의 발효 철학</h2>
         <p class="section-copy">시대는 변해도 오복식품의 발효 철학은 변하지 않았습니다. 자연을 존중하고, 시간을 기다리며, 정성을 다하는 마음으로 전통 장맛을 이어갑니다.</p>
         <div class="philosophy-cards">
           <div class="philosophy-card"><b>전통</b><span>70년 동안 이어온 장맛</span></div>
@@ -180,102 +226,125 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
     </div>
   </section>
 
-  <section id="about">
-    <div class="container grid-2">
-      <div class="photo-card">
-        <img src="assets/obok-representative-production.webp" alt="오복식품 생산 현장에서 제품을 소개하는 모습">
-        <div class="photo-label">SINCE 1952 · KOREA</div>
-      </div>
-      <div>
-        <div class="kicker">ABOUT OBOK</div>
-        <h2>한국 발효의 전통을 이어<br>세계 시장으로</h2>
-        <p class="section-copy">1952년 설립된 오복식품은 70년이 넘는 한국 장류 발효 기술과 현대 식품 제조 시스템을 바탕으로, 국내외 고객의 성공적인 브랜드와 안정적인 공급을 함께 만들어가고 있습니다.</p>
-        <div class="features">
-          <div class="feature"><b>한국 제조</b><span>안정적인 생산과 공급</span></div>
-          <div class="feature"><b>제품 개발</b><span>시장 맞춤형 레시피 개발</span></div>
-          <div class="feature"><b>품질 관리</b><span>원료부터 출하까지 관리</span></div>
-          <div class="feature"><b>수출 지원</b><span>규격·라벨·포장 맞춤 대응</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="ceo" aria-labelledby="ceo-title">
-    <div class="container ceo-wrap">
-      <div class="ceo-copy">
-        <div class="kicker">MESSAGE</div>
-        <h2 id="ceo-title">전통을 지키고,<br>미래를 만들어갑니다.</h2>
-        <p class="section-copy">오복식품은 1952년 창립 이래 한결같은 마음으로 전통 장맛을 지켜왔습니다. 앞으로도 최고의 품질과 정직한 식품으로 고객의 신뢰에 보답하며, 세계 시장에서 한국 장류의 가치를 넓혀가겠습니다.</p>
-        <div class="ceo-sign">채경석 팀원 · 오복식품</div>
-      </div>
-      <div class="ceo-photo"><img src="assets/obok-representative-production.webp" alt="오복식품 생산 현장에서 제품을 소개하는 모습"></div>
-    </div>
-  </section>
-
-  <section class="why">
+  <section class="content">
     <div class="container">
       <div class="why-head">
         <div class="kicker">WHY OBOK</div>
         <h2>왜 오복식품인가?</h2>
-        <p class="section-copy">70년 전통이 만드는 신뢰, 세계 시장이 선택한 품질</p>
+        <p class="section-copy">70년 전통이 만드는 신뢰, 식품 안전과 안정적인 생산으로 이어갑니다.</p>
       </div>
-      <div class="cards">
-        <article class="card"><em>1952</em><h3>70년 전통</h3><p>오랜 장류 제조 경험과 축적된 발효 기술</p></article>
-        <article class="card"><em>HACCP</em><h3>식품 안전관리</h3><p>원료 입고부터 생산·출하까지 체계적으로 관리</p></article>
-        <article class="card"><em>OEM</em><h3>맞춤 생산</h3><p>고객사 규격과 시장에 맞춘 레시피·용량·포장</p></article>
-        <article class="card"><em>GLOBAL</em><h3>수출 대응</h3><p>영문 규격서, 라벨, 포장 및 해외시장 맞춤 지원</p></article>
+      <div class="why-grid">
+        <div class="why-card"><strong>1952</strong><h3>70년 전통</h3><p>오랜 장류 제조 경험과 축적된 기술</p></div>
+        <div class="why-card"><strong>HACCP</strong><h3>식품 안전관리</h3><p>원료부터 생산·출하까지 체계적인 관리</p></div>
+        <div class="why-card"><strong>OEM</strong><h3>맞춤 생산</h3><p>레시피·용량·라벨·포장 맞춤 대응</p></div>
+        <div class="why-card"><strong>GLOBAL</strong><h3>수출 지원</h3><p>해외 시장을 위한 규격과 문서 대응</p></div>
       </div>
     </div>
   </section>
 
-  <section id="products">
+  <section id="products" class="content products">
     <div class="container">
       <div class="products-head">
         <div>
           <div class="kicker">OUR PRODUCTS</div>
           <h2>정성스럽게 담아낸 한국의 맛</h2>
         </div>
-        <p class="section-copy">가정용부터 외식업체·식품 제조사·유통사 및 학교급식용까지</p>
+        <p class="section-copy">가정용부터 외식업체·식품 제조사·유통사와 학교급식용 대용량 제품까지</p>
       </div>
-      <div class="products-grid">
-        <article class="product"><span class="tag">SOY SAUCE</span><h3>간장류</h3><p>진간장, 양조간장, 국간장, 조림간장, 장아찌간장</p></article>
-        <article class="product"><span class="tag">FERMENTED PASTE</span><h3>된장·고추장류</h3><p>재래식 된장, 우리콩 된장, 우리밀 고추장, 초고추장</p></article>
-        <article class="product"><span class="tag">SAUCE</span><h3>소스류</h3><p>데리야끼, 불고기, 매운소스, 스위트칠리 등</p></article>
-        <article class="product"><span class="tag">BULK</span><h3>대용량 제품</h3><p>외식업체·식품 제조사·유통사와 학교급식을 위한 제품</p></article>
-        <article class="product"><span class="tag">GIFT SET</span><h3>선물세트</h3><p>간장·된장·고추장을 구성한 실용적인 혼합세트</p></article>
-        <article class="product"><span class="tag">OEM & PB</span><h3>맞춤 제품</h3><p>고객사 브랜드에 맞춘 레시피·용량·라벨·포장 생산</p></article>
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image"><img src="assets/royal_soy.jpg" alt="황가 오복양조"></div>
+          <span class="tag">SOY SAUCE</span><h3>황가 오복양조</h3><p>오복식품을 대표하는 전통 간장 제품</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/soybean_soup_soy.jpg" alt="우리콩 국간장"></div>
+          <span class="tag">SOY SAUCE</span><h3>우리콩 국간장</h3><p>국과 찌개에 어울리는 국간장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/doenjang_500.jpg" alt="우리콩 된장"></div>
+          <span class="tag">DOENJANG</span><h3>우리콩 된장</h3><p>구수한 맛을 살린 재래식 된장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/gochujang_3kg.jpg" alt="우리밀 고추장"></div>
+          <span class="tag">GOCHUJANG</span><h3>우리밀 고추장</h3><p>우리밀과 고춧가루로 만든 고추장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/chunjang_500.jpg" alt="춘장"></div>
+          <span class="tag">CHUNJANG</span><h3>춘장</h3><p>짜장 요리에 활용하는 전통 춘장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/doenjang_14kg.jpg" alt="우리콩 된장 14kg"></div>
+          <span class="tag">BULK</span><h3>우리콩 된장 14kg</h3><p>외식업체·식품 제조사·학교급식용 대용량 제품</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/gochujang_14kg.jpg" alt="고추장 14kg"></div>
+          <span class="tag">BULK</span><h3>고추장 14kg</h3><p>대량 조리와 식품 제조를 위한 업소용 제품</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="oem" class="oem">
+  <section id="gifts" class="content gifts">
+    <div class="container">
+      <div class="kicker">PREMIUM GIFT SETS</div>
+      <h2>감사의 마음을 담은 오복 선물세트</h2>
+      <p class="section-copy">설·추석 명절, 기업 선물과 소중한 분께 전하는 선물로 준비했습니다.</p>
+      <div class="gift-grid">
+        <article class="gift-card">
+          <img src="assets/gift_set_2.jpg" alt="오복 선물세트 2종">
+          <h3>오복 선물세트</h3><p>대표 간장을 구성한 실용적인 선물세트</p>
+        </article>
+        <article class="gift-card">
+          <img src="assets/gift_set_4.jpg" alt="오복 선물세트 4종">
+          <h3>프리미엄 혼합 선물세트</h3><p>다양한 간장을 함께 구성한 고급 선물세트</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="oem" class="content oem">
     <div class="container">
       <div class="kicker">OEM & PRIVATE LABEL</div>
       <h2>기획부터 생산·수출까지,<br>믿을 수 있는 파트너</h2>
-      <p class="section-copy">제품 콘셉트와 목표 시장을 알려주시면 개발부터 생산, 품질관리, 포장 및 수출 대응까지 함께합니다.</p>
-      <div class="oem-list">
-        <div><b>제품 기획</b><span>시장과 고객 요구에 맞춘 제품 방향 설정</span></div>
-        <div><b>레시피 개발</b><span>맛·점도·염도·용도에 따른 맞춤 개발</span></div>
-        <div><b>생산·품질관리</b><span>안정적인 생산과 체계적인 공정관리</span></div>
-        <div><b>수출 지원</b><span>라벨·포장·규격서 등 해외시장 맞춤 대응</span></div>
+      <p class="section-copy">고객사의 제품 콘셉트와 시장 요구에 맞춰 개발, 생산, 품질관리, 포장 및 수출 대응까지 지원합니다.</p>
+      <div class="oem-grid">
+        <div><b>제품 기획</b><span>시장과 고객 요구에 맞춘 방향 설정</span></div>
+        <div><b>레시피 개발</b><span>맛·점도·염도·용도 맞춤 개발</span></div>
+        <div><b>생산·품질관리</b><span>안정적인 생산과 공정관리</span></div>
+        <div><b>수출 지원</b><span>라벨·포장·규격서 맞춤 대응</span></div>
       </div>
     </div>
   </section>
 
-  <section id="quality">
+  <section id="story" class="content">
+    <div class="container story-wrap">
+      <div class="story-copy">
+        <div class="kicker">70 YEARS STORY</div>
+        <h2>1952년부터 이어온<br>오복식품의 이야기</h2>
+        <p class="quote">전통을 지키면서도 시대의 변화에 맞춰 성장해온 오복식품. 앞으로도 정직한 식품과 안정적인 품질로 한국 장류의 가치를 이어가겠습니다.</p>
+      </div>
+      <div class="story-video">
+        <video controls playsinline preload="metadata">
+          <source src="assets/obok-brand-20s.mp4" type="video/mp4">
+          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="content quality">
     <div class="container">
       <div class="kicker">QUALITY & SAFETY</div>
       <h2>식품 안전은 오복식품의 기본입니다</h2>
       <div class="quality-grid">
-        <div class="quality-box"><h3>HACCP 기반 생산관리</h3><p>공정별 위생·품질 기준을 적용하고 원료부터 완제품까지 철저하게 관리합니다.</p></div>
-        <div class="quality-box"><h3>안정적인 공급 체계</h3><p>다양한 규격과 대용량 제품에 대응하며 고객사의 일정과 품질 기준을 함께 관리합니다.</p></div>
+        <div class="quality-box"><h3>HACCP 기반 생산관리</h3><p>공정별 위생·품질 기준을 적용하여 원료부터 완제품까지 관리합니다.</p></div>
+        <div class="quality-box"><h3>안정적인 공급 체계</h3><p>다양한 규격과 대용량 수요에 대응하며 고객사의 일정과 품질 기준을 함께 관리합니다.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <div class="container contact-inner">
+  <section id="contact" class="content contact">
+    <div class="container contact-wrap">
       <div>
         <div class="kicker">CONTACT US</div>
         <h2>믿을 수 있는 한국 장류 제조 파트너</h2>
@@ -284,12 +353,9 @@ footer{background:#0e0907;color:rgba(255,255,255,.55);padding:24px 0;font-size:1
       <div class="contact-info">
         <div class="kicker">EXPORT & OEM INQUIRY</div>
         <div class="email">sjnoh@obok.co.kr</div>
-        <ul>
-          <li>OBOK FOODS CO., LTD.</li>
-          <li>Busan, Republic of Korea</li>
-          <li>+82-51-293-2231</li>
-          <li><a href="mailto:sjnoh@obok.co.kr">sjnoh@obok.co.kr</a></li>
-        </ul>
+        <div>OBOK FOODS CO., LTD.</div>
+        <div>Busan, Republic of Korea</div>
+        <div>+82-51-293-2231</div>
       </div>
     </div>
   </section>
