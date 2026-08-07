@@ -37,7 +37,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero{
   position:relative;
   min-height:610px;
-  background:url("assets/obok-hero-ko-v18.png") center/cover no-repeat;
+  background-color:#f3eadc;background-image:url("assets/obok-hero-ko-v18.png");background-size:auto 104%;background-position:right center;background-repeat:no-repeat;
   overflow:hidden;
 }
 .hero::after{
@@ -53,7 +53,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
   padding-top:210px;
 }
 .hero-copy-inner{max-width:560px}
-.hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#f3d7a2;margin-bottom:16px}
+.hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#ad1720;margin-bottom:16px}
 .hero h1{
   font-family:"Nanum Myeongjo","Batang",serif;
   margin:0;
@@ -200,8 +200,9 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 .why-copy h3{
   margin:0 0 20px;
   font-family:"Nanum Myeongjo","Batang",serif;
-  font-size:clamp(34px,3.2vw,50px);
-  line-height:1.28;
+  font-size:clamp(27px,2.5vw,38px);
+  line-height:1.32;
+  white-space:nowrap;
   letter-spacing:-.04em;
   font-weight:500;
 }
@@ -214,6 +215,17 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 .why-grid-spaced{margin-top:42px}
 @media(max-width:960px){
   .why-story{grid-template-columns:1fr;gap:30px}
+}
+
+
+@media(min-width:651px) and (max-width:1180px){
+  .hero{background-size:auto 100%;background-position:right center}
+}
+
+.contact-title{font-size:clamp(30px,3.2vw,46px);white-space:nowrap}
+@media(max-width:650px){
+  .why-copy h3{white-space:normal;font-size:31px}
+  .contact-title{white-space:normal;font-size:34px}
 }
 
 </style>
@@ -291,7 +303,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
   <section id="about" class="content why-obok">
     <div class="container">
       <div class="why-head">
-        <div class="kicker">WHY OBOK</div>
+        <div class="kicker">WHY OBOK?</div>
         <h2>왜 오복식품인가?</h2>
       </div>
 
@@ -301,7 +313,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
           <span class="why-photo-label">BUSAN · KOREA</span>
         </div>
         <div class="why-copy">
-          <h3>한국 발효의 전통을 이어<br>세계 시장으로</h3>
+          <h3>한국 발효의 전통을 이어 세계 시장으로</h3>
           <p>1952년부터 이어온 전통과 현대 식품기술을 바탕으로 오복식품은 간장, 된장, 고추장 및 다양한 소스를 안정적으로 생산하고 있습니다.</p>
           <p>국내외 식품기업과 외식업체, 유통사, 학교급식 등 다양한 고객에게 일관된 품질과 신뢰를 제공하며, OEM·PB 생산부터 자체 브랜드까지 고객의 요구에 맞는 제품을 함께 만들어갑니다.</p>
         </div>
@@ -345,6 +357,10 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
         <article class="product-card">
           <div class="product-image"><img src="assets/chunjang_500.jpg" alt="춘장"></div>
           <span class="tag">CHUNJANG</span><h3>춘장</h3><p>짜장 요리에 활용하는 전통 춘장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/ssamjang_500.jpg" alt="오복 양념쌈장 500g"></div>
+          <span class="tag">SSAMJANG</span><h3>양념쌈장</h3><p>고기와 채소에 잘 어울리는 구수한 양념쌈장</p>
         </article>
         <article class="product-card">
           <div class="product-image"><img src="assets/doenjang_14kg.jpg" alt="우리콩 된장 14kg"></div>
@@ -424,7 +440,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
     <div class="container contact-wrap">
       <div>
         <div class="kicker">CONTACT US</div>
-        <h2>믿을 수 있는 한국 장류 제조 파트너</h2>
+        <h2 class="contact-title">믿을 수 있는 장류 장인의 기술</h2>
         <p>제품 종류, 예상 규격, 수량과 목표 시장을 보내주시면 담당자가 검토 후 안내드립니다.</p>
       </div>
       <div class="contact-info">
