@@ -80,7 +80,7 @@ h2{
 .philosophy{background:var(--cream)}
 .philosophy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
 .video-shell{border-radius:20px;overflow:hidden;background:#16120f;box-shadow:0 18px 45px rgba(39,26,17,.14)}
-.video-shell video,.video-shell img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.video-shell video,.video-shell img{width:100%;aspect-ratio:16/10;object-fit:cover}.philosophy-video video{background:#16120f}
 .philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
 .philosophy-card{padding:18px;border:1px solid #dfd2c4;background:rgba(255,255,255,.65);border-radius:12px}
 .philosophy-card b{display:block;margin-bottom:8px}
@@ -194,6 +194,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 </header>
 
 <main>
+  <!-- OBOK Korean V16 FINAL: woman fermentation video + full-photo hero + products + gifts + HACCP -->
   <section class="hero">
     <div class="hero-copy">
       <div class="hero-copy-inner">
@@ -207,8 +208,11 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 
   <section id="philosophy" class="content philosophy">
     <div class="container philosophy-wrap">
-      <div class="video-shell philosophy-photo">
-        <img src="assets/fermentation-philosophy-poster.webp" alt="전통 발효의 맛을 살피는 모습">
+      <div class="video-shell philosophy-video">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/fermentation-philosophy-poster.webp" aria-label="전통 발효의 맛을 살피는 영상">
+          <source src="assets/obok-fermentation-woman.mp4" type="video/mp4">
+          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+        </video>
       </div>
       <div>
         <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
