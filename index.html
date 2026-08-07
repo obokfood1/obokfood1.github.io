@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v15-final-clean.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v15-2-full-photo.webp">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -37,34 +37,34 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero{
   position:relative;
   min-height:610px;
-  background:url("assets/obok-hero-v15-final-clean.webp") center/cover no-repeat;
+  background:url("assets/obok-hero-v15-2-full-photo.webp") center/cover no-repeat;
   overflow:hidden;
 }
 .hero::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(255,249,239,.25) 0%,rgba(255,249,239,.04) 46%,transparent 62%);
+  background:linear-gradient(90deg,rgba(34,20,13,.72) 0%,rgba(34,20,13,.50) 34%,rgba(34,20,13,.15) 53%,transparent 68%);
   pointer-events:none;
 }
 .hero-copy{
   position:relative;z-index:2;
   width:min(1180px,calc(100% - 40px));
   margin:auto;
-  padding-top:190px;
+  padding-top:210px;
 }
 .hero-copy-inner{max-width:560px}
-.hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#523323;margin-bottom:16px}
+.hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#f3d7a2;margin-bottom:16px}
 .hero h1{
   font-family:"Nanum Myeongjo","Batang",serif;
   margin:0;
   font-size:clamp(42px,4.2vw,66px);
   line-height:1.12;
   letter-spacing:-.045em;
-  font-weight:700;color:#2f1d15;
+  font-weight:700;color:#fff;
 }
-.hero h1 strong{display:block;color:#ad1720;font-weight:700;margin-top:5px}
-.hero-lead{font-size:23px;font-weight:700;line-height:1.55;margin:24px 0 14px}
-.hero-desc{font-size:16px;line-height:1.85;color:#433730;margin:0}
+.hero h1 strong{display:block;color:#f0c06a;font-weight:700;margin-top:5px}
+.hero-lead{font-size:22px;font-weight:700;line-height:1.55;margin:24px 0 14px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.28)}
+.hero-desc{font-size:15px;line-height:1.85;color:rgba(255,255,255,.92);margin:0;text-shadow:0 1px 8px rgba(0,0,0,.30)}
 
 /* SECTIONS */
 section.content{padding:88px 0}
@@ -80,7 +80,7 @@ h2{
 .philosophy{background:var(--cream)}
 .philosophy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
 .video-shell{border-radius:20px;overflow:hidden;background:#16120f;box-shadow:0 18px 45px rgba(39,26,17,.14)}
-.video-shell video{width:100%;aspect-ratio:16/10;object-fit:cover}
+.video-shell video,.video-shell img{width:100%;aspect-ratio:16/10;object-fit:cover}
 .philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
 .philosophy-card{padding:18px;border:1px solid #dfd2c4;background:rgba(255,255,255,.65);border-radius:12px}
 .philosophy-card b{display:block;margin-bottom:8px}
@@ -97,7 +97,7 @@ h2{
 /* Products */
 .products{background:#fff}
 .products-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
-.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.products-head h2{font-size:clamp(32px,3.6vw,48px);white-space:nowrap;margin-bottom:8px}.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .product-card{border:1px solid var(--line);background:#fff;padding:18px;transition:.25s}
 .product-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(38,24,15,.1)}
 .product-image{height:255px;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
@@ -133,7 +133,7 @@ h2{
 .quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .quality-box{border:1px solid var(--line);padding:30px}
 .quality-box h3{font-size:22px;margin:0 0 10px}
-.quality-box p{margin:0;color:var(--muted);line-height:1.8}
+.quality-box p{margin:0;color:var(--muted);line-height:1.8}.haccp-photo{margin-top:30px;border:1px solid var(--line);background:#fff;padding:18px}.haccp-photo img{width:100%;height:auto}
 .contact{background:#17100d;color:#fff}
 .contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
 .contact p{color:rgba(255,255,255,.7);line-height:1.8}
@@ -160,7 +160,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
   .hero-desc{font-size:14px}
   section.content{padding:58px 0}
   .philosophy-cards,.product-grid,.why-grid,.gift-grid,.oem-grid,.quality-grid{grid-template-columns:1fr}
-  .products-head{display:block}
+  .products-head{display:block}.products-head h2{white-space:normal;font-size:34px}
   .product-image{height:235px}
 }
 </style>
@@ -207,11 +207,8 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 
   <section id="philosophy" class="content philosophy">
     <div class="container philosophy-wrap">
-      <div class="video-shell">
-        <video controls playsinline preload="metadata" poster="assets/fermentation-philosophy-poster.webp">
-          <source src="assets/obok-brand-20s.mp4" type="video/mp4">
-          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
-        </video>
+      <div class="video-shell philosophy-photo">
+        <img src="assets/fermentation-philosophy-poster.webp" alt="전통 발효의 맛을 살피는 모습">
       </div>
       <div>
         <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
@@ -339,6 +336,9 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
       <div class="quality-grid">
         <div class="quality-box"><h3>HACCP 기반 생산관리</h3><p>공정별 위생·품질 기준을 적용하여 원료부터 완제품까지 관리합니다.</p></div>
         <div class="quality-box"><h3>안정적인 공급 체계</h3><p>다양한 규격과 대용량 수요에 대응하며 고객사의 일정과 품질 기준을 함께 관리합니다.</p></div>
+      </div>
+      <div class="haccp-photo">
+        <img src="assets/haccp-certificates.jpg" alt="오복식품 HACCP 인증 현황">
       </div>
     </div>
   </section>
