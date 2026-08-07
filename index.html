@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v18.png">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v19.webp">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -37,22 +37,32 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero{
   position:relative;
   min-height:610px;
-  background-color:#f3eadc;background-image:url("assets/obok-hero-ko-v18.png");background-size:auto 104%;background-position:right center;background-repeat:no-repeat;
+  background-image:url("assets/obok-hero-ko-v19.webp");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   overflow:hidden;
 }
 .hero::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(255,248,236,.92) 0%,rgba(255,248,236,.72) 30%,rgba(255,248,236,.28) 50%,rgba(255,248,236,0) 67%);
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,.88) 0%,
+    rgba(255,255,255,.72) 18%,
+    rgba(255,255,255,.46) 34%,
+    rgba(255,255,255,.18) 49%,
+    rgba(255,255,255,0) 64%
+  );
   pointer-events:none;
 }
 .hero-copy{
   position:relative;z-index:2;
   width:min(1180px,calc(100% - 40px));
   margin:auto;
-  padding-top:210px;
+  padding-top:235px;
 }
-.hero-copy-inner{max-width:560px}
+.hero-copy-inner{max-width:520px;padding-left:28px}
 .hero-kicker{font-family:Georgia,serif;font-size:18px;letter-spacing:.04em;color:#ad1720;margin-bottom:16px}
 .hero h1{
   font-family:"Nanum Myeongjo","Batang",serif;
@@ -64,7 +74,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 }
 .hero h1 strong{display:block;color:#ad1720;font-weight:700;margin-top:5px}
 .hero-lead{font-size:22px;font-weight:700;line-height:1.55;margin:24px 0 14px;color:#2f1d15;text-shadow:none}
-.hero-desc{font-size:15px;line-height:1.85;color:#4a3a30;margin:0;text-shadow:none}
+.hero-desc{font-size:14px;line-height:1.8;color:#4a3a30;margin:0;text-shadow:none}
 
 /* SECTIONS */
 section.content{padding:88px 0}
@@ -226,6 +236,31 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 @media(max-width:650px){
   .why-copy h3{white-space:normal;font-size:31px}
   .contact-title{white-space:normal;font-size:34px}
+}
+
+
+@media(max-width:650px){
+  .hero{
+    min-height:610px;
+    background-size:auto 100%;
+    background-position:64% center;
+  }
+  .hero::after{
+    background:linear-gradient(
+      180deg,
+      rgba(255,255,255,.86) 0%,
+      rgba(255,255,255,.68) 36%,
+      rgba(255,255,255,.18) 62%,
+      rgba(255,255,255,0) 78%
+    );
+  }
+  .hero-copy{
+    padding-top:285px;
+  }
+  .hero-copy-inner{
+    padding-left:0;
+    max-width:100%;
+  }
 }
 
 </style>
