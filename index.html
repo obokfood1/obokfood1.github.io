@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v19.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v20-final.png">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -36,8 +36,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 /* HERO */
 .hero{
   position:relative;
-  min-height:610px;
-  background-image:url("assets/obok-hero-ko-v19.webp");
+  min-height:0;
+  aspect-ratio:1600 / 900;
+  background-image:url("assets/obok-hero-ko-v20-final.png");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -46,17 +47,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(
-    90deg,
-    rgba(255,255,255,.88) 0%,
-    rgba(255,255,255,.72) 18%,
-    rgba(255,255,255,.46) 34%,
-    rgba(255,255,255,.18) 49%,
-    rgba(255,255,255,0) 64%
-  );
+  background:transparent;
   pointer-events:none;
 }
-.hero-copy{
+.hero-copy{opacity:0;pointer-events:none;
   position:relative;z-index:2;
   width:min(1180px,calc(100% - 40px));
   margin:auto;
@@ -161,9 +155,9 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 }
 @media(max-width:650px){
   .nav{height:68px}
-  .container,.hero-copy{width:calc(100% - 28px)}
+  .container,.hero-copy{opacity:0;pointer-events:none;width:calc(100% - 28px)}
   .hero{min-height:590px;background-position:62% top}
-  .hero-copy{padding-top:300px}
+  .hero-copy{opacity:0;pointer-events:none;padding-top:300px}
   .hero-copy-inner{max-width:100%}
   .hero h1{font-size:38px}
   .hero-lead{font-size:19px}
@@ -254,13 +248,24 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
       rgba(255,255,255,0) 78%
     );
   }
-  .hero-copy{
+  .hero-copy{opacity:0;pointer-events:none;
     padding-top:285px;
   }
   .hero-copy-inner{
     padding-left:0;
     max-width:100%;
   }
+}
+
+
+@media(max-width:650px){
+  .hero{
+    min-height:0;
+    aspect-ratio:1600 / 900;
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-copy{display:none}
 }
 
 </style>
