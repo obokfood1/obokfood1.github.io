@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v21-final.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v20-final.png">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -38,7 +38,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
   position:relative;
   min-height:0;
   aspect-ratio:1600 / 900;
-  background-image:url("assets/obok-hero-ko-v21-final.webp");
+  background-image:url("assets/obok-hero-ko-v20-final.png");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
