@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v15-2-full-photo.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v17-single-photo.webp">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -37,13 +37,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero{
   position:relative;
   min-height:610px;
-  background:url("assets/obok-hero-v15-2-full-photo.webp") center/cover no-repeat;
+  background:url("assets/obok-hero-v17-single-photo.webp") center/cover no-repeat;
   overflow:hidden;
 }
 .hero::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(34,20,13,.72) 0%,rgba(34,20,13,.50) 34%,rgba(34,20,13,.15) 53%,transparent 68%);
+  background:linear-gradient(90deg,rgba(25,14,9,.66) 0%,rgba(25,14,9,.50) 30%,rgba(25,14,9,.18) 50%,rgba(25,14,9,0) 68%);
   pointer-events:none;
 }
 .hero-copy{
@@ -163,6 +163,18 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
   .products-head{display:block}.products-head h2{white-space:normal;font-size:34px}
   .product-image{height:235px}
 }
+
+.philosophy-video{position:relative}
+.sound-toggle{
+ position:absolute;right:18px;bottom:16px;z-index:4;display:flex;align-items:center;gap:8px;
+ border:1px solid rgba(255,255,255,.82);border-radius:999px;padding:10px 16px;
+ background:rgba(24,20,17,.78);color:#fff;font:700 13px/1 "Malgun Gothic","Apple SD Gothic Neo",Arial,sans-serif;
+ cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18);backdrop-filter:blur(6px)
+}
+.sound-toggle:hover{background:rgba(24,20,17,.92)}
+.sound-toggle:focus-visible{outline:3px solid rgba(240,192,106,.7);outline-offset:3px}
+@media(max-width:650px){.sound-toggle{right:12px;bottom:12px;padding:9px 13px;font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -209,10 +221,17 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
   <section id="philosophy" class="content philosophy">
     <div class="container philosophy-wrap">
       <div class="video-shell philosophy-video">
-        <video autoplay muted loop playsinline preload="metadata" poster="assets/fermentation-philosophy-poster.webp" aria-label="전통 발효의 맛을 살피는 영상">
+        <video id="philosophyVideo" autoplay muted loop playsinline preload="metadata"
+               poster="assets/fermentation-philosophy-poster.webp"
+               aria-label="전통 발효의 맛을 살피는 영상">
           <source src="assets/obok-fermentation-woman.mp4" type="video/mp4">
           사용 중인 브라우저에서 영상을 재생할 수 없습니다.
         </video>
+        <button type="button" class="sound-toggle" id="philosophySoundBtn"
+                aria-label="발효 철학 영상 소리 켜기" aria-pressed="false">
+          <span class="sound-icon" aria-hidden="true">🔊</span>
+          <span class="sound-label">소리 켜기</span>
+        </button>
       </div>
       <div>
         <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
@@ -366,5 +385,30 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 </main>
 
 <footer><div class="container">© 2026 OBOK FOODS CO., LTD. · SINCE 1952 · BUSAN, KOREA</div></footer>
+
+<script>
+(function(){
+ const video=document.getElementById('philosophyVideo');
+ const btn=document.getElementById('philosophySoundBtn');
+ if(!video||!btn)return;
+ const icon=btn.querySelector('.sound-icon');
+ const label=btn.querySelector('.sound-label');
+ function render(){
+   const on=!video.muted;
+   icon.textContent=on?'🔇':'🔊';
+   label.textContent=on?'소리 끄기':'소리 켜기';
+   btn.setAttribute('aria-pressed',on?'true':'false');
+   btn.setAttribute('aria-label',on?'발효 철학 영상 소리 끄기':'발효 철학 영상 소리 켜기');
+ }
+ btn.addEventListener('click',async function(){
+   video.muted=!video.muted;
+   if(video.paused){try{await video.play();}catch(e){}}
+   render();
+ });
+ video.muted=true; render();
+ const p=video.play(); if(p&&p.catch)p.catch(function(){});
+})();
+</script>
+
 </body>
 </html>
