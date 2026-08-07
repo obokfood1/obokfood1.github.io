@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://obokfood1.github.io/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-v17-single-photo.webp">
+<meta property="og:image" content="https://obokfood1.github.io/assets/obok-hero-ko-v18.png">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -37,13 +37,13 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .hero{
   position:relative;
   min-height:610px;
-  background:url("assets/obok-hero-v17-single-photo.webp") center/cover no-repeat;
+  background:url("assets/obok-hero-ko-v18.png") center/cover no-repeat;
   overflow:hidden;
 }
 .hero::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(25,14,9,.66) 0%,rgba(25,14,9,.50) 30%,rgba(25,14,9,.18) 50%,rgba(25,14,9,0) 68%);
+  background:linear-gradient(90deg,rgba(255,248,236,.92) 0%,rgba(255,248,236,.72) 30%,rgba(255,248,236,.28) 50%,rgba(255,248,236,0) 67%);
   pointer-events:none;
 }
 .hero-copy{
@@ -60,11 +60,11 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
   font-size:clamp(42px,4.2vw,66px);
   line-height:1.12;
   letter-spacing:-.045em;
-  font-weight:700;color:#fff;
+  font-weight:700;color:#2f1d15;
 }
-.hero h1 strong{display:block;color:#f0c06a;font-weight:700;margin-top:5px}
-.hero-lead{font-size:22px;font-weight:700;line-height:1.55;margin:24px 0 14px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.28)}
-.hero-desc{font-size:15px;line-height:1.85;color:rgba(255,255,255,.92);margin:0;text-shadow:0 1px 8px rgba(0,0,0,.30)}
+.hero h1 strong{display:block;color:#ad1720;font-weight:700;margin-top:5px}
+.hero-lead{font-size:22px;font-weight:700;line-height:1.55;margin:24px 0 14px;color:#2f1d15;text-shadow:none}
+.hero-desc{font-size:15px;line-height:1.85;color:#4a3a30;margin:0;text-shadow:none}
 
 /* SECTIONS */
 section.content{padding:88px 0}
@@ -175,6 +175,47 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 .sound-toggle:focus-visible{outline:3px solid rgba(240,192,106,.7);outline-offset:3px}
 @media(max-width:650px){.sound-toggle{right:12px;bottom:12px;padding:9px 13px;font-size:12px}}
 
+
+.why-obok{background:#fff}
+.why-story{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:56px;
+  align-items:center;
+  margin-top:26px;
+}
+.why-photo{position:relative}
+.why-photo img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:2px;
+}
+.why-photo-label{
+  position:absolute;left:0;bottom:0;
+  background:#b61520;color:#fff;
+  padding:13px 18px;
+  font-size:11px;font-weight:800;letter-spacing:.14em;
+}
+.why-copy h3{
+  margin:0 0 20px;
+  font-family:"Nanum Myeongjo","Batang",serif;
+  font-size:clamp(34px,3.2vw,50px);
+  line-height:1.28;
+  letter-spacing:-.04em;
+  font-weight:500;
+}
+.why-copy p{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+}
+.why-grid-spaced{margin-top:42px}
+@media(max-width:960px){
+  .why-story{grid-template-columns:1fr;gap:30px}
+}
+
 </style>
 </head>
 <body>
@@ -186,6 +227,7 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
     </a>
     <nav class="menu">
       <a href="#philosophy">발효철학</a>
+      <a href="#about">회사소개</a>
       <a href="#products">제품소개</a>
       <a href="#gifts">선물세트</a>
       <a href="#oem">OEM 생산</a>
@@ -212,8 +254,8 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
       <div class="hero-copy-inner">
         <div class="hero-kicker">SINCE 1952</div>
         <h1>70년 전통의 <strong>장맛을 담다</strong></h1>
-        <p class="hero-lead">정통 한국 장류를 만드는<br>믿을 수 있는 파트너</p>
-        <p class="hero-desc">오복식품은 1952년 창립 이후 전통의 장맛을 지켜왔습니다.<br>엄선된 원료와 축적된 기술로 건강한 식문화를 만들어갑니다.</p>
+        <p class="hero-lead">1952년부터 이어온 한국 발효의 가치,<br>세계 식탁으로 이어갑니다.</p>
+        <p class="hero-desc">간장, 된장, 고추장과 다양한 소스를 통해<br>오복식품의 전통과 품질을 세계 시장에 전하고 있습니다.</p>
       </div>
     </div>
   </section>
@@ -246,18 +288,30 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
     </div>
   </section>
 
-  <section class="content">
+  <section id="about" class="content why-obok">
     <div class="container">
       <div class="why-head">
         <div class="kicker">WHY OBOK</div>
         <h2>왜 오복식품인가?</h2>
-        <p class="section-copy">70년 전통이 만드는 신뢰, 식품 안전과 안정적인 생산으로 이어갑니다.</p>
       </div>
-      <div class="why-grid">
-        <div class="why-card"><strong>1952</strong><h3>70년 전통</h3><p>오랜 장류 제조 경험과 축적된 기술</p></div>
-        <div class="why-card"><strong>HACCP</strong><h3>식품 안전관리</h3><p>원료부터 생산·출하까지 체계적인 관리</p></div>
-        <div class="why-card"><strong>OEM</strong><h3>맞춤 생산</h3><p>레시피·용량·라벨·포장 맞춤 대응</p></div>
-        <div class="why-card"><strong>GLOBAL</strong><h3>수출 지원</h3><p>해외 시장을 위한 규격과 문서 대응</p></div>
+
+      <div class="why-story">
+        <div class="why-photo">
+          <img src="assets/obok-representative-production.webp" alt="오복식품 생산 현장에서 제품을 소개하는 모습">
+          <span class="why-photo-label">BUSAN · KOREA</span>
+        </div>
+        <div class="why-copy">
+          <h3>한국 발효의 전통을 이어<br>세계 시장으로</h3>
+          <p>1952년부터 이어온 전통과 현대 식품기술을 바탕으로 오복식품은 간장, 된장, 고추장 및 다양한 소스를 안정적으로 생산하고 있습니다.</p>
+          <p>국내외 식품기업과 외식업체, 유통사, 학교급식 등 다양한 고객에게 일관된 품질과 신뢰를 제공하며, OEM·PB 생산부터 자체 브랜드까지 고객의 요구에 맞는 제품을 함께 만들어갑니다.</p>
+        </div>
+      </div>
+
+      <div class="why-grid why-grid-spaced">
+        <div class="why-card"><strong>70+</strong><h3>전통의 발효 기술</h3><p>70년이 넘는 장류 제조 노하우와 발효 기술</p></div>
+        <div class="why-card"><strong>HACCP</strong><h3>체계적인 품질관리</h3><p>원료부터 완제품까지 철저한 위생·품질 관리</p></div>
+        <div class="why-card"><strong>OEM</strong><h3>맞춤형 제품 개발</h3><p>고객 브랜드와 레시피에 맞춘 맞춤 생산</p></div>
+        <div class="why-card"><strong>GLOBAL</strong><h3>글로벌 공급</h3><p>국내외 파트너를 위한 안정적인 수출 및 공급 대응</p></div>
       </div>
     </div>
   </section>
