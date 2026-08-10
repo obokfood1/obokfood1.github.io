@@ -269,6 +269,23 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 }
 
 </style>
+
+<style id="obok-v22-responsive-ratio-fix">
+/* V22: one consistent media-ratio policy across desktop, tablet and mobile */
+.hero{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;padding:0!important}
+.hero>.container{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+.obok-main-hero-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:cover!important;object-position:center center!important}
+.product-image img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;padding:13px!important}
+.product-card:first-child .product-image img{object-fit:contain!important;padding:13px!important}
+.photo img{width:100%!important;height:auto!important;aspect-ratio:4/3!important;object-fit:contain!important;object-position:center!important;background:#fff!important}
+.obok-video-card video,.obok-brand-video video{width:100%!important;height:100%!important}
+.obok-brand-video{aspect-ratio:16/9!important}
+@media(max-width:768px){
+ .hero,.hero>.container{height:auto!important;min-height:0!important}
+ .obok-main-hero-image{width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:cover!important}
+ .hero .stats{position:static!important}
+}
+</style>
 </head>
 <body>
 <header>
