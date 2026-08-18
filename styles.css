@@ -14,7 +14,7 @@ body {
   margin: 0;
   background: #f2f0ec;
   color: var(--ink);
-  font-family: "DM Sans", Arial, sans-serif;
+  font-family:"Noto Sans",sans-serif;
 }
 img, video { display: block; max-width: 100%; }
 main { overflow: hidden; }
@@ -35,7 +35,7 @@ main { overflow: hidden; }
 
 h1, h2 {
   margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
+  font-family:"Noto Sans",sans-serif;
   line-height: 1.04;
 }
 h1 { font-size: clamp(38px, 5vw, 68px); max-width: 670px; }
@@ -166,7 +166,7 @@ h2 { font-size: clamp(30px, 3.6vw, 50px); }
 }
 .philosophy-copy p:not(.eyebrow) {
   color: var(--muted);
-  font-family: Georgia, serif;
+  font-family:"Noto Sans",sans-serif;
   font-size: 16px;
   line-height: 1.9;
 }
