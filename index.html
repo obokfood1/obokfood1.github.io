@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://obokfoods.com/">
 <meta property="og:title" content="오복식품 | 70년 전통의 장맛">
 <meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
-<meta property="og:image" content="https://obokfoods.com/assets/obok-hero-ko-wide-20260818.jpg">
+<meta property="og:image" content="https://obokfoods.com/assets/obok-hero-ko-wide-final.jpg">
 <style>
 :root{
   --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
@@ -47,7 +47,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
   position:relative;
   min-height:0;
   aspect-ratio:1600 / 900;
-  background-image:url("assets/obok-hero-ko-wide-20260818.jpg");
+  background-image:url("assets/obok-hero-ko-20260818.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -287,29 +287,109 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 @media(max-width:700px){.haccp-cert-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 
-<style id="obok-v22-responsive-ratio-fix">
-/* V22: one consistent media-ratio policy across desktop, tablet and mobile */
-.hero{height:auto!important;min-height:0!important;overflow:visible!important;background:#fff!important;padding:0!important}
-.hero>.container{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
-.obok-main-hero-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:contain!important;object-position:center center!important}
+<style id="obok-v23-hero-final">
+/* V23: desktop = true wide banner, mobile = original portrait photo */
+.hero{
+  position:relative!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1920/760!important;
+  overflow:hidden!important;
+  background:#282926!important;
+  padding:0!important;
+}
+.hero-picture{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+}
+.obok-main-hero-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+.hero::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,rgba(13,13,12,.34) 0%,rgba(13,13,12,.13) 38%,rgba(13,13,12,0) 56%)!important;
+  pointer-events:none!important;
+}
+.hero-copy{
+  opacity:1!important;
+  pointer-events:auto!important;
+  position:absolute!important;
+  z-index:3!important;
+  inset:0!important;
+  width:min(1180px,calc(100% - 40px))!important;
+  margin:auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+}
+.hero-copy-inner{
+  max-width:620px!important;
+  padding-left:0!important;
+  transform:translateY(-2%)!important;
+}
+.hero-kicker{
+  font-family:"Noto Sans KR",sans-serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  letter-spacing:.16em!important;
+  color:#d4a653!important;
+  margin-bottom:17px!important;
+}
+.hero h1{
+  font-family:"Noto Serif KR",serif!important;
+  margin:0!important;
+  font-size:clamp(42px,4.1vw,68px)!important;
+  line-height:1.25!important;
+  letter-spacing:-.045em!important;
+  font-weight:600!important;
+  color:#fff!important;
+  text-shadow:0 2px 15px rgba(0,0,0,.22)!important;
+}
+.hero-lead{
+  font-family:"Noto Sans KR",sans-serif!important;
+  font-size:clamp(16px,1.35vw,21px)!important;
+  font-weight:500!important;
+  line-height:1.75!important;
+  margin:25px 0 0!important;
+  color:rgba(255,255,255,.90)!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.28)!important;
+}
+
+/* Keep existing product/photo ratio fixes */
 .product-image img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;padding:13px!important}
 .product-card:first-child .product-image img{object-fit:contain!important;padding:13px!important}
 .photo img{width:100%!important;height:auto!important;aspect-ratio:4/3!important;object-fit:contain!important;object-position:center!important;background:#fff!important}
 .obok-video-card video,.obok-brand-video video{width:100%!important;height:100%!important}
 .obok-brand-video{aspect-ratio:16/9!important}
-@media(max-width:768px){
- .hero,.hero>.container{height:auto!important;min-height:0!important}
- .obok-main-hero-image{width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:contain!important}
- .hero .stats{position:static!important}
-}
 
-.haccp-title{font-family:"Noto Sans KR",sans-serif;font-size:30px;margin:0 0 24px}
-.haccp-cert-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;align-items:start}
-.haccp-cert-grid figure{margin:0;text-align:center}
-.haccp-cert-grid img{width:100%;aspect-ratio:0.707/1;object-fit:contain;background:#fff}
-.haccp-cert-grid figcaption{font-family:"Noto Sans KR",sans-serif;font-size:14px;font-weight:600;margin-top:9px}
-@media(max-width:1100px){.haccp-cert-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:700px){.haccp-cert-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){
+  .hero h1{font-size:42px!important}
+  .hero-copy-inner{max-width:470px!important}
+}
+@media(max-width:768px){
+  .hero{
+    aspect-ratio:auto!important;
+    height:72vh!important;
+    min-height:520px!important;
+    max-height:680px!important;
+  }
+  .obok-main-hero-image{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  .hero::after{background:none!important}
+  .hero-copy{display:none!important}
+}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -347,13 +427,16 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
 <main>
   <!-- OBOK Korean V16 FINAL: woman fermentation video + full-photo hero + products + gifts + HACCP -->
   <section class="hero">
-    <img class="obok-main-hero-image" src="assets/obok-hero-ko-wide-20260818.jpg" alt="1952년부터 이어온 오복식품 70년 전통의 장맛">
+    <picture class="hero-picture">
+      <source media="(max-width: 768px)" srcset="assets/obok-hero-ko-20260818.jpg">
+      <img class="obok-main-hero-image" src="assets/obok-hero-ko-wide-final.jpg"
+           alt="황가 오복양조 간장과 원재료를 담은 오복식품 메인 이미지">
+    </picture>
     <div class="hero-copy">
       <div class="hero-copy-inner">
         <div class="hero-kicker">SINCE 1952</div>
-        <h1>70년 전통의 <strong>장맛을 담다</strong></h1>
-        <p class="hero-lead">1952년부터 이어온 한국 발효의 가치,<br>세계 식탁으로 이어갑니다.</p>
-        <p class="hero-desc">간장, 된장, 고추장과 다양한 소스를 통해<br>오복식품의 전통과 품질을 세계 시장에 전하고 있습니다.</p>
+        <h1>70년 전통의 맛,<br>건강한 식탁의 시작</h1>
+        <p class="hero-lead">1952년부터 지켜온 정직한 마음으로<br>좋은 재료만을 담아 만듭니다.</p>
       </div>
     </div>
   </section>
