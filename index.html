@@ -435,6 +435,18 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
   }
   .obok-main-hero-image{object-fit:cover!important;object-position:center center!important;}
 }
+
+/* Contact social links */
+.contact-social{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);display:grid;gap:12px}
+.contact-social a{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.9);font-size:14px;transition:.2s}
+.contact-social a:hover{color:#fff;transform:translateX(2px)}
+.social-icon{width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:0 0 25px}
+.social-icon.instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+.social-icon.naver{background:#03c75a}
+.social-name{min-width:92px;font-weight:600}
+.social-value{color:rgba(255,255,255,.72)}
+.social-arrow{margin-left:auto;color:#d4a653;font-size:17px}
+@media(max-width:650px){.contact-social a{font-size:13px}.social-name{min-width:82px}.social-value{overflow-wrap:anywhere}}
 </style>
 
 </head>
@@ -670,6 +682,20 @@ footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12
         <div>OBOK FOODS CO., LTD.</div>
         <div>Busan, Republic of Korea</div>
         <div>+82-51-293-2231</div>
+        <div class="contact-social">
+          <a href="https://www.instagram.com/obok__official?utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="오복식품 공식 Instagram 새 창에서 열기">
+            <span class="social-icon instagram">◎</span>
+            <span class="social-name">Instagram</span>
+            <span class="social-value">@obok__official</span>
+            <span class="social-arrow">↗</span>
+          </a>
+          <a href="https://blog.naver.com/lemonsoda80" target="_blank" rel="noopener noreferrer" aria-label="오복식품 Naver Blog 새 창에서 열기">
+            <span class="social-icon naver">N</span>
+            <span class="social-name">Naver Blog</span>
+            <span class="social-value">blog.naver.com/lemonsoda80</span>
+            <span class="social-arrow">↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
