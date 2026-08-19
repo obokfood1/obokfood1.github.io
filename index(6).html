@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>오복식품 | 한국 장류·소스 제조업체 | OEM·PB 생산</title>
+<meta name="description" content="1952년 설립된 오복식품. 간장, 된장, 고추장, 춘장과 다양한 소스를 생산하며 OEM·PB·학교급식·대용량 제품을 제공합니다.">
+<link rel="canonical" href="https://obokfoods.com/">
+<link rel="alternate" hreflang="ko" href="https://obokfoods.com/">
+<link rel="alternate" hreflang="en" href="https://obokfoods.com/en/">
+<link rel="alternate" hreflang="zh-CN" href="https://obokfoods.com/cn/">
+<link rel="alternate" hreflang="ru" href="https://obokfoods.com/ru/">
+<link rel="alternate" hreflang="es" href="https://obokfoods.com/es/">
+<link rel="alternate" hreflang="x-default" href="https://obokfoods.com/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OBOK Foods">
+<meta property="og:url" content="https://obokfoods.com/">
+<meta property="og:title" content="오복식품 | 70년 전통의 장맛">
+<meta property="og:description" content="정통 한국 장류를 만드는 믿을 수 있는 파트너">
+<meta property="og:image" content="https://obokfoods.com/assets/obok-hero-ko-wide-final.jpg">
+<style>
+:root{
+  --red:#b61520;--brown:#2f1d15;--gold:#c79748;--cream:#f8f3eb;
+  --ink:#211915;--muted:#6f6259;--line:#e7ddd2;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:"Noto Sans KR",sans-serif;background:#fff}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid #eee}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand img{width:40px;height:40px;object-fit:contain}
+.brand small{display:block;font-size:10px;letter-spacing:.18em;color:#777;margin-top:3px}
+.menu{display:flex;gap:26px;font-size:14px}
+.lang{position:relative}
+.lang summary{cursor:pointer;list-style:none;border:1px solid #d6d6d6;padding:10px 14px;border-radius:4px}
+.lang-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #ddd;width:150px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.lang[open] .lang-list{display:block}
+.lang-list a{display:block;padding:11px 14px}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:0;
+  aspect-ratio:1600 / 900;
+  background-image:url("assets/obok-hero-ko-20260818.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:transparent;
+  pointer-events:none;
+}
+.hero-copy{opacity:0;pointer-events:none;
+  position:relative;z-index:2;
+  width:min(1180px,calc(100% - 40px));
+  margin:auto;
+  padding-top:235px;
+}
+.hero-copy-inner{max-width:520px;padding-left:28px}
+.hero-kicker{font-family:"Noto Serif KR",serif;font-size:18px;letter-spacing:.04em;color:#ad1720;margin-bottom:16px}
+.hero h1{
+  font-family:"Noto Serif KR",serif;
+  margin:0;
+  font-size:clamp(42px,4.2vw,66px);
+  line-height:1.12;
+  letter-spacing:-.045em;
+  font-weight:700;color:#2f1d15;
+}
+.hero h1 strong{display:block;color:#ad1720;font-weight:700;margin-top:5px}
+.hero-lead{font-size:22px;font-weight:700;line-height:1.55;margin:24px 0 14px;color:#2f1d15;text-shadow:none}
+.hero-desc{font-size:14px;line-height:1.8;color:#4a3a30;margin:0;text-shadow:none}
+
+/* SECTIONS */
+section.content{padding:88px 0}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.22em;color:var(--gold)}
+h2{
+  font-family:"Noto Serif KR",serif;
+  font-size:clamp(34px,4vw,54px);line-height:1.22;letter-spacing:-.04em;
+  margin:12px 0 20px;font-weight:500;
+}
+.section-copy{font-size:17px;line-height:1.85;color:var(--muted)}
+
+/* Philosophy video */
+.philosophy{background:var(--cream)}
+.philosophy-wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.video-shell{border-radius:20px;overflow:hidden;background:#16120f;box-shadow:0 18px 45px rgba(39,26,17,.14)}
+.video-shell video,.video-shell img{width:100%;aspect-ratio:16/10;object-fit:cover}.philosophy-video video{background:#16120f}
+.philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.philosophy-card{padding:18px;border:1px solid #dfd2c4;background:rgba(255,255,255,.65);border-radius:12px}
+.philosophy-card b{display:block;margin-bottom:8px}
+.philosophy-card span{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* Why */
+.why-head{text-align:center;max-width:750px;margin:0 auto 42px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-card{padding:28px 22px;border:1px solid var(--line);background:#fff}
+.why-card strong{display:block;color:var(--red);font:700 26px Georgia,serif;margin-bottom:12px}
+.why-card h3{margin:0 0 8px;font-size:19px}
+.why-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+
+/* Products */
+.products{background:#fff}
+.products-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}
+.products-head h2{font-size:clamp(32px,3.6vw,48px);white-space:nowrap;margin-bottom:8px}.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-card{border:1px solid var(--line);background:#fff;padding:18px;transition:.25s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(38,24,15,.1)}
+.product-image{height:255px;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:contain}
+.product-card .tag{font-size:10px;color:var(--red);font-weight:800;letter-spacing:.12em;display:block;margin-top:16px}
+.product-card h3{font-size:18px;margin:7px 0 5px}
+.product-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+/* Gift */
+.gifts{background:var(--cream)}
+.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.gift-card{background:#fff;border:1px solid #e3d7cb;padding:20px}
+.gift-card img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff}
+.gift-card h3{font-size:22px;margin:16px 0 7px}
+.gift-card p{margin:0;color:var(--muted);line-height:1.7}
+
+/* OEM */
+.oem{background:var(--brown);color:#fff}
+.oem .section-copy{color:rgba(255,255,255,.72)}
+.oem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.18);margin-top:34px}
+.oem-grid div{background:var(--brown);padding:28px 22px}
+.oem-grid b{color:#e4b86a;display:block;margin-bottom:10px}
+.oem-grid span{color:rgba(255,255,255,.72);font-size:14px;line-height:1.6}
+
+/* Story / history */
+.story-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center}
+.story-video{border-radius:18px;overflow:hidden;background:#12100e;box-shadow:0 18px 45px rgba(39,26,17,.14)}
+.story-video video{width:100%;aspect-ratio:16/9;object-fit:cover}
+.story-copy .quote{font-size:18px;color:var(--muted);line-height:1.85}
+
+/* Quality / Contact */
+.quality{background:#fff}
+.quality-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.quality-box{border:1px solid var(--line);padding:30px}
+.quality-box h3{font-size:22px;margin:0 0 10px}
+.quality-box p{margin:0;color:var(--muted);line-height:1.8}.haccp-photo{margin-top:30px;border:1px solid var(--line);background:#fff;padding:18px}.haccp-photo img{width:100%;height:auto}
+.contact{background:#17100d;color:#fff}
+.contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px}
+.contact p{color:rgba(255,255,255,.7);line-height:1.8}
+.contact-info{border-left:1px solid rgba(255,255,255,.2);padding-left:40px}
+.email{color:#ff3440;font-size:clamp(27px,3vw,40px);font-weight:800;word-break:break-all}
+.contact-info div:not(.email){margin-top:12px;color:rgba(255,255,255,.82)}
+footer{padding:22px 0;background:#0d0907;color:rgba(255,255,255,.5);font-size:12px}
+
+@media(max-width:960px){
+  .menu{display:none}
+  .philosophy-wrap,.story-wrap,.contact-wrap{grid-template-columns:1fr}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid,.oem-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-info{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:28px 0 0}
+}
+@media(max-width:650px){
+  .nav{height:68px}
+  .hero-copy{opacity:0;pointer-events:none;width:calc(100% - 28px)}
+  .hero{min-height:590px;background-position:62% top}
+  .hero-copy{opacity:0;pointer-events:none;padding-top:300px}
+  .hero-copy-inner{max-width:100%}
+  .hero h1{font-size:38px}
+  .hero-lead{font-size:19px}
+  .hero-desc{font-size:14px}
+  section.content{padding:58px 0}
+  .philosophy-cards,.product-grid,.why-grid,.gift-grid,.oem-grid,.quality-grid{grid-template-columns:1fr}
+  .products-head{display:block}.products-head h2{white-space:normal;font-size:34px}
+  .product-image{height:235px}
+}
+
+.philosophy-video{position:relative}
+.sound-toggle{
+ position:absolute;right:18px;bottom:16px;z-index:4;display:flex;align-items:center;gap:8px;
+ border:1px solid rgba(255,255,255,.82);border-radius:999px;padding:10px 16px;
+ background:rgba(24,20,17,.78);color:#fff;font:700 13px/1 "Malgun Gothic","Apple SD Gothic Neo",Arial,sans-serif;
+ cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.18);backdrop-filter:blur(6px)
+}
+.sound-toggle:hover{background:rgba(24,20,17,.92)}
+.sound-toggle:focus-visible{outline:3px solid rgba(240,192,106,.7);outline-offset:3px}
+@media(max-width:650px){.sound-toggle{right:12px;bottom:12px;padding:9px 13px;font-size:12px}}
+
+
+.why-obok{background:#fff}
+.why-story{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:56px;
+  align-items:center;
+  margin-top:26px;
+}
+.why-photo{position:relative}
+.why-photo img{
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:2px;
+}
+.why-photo-label{
+  position:absolute;left:0;bottom:0;
+  background:#b61520;color:#fff;
+  padding:13px 18px;
+  font-size:11px;font-weight:800;letter-spacing:.14em;
+}
+.why-copy h3{
+  margin:0 0 20px;
+  font-family:"Noto Serif KR",serif;
+  font-size:clamp(27px,2.5vw,38px);
+  line-height:1.32;
+  white-space:nowrap;
+  letter-spacing:-.04em;
+  font-weight:500;
+}
+.why-copy p{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+}
+.why-grid-spaced{margin-top:42px}
+@media(max-width:960px){
+  .why-story{grid-template-columns:1fr;gap:30px}
+}
+
+
+@media(min-width:651px) and (max-width:1180px){
+  .hero{background-size:auto 100%;background-position:right center}
+}
+
+.contact-title{font-size:clamp(30px,3.2vw,46px);white-space:nowrap}
+@media(max-width:650px){
+  .why-copy h3{white-space:normal;font-size:31px}
+  .contact-title{white-space:normal;font-size:34px}
+}
+
+
+@media(max-width:650px){
+  .hero{
+    min-height:610px;
+    background-size:auto 100%;
+    background-position:64% center;
+  }
+  .hero::after{
+    background:linear-gradient(
+      180deg,
+      rgba(255,255,255,.86) 0%,
+      rgba(255,255,255,.68) 36%,
+      rgba(255,255,255,.18) 62%,
+      rgba(255,255,255,0) 78%
+    );
+  }
+  .hero-copy{opacity:0;pointer-events:none;
+    padding-top:285px;
+  }
+  .hero-copy-inner{
+    padding-left:0;
+    max-width:100%;
+  }
+}
+
+
+@media(max-width:650px){
+  .hero{
+    min-height:0;
+    aspect-ratio:1600 / 900;
+    background-size:cover;
+    background-position:center;
+  }
+  .hero-copy{display:none}
+}
+
+
+.haccp-title{font-family:"Noto Sans KR",sans-serif;font-size:30px;margin:0 0 24px}
+.haccp-cert-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;align-items:start}
+.haccp-cert-grid figure{margin:0;text-align:center}
+.haccp-cert-grid img{width:100%;aspect-ratio:0.707/1;object-fit:contain;background:#fff}
+.haccp-cert-grid figcaption{font-family:"Noto Sans KR",sans-serif;font-size:14px;font-weight:600;margin-top:9px}
+@media(max-width:1100px){.haccp-cert-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.haccp-cert-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<style id="obok-v23-hero-final">
+/* V23: desktop = true wide banner, mobile = original portrait photo */
+.hero{
+  position:relative!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:1920/760!important;
+  overflow:hidden!important;
+  background:#282926!important;
+  padding:0!important;
+}
+.hero-picture{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+}
+.obok-main-hero-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:right center!important;
+}
+.hero::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(90deg,rgba(13,13,12,.34) 0%,rgba(13,13,12,.13) 38%,rgba(13,13,12,0) 56%)!important;
+  pointer-events:none!important;
+}
+.hero-copy{
+  opacity:1!important;
+  pointer-events:auto!important;
+  position:absolute!important;
+  z-index:3!important;
+  inset:0!important;
+  width:min(1180px,calc(100% - 40px))!important;
+  margin:auto!important;
+  padding:0!important;
+  display:flex!important;
+  align-items:center!important;
+}
+.hero-copy-inner{
+  max-width:620px!important;
+  padding-left:0!important;
+  transform:translateY(-2%)!important;
+}
+.hero-kicker{
+  font-family:"Noto Sans KR",sans-serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  letter-spacing:.16em!important;
+  color:#d4a653!important;
+  margin-bottom:17px!important;
+}
+.hero h1{
+  font-family:"Noto Serif KR",serif!important;
+  margin:0!important;
+  font-size:clamp(42px,4.1vw,68px)!important;
+  line-height:1.25!important;
+  letter-spacing:-.045em!important;
+  font-weight:600!important;
+  color:#fff!important;
+  text-shadow:0 2px 15px rgba(0,0,0,.22)!important;
+}
+.hero-lead{
+  font-family:"Noto Sans KR",sans-serif!important;
+  font-size:clamp(16px,1.35vw,21px)!important;
+  font-weight:500!important;
+  line-height:1.75!important;
+  margin:25px 0 0!important;
+  color:rgba(255,255,255,.90)!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.28)!important;
+}
+
+/* Keep existing product/photo ratio fixes */
+.product-image img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;padding:13px!important}
+.product-card:first-child .product-image img{object-fit:contain!important;padding:13px!important}
+.photo img{width:100%!important;height:auto!important;aspect-ratio:4/3!important;object-fit:contain!important;object-position:center!important;background:#fff!important}
+.obok-video-card video,.obok-brand-video video{width:100%!important;height:100%!important}
+.obok-brand-video{aspect-ratio:16/9!important}
+
+@media(max-width:900px){
+  .hero h1{font-size:42px!important}
+  .hero-copy-inner{max-width:470px!important}
+}
+@media(max-width:768px){
+  .hero{
+    aspect-ratio:auto!important;
+    height:72vh!important;
+    min-height:520px!important;
+    max-height:680px!important;
+  }
+  .obok-main-hero-image{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  .hero::after{background:none!important}
+  .hero-copy{display:none!important}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style id="obok-hero-soft-blend-20260819-v2">
+/* Desktop hero: place the photo on the right and fade its left edge into the dark copy area */
+@media(min-width:769px){
+  .hero{background:#20221f!important;}
+  .hero-picture{
+    inset:auto 0 0 auto!important;
+    left:auto!important;
+    right:0!important;
+    top:0!important;
+    bottom:0!important;
+    width:62%!important;
+    height:100%!important;
+    overflow:hidden!important;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 7%,rgba(0,0,0,.42) 15%,rgba(0,0,0,.78) 25%,#000 38%)!important;
+    mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 7%,rgba(0,0,0,.42) 15%,rgba(0,0,0,.78) 25%,#000 38%)!important;
+    -webkit-mask-size:100% 100%!important;
+    mask-size:100% 100%!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
+  }
+  .obok-main-hero-image{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  .hero::after{
+    background:linear-gradient(90deg,rgba(25,27,24,.18) 0%,rgba(25,27,24,.10) 42%,rgba(25,27,24,0) 63%)!important;
+  }
+}
+@media(max-width:768px){
+  .hero-picture{
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    -webkit-mask-image:none!important;
+    mask-image:none!important;
+  }
+  .obok-main-hero-image{object-fit:cover!important;object-position:center center!important;}
+}
+
+/* Contact social links */
+.contact-social{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.22);display:grid;gap:12px}
+.contact-social a{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.9);font-size:14px;transition:.2s}
+.contact-social a:hover{color:#fff;transform:translateX(2px)}
+.social-icon{width:25px;height:25px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:0 0 25px}
+.social-icon.instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+.social-icon.naver{background:#03c75a}
+.social-name{min-width:92px;font-weight:600}
+.social-value{color:rgba(255,255,255,.72)}
+.social-arrow{margin-left:auto;color:#d4a653;font-size:17px}
+@media(max-width:650px){.contact-social a{font-size:13px}.social-name{min-width:82px}.social-value{overflow-wrap:anywhere}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="/">
+      <img src="assets/obok-logo-mark.png" alt="오복식품 로고">
+      <span>오복식품<small>SINCE 1952</small></span>
+    </a>
+    <nav class="menu">
+      <a href="#philosophy">발효철학</a>
+      <a href="#about">회사소개</a>
+      <a href="#products">제품소개</a>
+      <a href="#gifts">선물세트</a>
+      <a href="#oem">OEM 생산</a>
+      <a href="#story">회사 이야기</a>
+      <a href="#contact">문의하기</a>
+    </nav>
+    <details class="lang">
+      <summary>🌐 한국어</summary>
+      <div class="lang-list">
+        <a href="https://obokfoods.com/">한국어</a>
+        <a href="https://obokfoods.com/en/">English</a>
+        <a href="https://obokfoods.com/cn/">简体中文</a>
+        <a href="https://obokfoods.com/ru/">Русский</a>
+        <a href="https://obokfoods.com/es/">Español</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<main>
+  <!-- OBOK Korean V16 FINAL: woman fermentation video + full-photo hero + products + gifts + HACCP -->
+  <section class="hero">
+    <picture class="hero-picture">
+      <source media="(max-width: 768px)" srcset="assets/obok-hero-ko-20260818.jpg">
+      <img class="obok-main-hero-image" src="assets/obok-hero-ko-20260818.jpg"
+           alt="황가 오복양조 간장과 원재료를 담은 오복식품 메인 이미지">
+    </picture>
+    <div class="hero-copy">
+      <div class="hero-copy-inner">
+        <div class="hero-kicker">SINCE 1952</div>
+        <h1>70년 전통의 맛,<br>건강한 식탁의 시작</h1>
+        <p class="hero-lead">1952년부터 지켜온 정직한 마음으로<br>좋은 재료만을 담아 만듭니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="content philosophy">
+    <div class="container philosophy-wrap">
+      <div class="video-shell philosophy-video">
+        <video id="philosophyVideo" autoplay muted loop playsinline preload="metadata"
+               poster="assets/fermentation-philosophy-poster.webp"
+               aria-label="전통 발효의 맛을 살피는 영상">
+          <source src="assets/obok-fermentation-woman.mp4" type="video/mp4">
+          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+        </video>
+        <button type="button" class="sound-toggle" id="philosophySoundBtn"
+                aria-label="발효 철학 영상 소리 켜기" aria-pressed="false">
+          <span class="sound-icon" aria-hidden="true">🔊</span>
+          <span class="sound-label">소리 켜기</span>
+        </button>
+      </div>
+      <div>
+        <div class="kicker">OUR FERMENTATION PHILOSOPHY</div>
+        <h2>70년 전통의 발효 철학</h2>
+        <p class="section-copy">시대는 변해도 오복식품의 발효 철학은 변하지 않았습니다. 자연을 존중하고, 시간을 기다리며, 정성을 다하는 마음으로 전통 장맛을 이어갑니다.</p>
+        <div class="philosophy-cards">
+          <div class="philosophy-card"><b>전통</b><span>70년 동안 이어온 장맛</span></div>
+          <div class="philosophy-card"><b>기다림</b><span>시간이 만드는 깊은 맛</span></div>
+          <div class="philosophy-card"><b>자연</b><span>좋은 원료에서 시작되는 발효</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="content why-obok">
+    <div class="container">
+      <div class="why-head">
+        <div class="kicker">WHY OBOK?</div>
+        <h2>왜 오복식품인가?</h2>
+      </div>
+
+      <div class="why-story">
+        <div class="why-photo">
+          <img src="assets/obok-representative-production.webp" alt="오복식품 생산 현장에서 제품을 소개하는 모습">
+          <span class="why-photo-label">BUSAN · KOREA</span>
+        </div>
+        <div class="why-copy">
+          <h3>한국 발효의 전통을 이어 세계 시장으로</h3>
+          <p>1952년부터 이어온 전통과 현대 식품기술을 바탕으로 오복식품은 간장, 된장, 고추장 및 다양한 소스를 안정적으로 생산하고 있습니다.</p>
+          <p>국내외 식품기업과 외식업체, 유통사, 학교급식 등 다양한 고객에게 일관된 품질과 신뢰를 제공하며, OEM·PB 생산부터 자체 브랜드까지 고객의 요구에 맞는 제품을 함께 만들어갑니다.</p>
+        </div>
+      </div>
+
+      <div class="why-grid why-grid-spaced">
+        <div class="why-card"><strong>70+</strong><h3>전통의 발효 기술</h3><p>70년이 넘는 장류 제조 노하우와 발효 기술</p></div>
+        <div class="why-card"><strong>HACCP</strong><h3>체계적인 품질관리</h3><p>원료부터 완제품까지 철저한 위생·품질 관리</p></div>
+        <div class="why-card"><strong>OEM</strong><h3>맞춤형 제품 개발</h3><p>고객 브랜드와 레시피에 맞춘 맞춤 생산</p></div>
+        <div class="why-card"><strong>GLOBAL</strong><h3>글로벌 공급</h3><p>국내외 파트너를 위한 안정적인 수출 및 공급 대응</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="content products">
+    <div class="container">
+      <div class="products-head">
+        <div>
+          <div class="kicker">OUR PRODUCTS</div>
+          <h2>정성스럽게 담아낸 한국의 맛</h2>
+        </div>
+        <p class="section-copy">가정용부터 외식업체·식품 제조사·유통사와 학교급식용 대용량 제품까지</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-image"><img src="assets/royal_soy.jpg" alt="황가 오복양조"></div>
+          <span class="tag">SOY SAUCE</span><h3>황가 오복양조</h3><p>오복식품을 대표하는 전통 간장 제품</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/soybean_soup_soy.jpg" alt="우리콩 국간장"></div>
+          <span class="tag">SOY SAUCE</span><h3>우리콩 국간장</h3><p>국과 찌개에 어울리는 국간장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/doenjang_500.jpg" alt="우리콩 된장"></div>
+          <span class="tag">DOENJANG</span><h3>우리콩 된장</h3><p>구수한 맛을 살린 재래식 된장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/gochujang_3kg.jpg" alt="우리밀 고추장"></div>
+          <span class="tag">GOCHUJANG</span><h3>우리밀 고추장</h3><p>우리밀과 고춧가루로 만든 고추장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/chunjang_500.jpg" alt="춘장"></div>
+          <span class="tag">CHUNJANG</span><h3>춘장</h3><p>짜장 요리에 활용하는 전통 춘장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/ssamjang_500.jpg" alt="오복 양념쌈장 500g"></div>
+          <span class="tag">SSAMJANG</span><h3>양념쌈장</h3><p>고기와 채소에 잘 어울리는 구수한 양념쌈장</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/doenjang_14kg.jpg" alt="우리콩 된장 14kg"></div>
+          <span class="tag">BULK</span><h3>우리콩 된장 14kg</h3><p>외식업체·식품 제조사·학교급식용 대용량 제품</p>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="assets/gochujang_14kg.jpg" alt="고추장 14kg"></div>
+          <span class="tag">BULK</span><h3>고추장 14kg</h3><p>대량 조리와 식품 제조를 위한 업소용 제품</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gifts" class="content gifts">
+    <div class="container">
+      <div class="kicker">PREMIUM GIFT SETS</div>
+      <h2>감사의 마음을 담은 오복 선물세트</h2>
+      <p class="section-copy">설·추석 명절, 기업 선물과 소중한 분께 전하는 선물로 준비했습니다.</p>
+      <div class="gift-grid">
+        <article class="gift-card">
+          <img src="assets/gift_set_2.jpg" alt="오복 선물세트 2종">
+          <h3>오복 선물세트</h3><p>대표 간장을 구성한 실용적인 선물세트</p>
+        </article>
+        <article class="gift-card">
+          <img src="assets/gift_set_4.jpg" alt="오복 선물세트 4종">
+          <h3>프리미엄 혼합 선물세트</h3><p>다양한 간장을 함께 구성한 고급 선물세트</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="oem" class="content oem">
+    <div class="container">
+      <div class="kicker">OEM & PRIVATE LABEL</div>
+      <h2>기획부터 생산·수출까지,<br>믿을 수 있는 파트너</h2>
+      <p class="section-copy">고객사의 제품 콘셉트와 시장 요구에 맞춰 개발, 생산, 품질관리, 포장 및 수출 대응까지 지원합니다.</p>
+      <div class="oem-grid">
+        <div><b>제품 기획</b><span>시장과 고객 요구에 맞춘 방향 설정</span></div>
+        <div><b>레시피 개발</b><span>맛·점도·염도·용도 맞춤 개발</span></div>
+        <div><b>생산·품질관리</b><span>안정적인 생산과 공정관리</span></div>
+        <div><b>수출 지원</b><span>라벨·포장·규격서 맞춤 대응</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="content">
+    <div class="container story-wrap">
+      <div class="story-copy">
+        <div class="kicker">70 YEARS STORY</div>
+        <h2>1952년부터 이어온<br>오복식품의 이야기</h2>
+        <p class="quote">전통을 지키면서도 시대의 변화에 맞춰 성장해온 오복식품. 앞으로도 정직한 식품과 안정적인 품질로 한국 장류의 가치를 이어가겠습니다.</p>
+      </div>
+      <div class="story-video">
+        <video controls playsinline preload="metadata">
+          <source src="assets/obok-brand-20s.mp4" type="video/mp4">
+          사용 중인 브라우저에서 영상을 재생할 수 없습니다.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="content quality">
+    <div class="container">
+      <div class="kicker">QUALITY & SAFETY</div>
+      <h2>식품 안전은 오복식품의 기본입니다</h2>
+      <div class="quality-grid">
+        <div class="quality-box"><h3>HACCP 기반 생산관리</h3><p>공정별 위생·품질 기준을 적용하여 원료부터 완제품까지 관리합니다.</p></div>
+        <div class="quality-box"><h3>안정적인 공급 체계</h3><p>다양한 규격과 대용량 수요에 대응하며 고객사의 일정과 품질 기준을 함께 관리합니다.</p></div>
+      </div>
+      <div class="haccp-photo">
+        <h3 class="haccp-title">HACCP 인증</h3>
+        <div class="haccp-cert-grid">
+          <figure><img src="assets/haccp-brewed-soy.jpg" alt="양조간장 HACCP 인증서"><figcaption>양조간장</figcaption></figure>
+          <figure><img src="assets/haccp-hydrolyzed-soy.jpg" alt="산분해간장 HACCP 인증서"><figcaption>산분해간장</figcaption></figure>
+          <figure><img src="assets/haccp-chunjang.jpg" alt="춘장 HACCP 인증서"><figcaption>춘장</figcaption></figure>
+          <figure><img src="assets/haccp-gochujang.jpg" alt="고추장 HACCP 인증서"><figcaption>고추장</figcaption></figure>
+          <figure><img src="assets/haccp-doenjang.jpg" alt="된장 HACCP 인증서"><figcaption>된장</figcaption></figure>
+          <figure><img src="assets/haccp-ssamjang.jpg" alt="쌈장 HACCP 인증서"><figcaption>쌈장</figcaption></figure>
+          <figure><img src="assets/haccp-mixed-soy.jpg" alt="혼합간장 HACCP 인증서"><figcaption>혼합장·혼합간장</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content contact">
+    <div class="container contact-wrap">
+      <div>
+        <div class="kicker">CONTACT US</div>
+        <h2 class="contact-title">믿을 수 있는 장류 장인의 기술</h2>
+        <p>제품 종류, 예상 규격, 수량과 목표 시장을 보내주시면 담당자가 검토 후 안내드립니다.</p>
+      </div>
+      <div class="contact-info">
+        <div class="kicker">EXPORT & OEM INQUIRY</div>
+        <div class="email">sjnoh@obok.co.kr</div>
+        <div>OBOK FOODS CO., LTD.</div>
+        <div>Busan, Republic of Korea</div>
+        <div>+82-51-293-2231</div>
+        <div class="contact-social">
+          <a href="https://www.instagram.com/obok__official?utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="오복식품 공식 Instagram 새 창에서 열기">
+            <span class="social-icon instagram">◎</span>
+            <span class="social-name">Instagram</span>
+            <span class="social-value">@obok__official</span>
+            <span class="social-arrow">↗</span>
+          </a>
+          <a href="https://blog.naver.com/lemonsoda80" target="_blank" rel="noopener noreferrer" aria-label="오복식품 Naver Blog 새 창에서 열기">
+            <span class="social-icon naver">N</span>
+            <span class="social-name">Naver Blog</span>
+            <span class="social-value">blog.naver.com/lemonsoda80</span>
+            <span class="social-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">© 2026 OBOK FOODS CO., LTD. · SINCE 1952 · BUSAN, KOREA</div></footer>
+
+<script>
+(function(){
+ const video=document.getElementById('philosophyVideo');
+ const btn=document.getElementById('philosophySoundBtn');
+ if(!video||!btn)return;
+ const icon=btn.querySelector('.sound-icon');
+ const label=btn.querySelector('.sound-label');
+ function render(){
+   const on=!video.muted;
+   icon.textContent=on?'🔇':'🔊';
+   label.textContent=on?'소리 끄기':'소리 켜기';
+   btn.setAttribute('aria-pressed',on?'true':'false');
+   btn.setAttribute('aria-label',on?'발효 철학 영상 소리 끄기':'발효 철학 영상 소리 켜기');
+ }
+ btn.addEventListener('click',async function(){
+   video.muted=!video.muted;
+   if(video.paused){try{await video.play();}catch(e){}}
+   render();
+ });
+ video.muted=true; render();
+ const p=video.play(); if(p&&p.catch)p.catch(function(){});
+})();
+</script>
+
+</body>
+</html>
