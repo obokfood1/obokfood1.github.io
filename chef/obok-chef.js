@@ -2,7 +2,9 @@ const $ = s => document.querySelector(s);
 
 const state = {
   ingredients: [],
-  aiRecipes: []
+  aiRecipes: [],
+  shownRecipeNames: [],
+  preference: ""
 };
 
 const PRODUCT_IMAGES = {
@@ -215,13 +217,54 @@ function renderRecipeCards(recipes) {
     card.onclick = () => renderDetail(r);
     grid.appendChild(card);
   });
+
+  if (recipes.length) {
+    const controls = document.createElement("div");
+    controls.className = "recipe-actions";
+    controls.innerHTML = `
+      <button class="secondary" id="moreRecipesBtn">🔄 다른 요리 3개 추천받기</button>
+      <button class="secondary" id="customRequestBtn">💬 먹고 싶은 요리 직접 말하기</button>
+    `;
+    grid.appendChild(controls);
+
+    $("#moreRecipesBtn").onclick = () => generateRecipes({ refresh: true });
+    $("#customRequestBtn").onclick = openCustomRequest;
+  }
 }
 
-$("#recommendBtn").onclick = async () => {
+function openCustomRequest() {
+  const grid = $("#recipeGrid");
+  const old = document.querySelector(".custom-request-box");
+  if (old) old.remove();
+
+  const box = document.createElement("div");
+  box.className = "custom-request-box";
+  box.innerHTML = `
+    <h3>💬 어떤 요리가 먹고 싶어요?</h3>
+    <p>예: "매콤한 거", "아이들이 먹기 좋은 반찬", "10분 안에", "술안주로"</p>
+    <div class="custom-request-row">
+      <input id="customRequestInput" maxlength="120" placeholder="원하는 맛, 상황, 조리시간 등을 적어주세요">
+      <button class="primary" id="customRequestSend">오복이에게 부탁하기</button>
+    </div>
+  `;
+  grid.appendChild(box);
+  $("#customRequestInput").focus();
+
+  $("#customRequestSend").onclick = () => {
+    const value = $("#customRequestInput").value.trim();
+    if (!value) return;
+    state.preference = value;
+    generateRecipes({ custom: true });
+  };
+  $("#customRequestInput").addEventListener("keydown", e => {
+    if (e.key === "Enter") $("#customRequestSend").click();
+  });
+}
+
+async function generateRecipes({ refresh = false, custom = false } = {}) {
   const section = $("#recommendations");
   const head = section.querySelector(".section-head");
   const grid = $("#recipeGrid");
-  show("#recommendations");
 
   if (state.ingredients.length === 0) {
     head.innerHTML = `
@@ -234,35 +277,47 @@ $("#recommendBtn").onclick = async () => {
     return;
   }
 
-  head.innerHTML = `
-    <span class="eyebrow">STEP 2</span>
-    <h2>오복이가 메뉴를 생각하고 있어요… 👨‍🍳</h2>
-    <p>냉장고 재료와 조리시간을 보고 가장 쉬운 메뉴를 골라볼게요.</p>
-  `;
-  grid.innerHTML = `<div class="ai-loading">🍳 잠시만 기다려 주세요. 오복이가 레시피 3가지를 만들고 있어요…</div>`;
-
   if (!apiConfigured()) {
     grid.innerHTML = `<div class="ai-error">AI 서버 연결을 확인해 주세요.</div>`;
     return;
   }
 
+  const modeText = custom && state.preference
+    ? `“${escapeHtml(state.preference)}” 조건으로`
+    : refresh
+      ? "새로운 메뉴로"
+      : "냉장고 재료와 조리시간을 보고";
+
+  head.innerHTML = `
+    <span class="eyebrow">STEP 2</span>
+    <h2>오복이가 메뉴를 생각하고 있어요… 👨‍🍳</h2>
+    <p>${modeText} 쉬운 메뉴 3가지를 고르고 있어요.</p>
+  `;
+  grid.innerHTML = `<div class="ai-loading">🍳 잠시만 기다려 주세요. 오복이가 레시피 3가지를 만들고 있어요…</div>`;
+
   try {
     const data = await callApi("/recommend-recipes", {
       ingredients: state.ingredients,
       people: $("#people").value,
-      time: $("#time").value
+      time: $("#time").value,
+      preference: state.preference || "",
+      excludeNames: refresh ? state.shownRecipeNames.slice(-12) : []
     });
 
     state.aiRecipes = Array.isArray(data.recipes) ? data.recipes.slice(0, 3) : [];
+    if (!state.aiRecipes.length) throw new Error("추천 레시피를 받지 못했습니다.");
 
-    if (!state.aiRecipes.length) {
-      throw new Error("추천 레시피를 받지 못했습니다.");
-    }
+    state.aiRecipes.forEach(r => {
+      if (r.name && !state.shownRecipeNames.includes(r.name)) {
+        state.shownRecipeNames.push(r.name);
+      }
+    });
 
     head.innerHTML = `
       <span class="eyebrow">STEP 2</span>
       <h2>오늘은 이 요리 어때요?</h2>
-      <p><b>${state.ingredients.map(escapeHtml).join(", ")}</b>을 활용한 쉬운 메뉴 3가지를 준비했어요.</p>
+      <p>${state.preference ? `<b>“${escapeHtml(state.preference)}”</b> 요청을 반영했어요. ` : ""}
+      <b>${state.ingredients.map(escapeHtml).join(", ")}</b>을 활용한 메뉴 3가지예요.</p>
     `;
 
     renderRecipeCards(state.aiRecipes);
@@ -275,6 +330,13 @@ $("#recommendBtn").onclick = async () => {
     `;
     grid.innerHTML = `<div class="ai-error">⚠️ ${escapeHtml(err.message)}</div>`;
   }
+}
+
+$("#recommendBtn").onclick = async () => {
+  state.preference = "";
+  state.shownRecipeNames = [];
+  show("#recommendations");
+  await generateRecipes();
 };
 
 function renderDetail(r) {

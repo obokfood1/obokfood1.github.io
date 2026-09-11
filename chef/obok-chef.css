@@ -86,3 +86,38 @@ footer{text-align:center;color:#948980;padding:30px}
   font-weight:800;
   color:#5f554d
 }
+
+.recipe-actions{
+  grid-column:1/-1;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:8px
+}
+.recipe-actions button{min-width:240px}
+.custom-request-box{
+  grid-column:1/-1;
+  background:#fffaf1;
+  border:1px solid #efdfc8;
+  border-radius:20px;
+  padding:20px;
+  margin-top:4px
+}
+.custom-request-box h3{margin:0 0 8px;font-size:21px}
+.custom-request-box p{margin:0 0 14px;color:#766b62}
+.custom-request-row{display:flex;gap:10px}
+.custom-request-row input{
+  flex:1;
+  min-width:0;
+  padding:14px 16px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  font-size:16px
+}
+@media(max-width:760px){
+  .recipe-actions{flex-direction:column}
+  .recipe-actions button{width:100%;min-width:0}
+  .custom-request-row{flex-direction:column}
+  .custom-request-row button{width:100%}
+}
