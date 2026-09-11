@@ -9,9 +9,14 @@
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="../"><img src="../assets/obok-logo.png" alt="오복식품"><span>AI 요리사</span></a>
-  <a class="home" href="../">홈으로</a>
+  <a class="brand" href="../">
+    <img class="brand-symbol" src="obok-symbol.webp" alt="오복 로고">
+    <strong>오복</strong>
+    <span>AI 요리사</span>
+  </a>
+  <a class="home" href="../"><span class="home-icon">⌂</span> 홈으로</a>
 </header>
+
 <main>
   <section class="hero card">
     <div class="hero-copy">
@@ -19,19 +24,29 @@
       <h1>냉장고에 뭐가 있어요?</h1>
       <p>사진 한 장 또는 재료 몇 가지만 알려주세요.<br>오복이가 오늘 만들기 쉬운 요리를 찾아드릴게요.</p>
       <div class="actions">
-        <label class="primary upload">📷 냉장고 사진 찍기<input id="photo" type="file" accept="image/*" capture="environment"></label>
+        <label class="primary upload">📷 냉장고 사진 찍기
+          <input id="photo" type="file" accept="image/*" capture="environment">
+        </label>
         <button class="secondary" id="manualBtn">🥕 재료 직접 입력</button>
       </div>
       <small>※ 현재 버전은 작동형 경량 시제품입니다. 실제 AI 사진 인식은 다음 단계에서 연결합니다.</small>
     </div>
-    <div class="chef-wrap"><img src="obok-chef.webp" alt="요리사 모자를 쓴 오복이"></div>
+    <div class="chef-wrap">
+      <img src="obok-chef.webp" alt="요리사 모자를 쓴 오복이">
+    </div>
   </section>
 
   <section id="ingredients" class="card hidden">
-    <div class="section-title"><div><span class="eyebrow">STEP 1</span><h2>오복이가 찾은 재료예요</h2></div><span class="bubble">맞는지 확인해 주세요!</span></div>
+    <div class="section-title">
+      <div><span class="eyebrow">STEP 1</span><h2>오복이가 찾은 재료예요</h2></div>
+      <span class="bubble">맞는지 확인해 주세요!</span>
+    </div>
     <div id="photoName" class="photo-note"></div>
     <div class="chips" id="chips"></div>
-    <div class="add-row"><input id="ingredientInput" placeholder="예: 두부, 감자, 닭고기"><button id="addBtn">+ 추가</button></div>
+    <div class="add-row">
+      <input id="ingredientInput" placeholder="예: 두부, 감자, 닭고기">
+      <button id="addBtn">+ 추가</button>
+    </div>
     <div class="prefs">
       <label>인원<select id="people"><option>1명</option><option selected>2명</option><option>3~4명</option><option>5명 이상</option></select></label>
       <label>조리시간<select id="time"><option>10분 이내</option><option selected>20분 이내</option><option>30분 이내</option><option>상관없음</option></select></label>
@@ -49,6 +64,7 @@
     <div id="detailContent"></div>
   </section>
 </main>
+
 <footer>© O'Bok Foods Co., Ltd. · 좋은 식탁, 행복한 오늘</footer>
 <script src="obok-chef.js"></script>
 </body>

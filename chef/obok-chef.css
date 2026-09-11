@@ -1,3 +1,54 @@
-:root{--red:#d92323;--red2:#a91212;--cream:#fff9ef;--ink:#27201c;--muted:#756b63;--line:#eadfce;--green:#3f8d43;--shadow:0 12px 35px rgba(73,43,23,.09)}
-*{box-sizing:border-box}body{margin:0;background:#fbf6ee;color:var(--ink);font-family:Pretendard,"Noto Sans KR",Apple SD Gothic Neo,sans-serif}.topbar{height:68px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1120px)/2));border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111;font-weight:800}.brand img{height:38px;width:auto}.brand span{border-left:1px solid #ddd;padding-left:10px}.home{color:#555;text-decoration:none;font-weight:700}main{max-width:1120px;margin:auto;padding:28px 18px 70px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px}.hero{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;min-height:430px;background:linear-gradient(135deg,#fffdf8,#fff4df)}.eyebrow{font-size:13px;font-weight:900;color:var(--red);letter-spacing:.08em}.hero h1{font-size:46px;line-height:1.12;margin:10px 0 14px}.hero p{font-size:19px;line-height:1.7;color:#544b44}.hero small{display:block;color:#8c8178;margin-top:14px}.chef-wrap{text-align:center;align-self:end}.chef-wrap img{width:min(100%,360px);display:block;margin:auto}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}button,.upload{border:0;border-radius:15px;padding:15px 19px;font-size:16px;font-weight:900;cursor:pointer}.primary{background:var(--red);color:#fff}.primary:hover{background:var(--red2)}.secondary{background:#fff;color:var(--ink);border:1px solid #ddd}.upload input{display:none}.wide{width:100%;margin-top:18px}.hidden{display:none!important}#ingredients{margin-top:24px}.section-title{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-title h2,.section-head h2{margin:6px 0 8px;font-size:30px}.bubble{background:#fff0e7;border-radius:999px;padding:10px 14px;color:#995135;font-size:13px;font-weight:800}.photo-note{margin-top:12px;color:var(--green);font-weight:800}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.chip{background:#fff7ec;border:1px solid #f1d9b8;padding:10px 13px;border-radius:999px;font-weight:800;display:flex;align-items:center;gap:8px}.chip button{padding:0;background:none;color:#b66;font-size:18px}.add-row{display:flex;gap:8px}.add-row input{flex:1;padding:14px 16px;border:1px solid #ddd;border-radius:14px;font-size:16px}.add-row button{background:#312c28;color:#fff}.prefs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.prefs label{display:flex;align-items:center;justify-content:space-between;background:#faf7f2;padding:12px 14px;border-radius:14px;font-weight:800}.prefs select{border:0;background:transparent;font-size:15px}.section-head{margin:38px 4px 18px}.section-head p{color:var(--muted)}.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.recipe{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.2s}.recipe:hover{transform:translateY(-4px)}.recipe .emoji{font-size:42px}.recipe h3{margin:10px 0 8px;font-size:22px}.meta{color:#7c7066;font-size:14px}.product-badge{display:inline-block;margin-top:12px;background:#fff0ed;color:var(--red);padding:7px 10px;border-radius:999px;font-size:13px;font-weight:900}.back{background:none;padding:0;color:#777}.recipe-title{font-size:36px;margin:10px 0}.lead{color:#655c55;line-height:1.7}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}.step{background:var(--cream);padding:18px;border-radius:18px;border:1px solid #f0e0c7}.step b{display:block;color:var(--red);margin-bottom:7px}.shop{margin-top:28px;border-top:1px solid #eee;padding-top:22px}.shop h3{font-size:26px;margin:0 0 14px}.product{display:flex;align-items:center;gap:16px;padding:15px;border:1px solid #eee;border-radius:16px;margin:10px 0}.product img{width:70px;height:85px;object-fit:contain}.product-copy{flex:1}.product-copy b{font-size:18px}.product-copy p{margin:5px 0;color:#736860;font-size:14px}.buy{display:inline-block;background:var(--red);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:900}.buy.disabled{background:#aaa;pointer-events:none}footer{text-align:center;color:#948980;padding:30px}
-@media(max-width:760px){.topbar{height:60px}.brand img{height:32px}main{padding:14px 12px 50px}.card{border-radius:22px;padding:20px}.hero{grid-template-columns:1fr;min-height:auto}.hero h1{font-size:36px}.hero p{font-size:16px}.chef-wrap img{width:260px}.actions{flex-direction:column}.actions>*{width:100%;text-align:center}.section-title{display:block}.bubble{display:inline-block;margin-top:8px}.prefs{grid-template-columns:1fr}.recipe-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.recipe-title{font-size:30px}.product{align-items:flex-start;flex-wrap:wrap}.product-copy{min-width:180px}}
+:root{--red:#e31920;--red2:#b71016;--cream:#fffaf1;--ink:#171717;--muted:#6f6a66;--line:#eadfce;--green:#3f8d43;--shadow:0 18px 48px rgba(76,52,34,.10)}
+*{box-sizing:border-box}
+body{margin:0;background:#fbf6ee;color:var(--ink);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
+.topbar{height:78px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1180px)/2));border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#111}
+.brand-symbol{width:48px;height:48px;object-fit:contain;border-radius:50%}
+.brand strong{font-size:25px;font-weight:900;letter-spacing:-.05em}
+.brand span{font-size:21px;font-weight:800;border-left:1px solid #d7d7d7;padding-left:18px;margin-left:7px}
+.home{color:#666;text-decoration:none;font-weight:800;font-size:17px;display:flex;align-items:center;gap:7px}
+.home-icon{font-size:28px;line-height:1}
+main{max-width:1180px;margin:auto;padding:48px 18px 80px}
+.card{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:32px}
+.hero{display:grid;grid-template-columns:1.45fr .8fr;align-items:center;min-height:500px;background:linear-gradient(135deg,#fffdf9,#fff8ec);padding:52px 44px}
+.eyebrow{font-size:14px;font-weight:900;color:var(--red);letter-spacing:.06em}
+.hero h1{font-size:52px;line-height:1.12;margin:16px 0 20px;letter-spacing:-.055em}
+.hero p{font-size:20px;line-height:1.75;color:#65605b;margin:0}
+.hero small{display:block;color:#8d837c;margin-top:18px;line-height:1.6}
+.chef-wrap{display:flex;align-items:flex-end;justify-content:center;height:100%}
+.chef-wrap img{width:min(100%,465px);display:block;mix-blend-mode:multiply}
+.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+button,.upload{border:0;border-radius:16px;padding:16px 23px;font-size:17px;font-weight:900;cursor:pointer;transition:.18s}
+.primary{background:var(--red);color:#fff;box-shadow:0 6px 14px rgba(227,25,32,.16)}
+.primary:hover{background:var(--red2);transform:translateY(-1px)}
+.secondary{background:#fff;color:var(--ink);border:1px solid #ddd}
+.secondary:hover{background:#fafafa}
+.upload input{display:none}.wide{width:100%;margin-top:18px}.hidden{display:none!important}
+#ingredients{margin-top:26px}.section-title{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.section-title h2,.section-head h2{margin:6px 0 8px;font-size:30px}.bubble{background:#fff0e7;border-radius:999px;padding:10px 14px;color:#995135;font-size:13px;font-weight:800}
+.photo-note{margin-top:12px;color:var(--green);font-weight:800}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+.chip{background:#fff7ec;border:1px solid #f1d9b8;padding:10px 13px;border-radius:999px;font-weight:800;display:flex;align-items:center;gap:8px}
+.chip button{padding:0;background:none;color:#b66;font-size:18px}.add-row{display:flex;gap:8px}
+.add-row input{flex:1;padding:14px 16px;border:1px solid #ddd;border-radius:14px;font-size:16px}.add-row button{background:#312c28;color:#fff}
+.prefs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.prefs label{display:flex;align-items:center;justify-content:space-between;background:#faf7f2;padding:12px 14px;border-radius:14px;font-weight:800}
+.prefs select{border:0;background:transparent;font-size:15px}.section-head{margin:38px 4px 18px}.section-head p{color:var(--muted)}
+.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.recipe{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.2s}
+.recipe:hover{transform:translateY(-4px)}.recipe .emoji{font-size:42px}.recipe h3{margin:10px 0 8px;font-size:22px}.meta{color:#7c7066;font-size:14px}
+.product-badge{display:inline-block;margin-top:12px;background:#fff0ed;color:var(--red);padding:7px 10px;border-radius:999px;font-size:13px;font-weight:900}
+.back{background:none;padding:0;color:#777}.recipe-title{font-size:36px;margin:10px 0}.lead{color:#655c55;line-height:1.7}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}.step{background:var(--cream);padding:18px;border-radius:18px;border:1px solid #f0e0c7}
+.step b{display:block;color:var(--red);margin-bottom:7px}.shop{margin-top:28px;border-top:1px solid #eee;padding-top:22px}.shop h3{font-size:26px;margin:0 0 14px}
+.product{display:flex;align-items:center;gap:16px;padding:15px;border:1px solid #eee;border-radius:16px;margin:10px 0}.product img{width:70px;height:85px;object-fit:contain}
+.product-copy{flex:1}.product-copy b{font-size:18px}.product-copy p{margin:5px 0;color:#736860;font-size:14px}
+.buy{display:inline-block;background:var(--red);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:900}.buy.disabled{background:#aaa;pointer-events:none}
+footer{text-align:center;color:#948980;padding:30px}
+@media(max-width:760px){
+ .topbar{height:64px;padding:0 14px}.brand-symbol{width:36px;height:36px}.brand strong{font-size:20px}.brand span{font-size:17px;padding-left:11px;margin-left:2px}.home{font-size:0}.home-icon{font-size:28px}
+ main{padding:14px 12px 52px}.card{border-radius:22px;padding:20px}.hero{grid-template-columns:1fr;min-height:auto;padding:26px 22px 18px}
+ .hero h1{font-size:38px;margin-top:12px}.hero p{font-size:16px}.chef-wrap{order:-1;height:auto;margin:-4px 0 8px}.chef-wrap img{width:270px}
+ .actions{flex-direction:column;margin-top:22px}.actions>*{width:100%;text-align:center}.hero small{font-size:12px}
+ .section-title{display:block}.bubble{display:inline-block;margin-top:8px}.prefs{grid-template-columns:1fr}.recipe-grid{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr}.recipe-title{font-size:30px}.product{align-items:flex-start;flex-wrap:wrap}.product-copy{min-width:180px}
+}
