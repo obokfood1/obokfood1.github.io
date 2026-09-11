@@ -1,0 +1,77 @@
+const $=s=>document.querySelector(s);
+const state={ingredients:['돼지고기','양파','계란','대파']};
+const recipes=[
+ {name:'간장 돼지불고기 덮밥',emoji:'🍚',time:'15분',level:'아주 쉬움',product:'오복 양조간장',desc:'달콤짭짤한 간장 양념으로 누구나 쉽게 만드는 한 그릇 요리',steps:['돼지고기와 양파를 먹기 좋은 크기로 준비해요.','팬을 달군 뒤 돼지고기를 먼저 볶아요.','오복 양조간장 3큰술과 설탕 1큰술을 넣어요.','양파와 대파를 넣고 함께 볶아요.','중불에서 5~7분, 양념이 잘 배도록 볶아요.','밥 위에 올리고 계란후라이를 곁들이면 완성!'],products:[['오복 양조간장','../assets/soy.webp'],['오복 참기름','../assets/soy.webp']]},
+ {name:'매콤 제육볶음',emoji:'🌶️',time:'20분',level:'쉬움',product:'오복 고추장',desc:'밥과 가장 잘 어울리는 매콤달콤한 집밥 메뉴',steps:['돼지고기와 양파, 대파를 준비해요.','돼지고기를 팬에서 가볍게 익혀요.','오복 고추장 1큰술과 간장, 설탕을 넣어요.','양파와 대파를 넣고 센 불에서 볶아요.','양념이 고기에 고르게 배면 불을 줄여요.','통깨를 뿌리고 밥과 함께 맛있게 드세요!'],products:[['오복 고추장','../assets/gochujang.webp'],['오복 양조간장','../assets/soy.webp']]},
+ {name:'계란 간장볶음밥',emoji:'🍳',time:'10분',level:'아주 쉬움',product:'오복 양조간장',desc:'재료가 적을 때도 10분이면 완성되는 초간단 메뉴',steps:['계란 2개와 대파를 준비해요.','팬에 계란을 넣고 빠르게 저어 익혀요.','밥을 넣고 계란과 잘 섞어 볶아요.','오복 양조간장 1큰술을 팬 가장자리에 둘러요.','대파를 넣고 1~2분 더 볶아요.','참기름을 살짝 넣으면 완성!'],products:[['오복 양조간장','../assets/soy.webp']]}
+];
+function show(id){$(id).classList.remove('hidden');$(id).scrollIntoView({behavior:'smooth',block:'start'});}
+function renderChips(){const c=$('#chips');c.innerHTML='';state.ingredients.forEach((x,i)=>{const el=document.createElement('span');el.className='chip';el.innerHTML=`${x}<button aria-label="삭제">×</button>`;el.querySelector('button').onclick=()=>{state.ingredients.splice(i,1);renderChips()};c.appendChild(el)});}
+$('#photo').addEventListener('change',e=>{if(!e.target.files[0])return;state.ingredients=['돼지고기','양파','계란','대파'];$('#photoName').textContent=`📷 ${e.target.files[0].name} · 시제품에서는 샘플 재료를 표시합니다.`;renderChips();show('#ingredients')});
+$('#manualBtn').onclick=()=>{state.ingredients=[];$('#photoName').textContent='가지고 있는 재료를 하나씩 추가해 주세요.';renderChips();show('#ingredients')};
+function add(){const v=$('#ingredientInput').value.trim();if(v&&!state.ingredients.includes(v)){state.ingredients.push(v);renderChips()}$('#ingredientInput').value=''}
+$('#addBtn').onclick=add;$('#ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')add()});
+$('#recommendBtn').onclick=()=>{const grid=$('#recipeGrid');grid.innerHTML='';recipes.forEach((r,i)=>{const el=document.createElement('article');el.className='recipe';el.innerHTML=`<div class="emoji">${r.emoji}</div><h3>${r.name}</h3><div class="meta">⏱ ${r.time} · 👨‍🍳 ${r.level}</div><p>${r.desc}</p><span class="product-badge">${r.product} 사용</span>`;el.onclick=()=>detail(i);grid.appendChild(el)});show('#recommendations')};
+function detail(i){const r=recipes[i];$('#detailContent').innerHTML=`<span class="eyebrow">STEP 3 · 오복이와 요리하기</span><h2 class="recipe-title">${r.emoji} ${r.name}</h2><p class="lead">${r.desc}<br><b>냉장고 재료:</b> ${state.ingredients.join(', ')||'직접 선택'}</p><div class="steps">${r.steps.map((s,j)=>`<div class="step"><b>${j+1}. ${['재료 준비','먼저 익히기','오복 양념 넣기','함께 볶기','맛있게 마무리','완성!'][j]}</b>${s}</div>`).join('')}</div><div class="shop"><h3>🛒 이 요리에 사용한 오복제품</h3><p class="lead">요리를 먼저 완성한 뒤, 필요한 제품을 여기서 바로 확인할 수 있어요.</p>${r.products.map(p=>`<div class="product"><img src="${p[1]}" alt="${p[0]}"><div class="product-copy"><b>${p[0]}</b><p>오복이 레시피에 사용된 제품입니다.</p></div><a class="buy disabled" href="#" title="실제 판매 URL 연결 예정">구매 링크 등록 예정</a></div>`).join('')}</div>`;show('#detail')}
+$('#backBtn').onclick=()=>show('#recommendations');
+renderChips();
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오복 AI 요리사 | 오복식품</title>
+<meta name="description" content="냉장고 사진이나 재료를 알려주면 오복이가 만들 수 있는 요리를 추천해드립니다.">
+<link rel="stylesheet" href="obok-chef.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../"><img src="../assets/obok-logo.png" alt="오복식품"><span>AI 요리사</span></a>
+  <a class="home" href="../">홈으로</a>
+</header>
+<main>
+  <section class="hero card">
+    <div class="hero-copy">
+      <span class="eyebrow">👨‍🍳 O'BOK AI CHEF</span>
+      <h1>냉장고에 뭐가 있어요?</h1>
+      <p>사진 한 장 또는 재료 몇 가지만 알려주세요.<br>오복이가 오늘 만들기 쉬운 요리를 찾아드릴게요.</p>
+      <div class="actions">
+        <label class="primary upload">📷 냉장고 사진 찍기<input id="photo" type="file" accept="image/*" capture="environment"></label>
+        <button class="secondary" id="manualBtn">🥕 재료 직접 입력</button>
+      </div>
+      <small>※ 현재 버전은 작동형 경량 시제품입니다. 실제 AI 사진 인식은 다음 단계에서 연결합니다.</small>
+    </div>
+    <div class="chef-wrap"><img src="obok-chef.webp" alt="요리사 모자를 쓴 오복이"></div>
+  </section>
+
+  <section id="ingredients" class="card hidden">
+    <div class="section-title"><div><span class="eyebrow">STEP 1</span><h2>오복이가 찾은 재료예요</h2></div><span class="bubble">맞는지 확인해 주세요!</span></div>
+    <div id="photoName" class="photo-note"></div>
+    <div class="chips" id="chips"></div>
+    <div class="add-row"><input id="ingredientInput" placeholder="예: 두부, 감자, 닭고기"><button id="addBtn">+ 추가</button></div>
+    <div class="prefs">
+      <label>인원<select id="people"><option>1명</option><option selected>2명</option><option>3~4명</option><option>5명 이상</option></select></label>
+      <label>조리시간<select id="time"><option>10분 이내</option><option selected>20분 이내</option><option>30분 이내</option><option>상관없음</option></select></label>
+    </div>
+    <button class="primary wide" id="recommendBtn">🍳 이 재료로 요리 추천받기</button>
+  </section>
+
+  <section id="recommendations" class="hidden">
+    <div class="section-head"><span class="eyebrow">STEP 2</span><h2>오늘은 이 요리 어때요?</h2><p>냉장고 재료를 최대한 활용한 쉬운 메뉴예요.</p></div>
+    <div class="recipe-grid" id="recipeGrid"></div>
+  </section>
+
+  <section id="detail" class="card hidden">
+    <button class="back" id="backBtn">← 다른 메뉴 보기</button>
+    <div id="detailContent"></div>
+  </section>
+</main>
+<footer>© O'Bok Foods Co., Ltd. · 좋은 식탁, 행복한 오늘</footer>
+<script src="obok-chef.js"></script>
+</body>
+</html>
+
+:root{--red:#d92323;--red2:#a91212;--cream:#fff9ef;--ink:#27201c;--muted:#756b63;--line:#eadfce;--green:#3f8d43;--shadow:0 12px 35px rgba(73,43,23,.09)}
+*{box-sizing:border-box}body{margin:0;background:#fbf6ee;color:var(--ink);font-family:Pretendard,"Noto Sans KR",Apple SD Gothic Neo,sans-serif}.topbar{height:68px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 1120px)/2));border-bottom:1px solid #eee;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#111;font-weight:800}.brand img{height:38px;width:auto}.brand span{border-left:1px solid #ddd;padding-left:10px}.home{color:#555;text-decoration:none;font-weight:700}main{max-width:1120px;margin:auto;padding:28px 18px 70px}.card{background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:28px}.hero{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;min-height:430px;background:linear-gradient(135deg,#fffdf8,#fff4df)}.eyebrow{font-size:13px;font-weight:900;color:var(--red);letter-spacing:.08em}.hero h1{font-size:46px;line-height:1.12;margin:10px 0 14px}.hero p{font-size:19px;line-height:1.7;color:#544b44}.hero small{display:block;color:#8c8178;margin-top:14px}.chef-wrap{text-align:center;align-self:end}.chef-wrap img{width:min(100%,360px);display:block;margin:auto}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}button,.upload{border:0;border-radius:15px;padding:15px 19px;font-size:16px;font-weight:900;cursor:pointer}.primary{background:var(--red);color:#fff}.primary:hover{background:var(--red2)}.secondary{background:#fff;color:var(--ink);border:1px solid #ddd}.upload input{display:none}.wide{width:100%;margin-top:18px}.hidden{display:none!important}#ingredients{margin-top:24px}.section-title{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.section-title h2,.section-head h2{margin:6px 0 8px;font-size:30px}.bubble{background:#fff0e7;border-radius:999px;padding:10px 14px;color:#995135;font-size:13px;font-weight:800}.photo-note{margin-top:12px;color:var(--green);font-weight:800}.chips{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.chip{background:#fff7ec;border:1px solid #f1d9b8;padding:10px 13px;border-radius:999px;font-weight:800;display:flex;align-items:center;gap:8px}.chip button{padding:0;background:none;color:#b66;font-size:18px}.add-row{display:flex;gap:8px}.add-row input{flex:1;padding:14px 16px;border:1px solid #ddd;border-radius:14px;font-size:16px}.add-row button{background:#312c28;color:#fff}.prefs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.prefs label{display:flex;align-items:center;justify-content:space-between;background:#faf7f2;padding:12px 14px;border-radius:14px;font-weight:800}.prefs select{border:0;background:transparent;font-size:15px}.section-head{margin:38px 4px 18px}.section-head p{color:var(--muted)}.recipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.recipe{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);cursor:pointer;transition:.2s}.recipe:hover{transform:translateY(-4px)}.recipe .emoji{font-size:42px}.recipe h3{margin:10px 0 8px;font-size:22px}.meta{color:#7c7066;font-size:14px}.product-badge{display:inline-block;margin-top:12px;background:#fff0ed;color:var(--red);padding:7px 10px;border-radius:999px;font-size:13px;font-weight:900}.back{background:none;padding:0;color:#777}.recipe-title{font-size:36px;margin:10px 0}.lead{color:#655c55;line-height:1.7}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0}.step{background:var(--cream);padding:18px;border-radius:18px;border:1px solid #f0e0c7}.step b{display:block;color:var(--red);margin-bottom:7px}.shop{margin-top:28px;border-top:1px solid #eee;padding-top:22px}.shop h3{font-size:26px;margin:0 0 14px}.product{display:flex;align-items:center;gap:16px;padding:15px;border:1px solid #eee;border-radius:16px;margin:10px 0}.product img{width:70px;height:85px;object-fit:contain}.product-copy{flex:1}.product-copy b{font-size:18px}.product-copy p{margin:5px 0;color:#736860;font-size:14px}.buy{display:inline-block;background:var(--red);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:900}.buy.disabled{background:#aaa;pointer-events:none}footer{text-align:center;color:#948980;padding:30px}
+@media(max-width:760px){.topbar{height:60px}.brand img{height:32px}main{padding:14px 12px 50px}.card{border-radius:22px;padding:20px}.hero{grid-template-columns:1fr;min-height:auto}.hero h1{font-size:36px}.hero p{font-size:16px}.chef-wrap img{width:260px}.actions{flex-direction:column}.actions>*{width:100%;text-align:center}.section-title{display:block}.bubble{display:inline-block;margin-top:8px}.prefs{grid-template-columns:1fr}.recipe-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.recipe-title{font-size:30px}.product{align-items:flex-start;flex-wrap:wrap}.product-copy{min-width:180px}}
