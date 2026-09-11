@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오복 AI 요리사 | 오복식품</title>
+<meta name="description" content="냉장고 사진이나 재료를 알려주면 오복이가 만들 수 있는 요리를 추천해드립니다.">
+<link rel="stylesheet" href="obok-chef.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../"><img src="../assets/obok-logo.png" alt="오복식품"><span>AI 요리사</span></a>
+  <a class="home" href="../">홈으로</a>
+</header>
+<main>
+  <section class="hero card">
+    <div class="hero-copy">
+      <span class="eyebrow">👨‍🍳 O'BOK AI CHEF</span>
+      <h1>냉장고에 뭐가 있어요?</h1>
+      <p>사진 한 장 또는 재료 몇 가지만 알려주세요.<br>오복이가 오늘 만들기 쉬운 요리를 찾아드릴게요.</p>
+      <div class="actions">
+        <label class="primary upload">📷 냉장고 사진 찍기<input id="photo" type="file" accept="image/*" capture="environment"></label>
+        <button class="secondary" id="manualBtn">🥕 재료 직접 입력</button>
+      </div>
+      <small>※ 현재 버전은 작동형 경량 시제품입니다. 실제 AI 사진 인식은 다음 단계에서 연결합니다.</small>
+    </div>
+    <div class="chef-wrap"><img src="obok-chef.webp" alt="요리사 모자를 쓴 오복이"></div>
+  </section>
+
+  <section id="ingredients" class="card hidden">
+    <div class="section-title"><div><span class="eyebrow">STEP 1</span><h2>오복이가 찾은 재료예요</h2></div><span class="bubble">맞는지 확인해 주세요!</span></div>
+    <div id="photoName" class="photo-note"></div>
+    <div class="chips" id="chips"></div>
+    <div class="add-row"><input id="ingredientInput" placeholder="예: 두부, 감자, 닭고기"><button id="addBtn">+ 추가</button></div>
+    <div class="prefs">
+      <label>인원<select id="people"><option>1명</option><option selected>2명</option><option>3~4명</option><option>5명 이상</option></select></label>
+      <label>조리시간<select id="time"><option>10분 이내</option><option selected>20분 이내</option><option>30분 이내</option><option>상관없음</option></select></label>
+    </div>
+    <button class="primary wide" id="recommendBtn">🍳 이 재료로 요리 추천받기</button>
+  </section>
+
+  <section id="recommendations" class="hidden">
+    <div class="section-head"><span class="eyebrow">STEP 2</span><h2>오늘은 이 요리 어때요?</h2><p>냉장고 재료를 최대한 활용한 쉬운 메뉴예요.</p></div>
+    <div class="recipe-grid" id="recipeGrid"></div>
+  </section>
+
+  <section id="detail" class="card hidden">
+    <button class="back" id="backBtn">← 다른 메뉴 보기</button>
+    <div id="detailContent"></div>
+  </section>
+</main>
+<footer>© O'Bok Foods Co., Ltd. · 좋은 식탁, 행복한 오늘</footer>
+<script src="obok-chef.js"></script>
+</body>
+</html>
