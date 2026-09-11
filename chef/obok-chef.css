@@ -52,3 +52,7 @@ footer{text-align:center;color:#948980;padding:30px}
  .section-title{display:block}.bubble{display:inline-block;margin-top:8px}.prefs{grid-template-columns:1fr}.recipe-grid{grid-template-columns:1fr}
  .steps{grid-template-columns:1fr}.recipe-title{font-size:30px}.product{align-items:flex-start;flex-wrap:wrap}.product-copy{min-width:180px}
 }
+
+.photo-note[data-type="loading"]{color:#8a5b00}
+.photo-note[data-type="success"]{color:#2f7d32}
+.photo-note[data-type="error"]{color:#b3261e}
