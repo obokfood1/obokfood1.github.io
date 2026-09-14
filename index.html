@@ -565,6 +565,137 @@ aspect-ratio:auto!important;
 }
 </style>
 
+
+<style id="obok-mobile-ai-polish-v4">
+@media(max-width:768px){
+  /* Keep the Huangga hero as-is, but make the AI area a compact single-card composition */
+  .hero-v3-mobile-ai{
+    position:relative!important;
+    display:block!important;
+    min-height:0!important;
+    padding:22px 14px 18px!important;
+    background:linear-gradient(145deg,#ffb454 0%,#ff8d2d 55%,#ff7420 100%)!important;
+    overflow:hidden!important;
+  }
+
+  .hero-v3-mobile-copy{
+    position:relative!important;
+    z-index:3!important;
+    width:100%!important;
+    min-height:330px!important;
+    margin:0!important;
+    padding:20px 18px 92px!important;
+    background:rgba(255,249,239,.97)!important;
+    border-radius:26px!important;
+    box-shadow:0 14px 30px rgba(135,63,18,.15)!important;
+    text-align:left!important;
+  }
+
+  .hero-v3-mobile-title{
+    font-size:28px!important;
+    line-height:1.15!important;
+    margin-bottom:14px!important;
+    white-space:nowrap!important;
+  }
+
+  .hero-v3-mobile-copy p{
+    margin:0!important;
+    padding:15px 16px!important;
+    border-radius:17px!important;
+    background:#fff!important;
+    font-size:15px!important;
+    line-height:1.62!important;
+    max-width:100%!important;
+  }
+
+  .hero-v3-mobile-btn{
+    margin-top:14px!important;
+    padding:13px 16px!important;
+    font-size:15px!important;
+    border-radius:999px!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+
+  .hero-v3-mobile-steps{
+    position:absolute!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:18px!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,1fr)!important;
+    gap:8px!important;
+    margin:0!important;
+    font-size:10px!important;
+    line-height:1.25!important;
+    text-align:center!important;
+  }
+
+  .hero-v3-mobile-steps span{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    min-height:34px!important;
+    padding:6px 4px!important;
+    border-radius:10px!important;
+    background:#fff7ef!important;
+    color:#5c4030!important;
+    font-weight:800!important;
+  }
+
+  .hero-v3-mobile-ai>img{
+    position:absolute!important;
+    z-index:4!important;
+    right:-6px!important;
+    bottom:12px!important;
+    width:132px!important;
+    max-width:34vw!important;
+    height:auto!important;
+    margin:0!important;
+    filter:drop-shadow(0 10px 16px rgba(103,48,13,.18))!important;
+    pointer-events:none!important;
+  }
+
+  .hero-v3-mobile-features{
+    grid-template-columns:1fr 1fr!important;
+  }
+}
+
+@media(max-width:430px){
+  .hero-v3-mobile-copy{
+    min-height:315px!important;
+    padding:18px 16px 86px!important;
+  }
+  .hero-v3-mobile-title{
+    font-size:25px!important;
+  }
+  .hero-v3-mobile-copy p{
+    font-size:14px!important;
+    line-height:1.56!important;
+    padding:14px!important;
+  }
+  .hero-v3-mobile-btn{
+    font-size:14px!important;
+    padding:12px 12px!important;
+  }
+  .hero-v3-mobile-ai>img{
+    width:116px!important;
+    right:-4px!important;
+    bottom:14px!important;
+  }
+  .hero-v3-mobile-steps{
+    left:14px!important;
+    right:130px!important;
+    grid-template-columns:1fr!important;
+    gap:5px!important;
+  }
+  .hero-v3-mobile-steps span{
+    min-height:28px!important;
+    font-size:9px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header>
