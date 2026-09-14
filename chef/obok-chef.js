@@ -1,401 +1,151 @@
-const $ = s => document.querySelector(s);
+const $=s=>document.querySelector(s);
+const state={ingredients:[]};
 
-const state = {
-  ingredients: [],
-  aiRecipes: [],
-  shownRecipeNames: [],
-  preference: ""
-};
+const recipes=[
+ {name:'오복 간장 계란 덮밥',emoji:'🍳',time:'7분',level:'초간단',product:'오복 양조간장',desc:'냉장고가 비어 있어도 밥과 계란만 준비하면 금방 만들 수 있는 오복이의 기본 한 끼',fallback:true,steps:['따뜻한 밥 1공기와 계란 2개를 준비해요.','팬에 기름을 조금 두르고 계란후라이 2개를 만들어요.','밥 위에 계란후라이를 올려요.','오복 양조간장 1~1.5큰술을 골고루 둘러요.','오복 참기름 1작은술을 넣고, 있으면 김가루나 깨를 살짝 올려요.','노른자를 톡 터뜨려 밥과 잘 비비면 7분 만에 완성!'],products:[['오복 양조간장','../assets/soy.webp'],['오복 참기름','../assets/soy.webp']]},
+ {name:'간장 돼지불고기 덮밥',emoji:'🍚',time:'15분',level:'아주 쉬움',product:'오복 양조간장',desc:'달콤짭짤한 간장 양념으로 누구나 쉽게 만드는 한 그릇 요리',steps:['돼지고기와 양파를 먹기 좋은 크기로 준비해요.','팬을 달군 뒤 돼지고기를 먼저 볶아요.','오복 양조간장 3큰술과 설탕 1큰술을 넣어요.','양파와 대파를 넣고 함께 볶아요.','중불에서 5~7분, 양념이 잘 배도록 볶아요.','밥 위에 올리고 계란후라이를 곁들이면 완성!'],products:[['오복 양조간장','../assets/soy.webp'],['오복 참기름','../assets/soy.webp']]},
+ {name:'매콤 제육볶음',emoji:'🌶️',time:'20분',level:'쉬움',product:'오복 고추장',desc:'밥과 가장 잘 어울리는 매콤달콤한 집밥 메뉴',steps:['돼지고기와 양파, 대파를 준비해요.','돼지고기를 팬에서 가볍게 익혀요.','오복 고추장 1큰술과 간장, 설탕을 넣어요.','양파와 대파를 넣고 센 불에서 볶아요.','양념이 고기에 고르게 배면 불을 줄여요.','통깨를 뿌리고 밥과 함께 맛있게 드세요!'],products:[['오복 고추장','../assets/gochujang.webp'],['오복 양조간장','../assets/soy.webp']]},
+ {name:'계란 간장볶음밥',emoji:'🍳',time:'10분',level:'아주 쉬움',product:'오복 양조간장',desc:'재료가 적을 때도 10분이면 완성되는 초간단 메뉴',steps:['계란 2개와 대파를 준비해요.','팬에 계란을 넣고 빠르게 저어 익혀요.','밥을 넣고 계란과 잘 섞어 볶아요.','오복 양조간장 1큰술을 팬 가장자리에 둘러요.','대파를 넣고 1~2분 더 볶아요.','참기름을 살짝 넣으면 완성!'],products:[['오복 양조간장','../assets/soy.webp']]}
+];
 
-const PRODUCT_IMAGES = {
-  "오복 양조간장": "../assets/soy.webp",
-  "오복 국간장": "../assets/soy.webp",
-  "오복 고추장": "../assets/gochujang.webp",
-  "오복 된장": "../assets/gochujang.webp",
-  "오복 쌈장": "../assets/gochujang.webp",
-  "오복 참기름": "../assets/soy.webp"
-};
-
-const FALLBACK_RECIPE = {
-  name: "오복 간장 계란 덮밥",
-  emoji: "🍳",
-  time: "7분",
-  level: "초간단",
-  reason: "냉장고가 비어 있어도 밥과 계란만 준비하면 만들 수 있어요.",
-  ingredients: ["밥 1공기", "계란 2개", "오복 양조간장 1~1.5큰술", "오복 참기름 1작은술"],
-  steps: [
-    "따뜻한 밥 1공기를 그릇에 담아요.",
-    "팬에 기름을 조금 두르고 계란후라이 2개를 만들어요.",
-    "밥 위에 계란후라이를 올려요.",
-    "오복 양조간장 1~1.5큰술을 골고루 둘러요.",
-    "오복 참기름 1작은술을 넣고, 있으면 김가루나 깨를 살짝 올려요.",
-    "노른자를 톡 터뜨려 밥과 잘 비비면 완성!"
-  ],
-  products: ["오복 양조간장", "오복 참기름"]
-};
-
-function show(id) {
-  const el = $(id);
-  el.classList.remove("hidden");
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
+function show(id){
+  $(id).classList.remove('hidden');
+  $(id).scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, m => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;"
-  }[m]));
-}
-
-function apiConfigured() {
-  return window.OBOK_AI_API &&
-    !window.OBOK_AI_API.includes("YOUR-WORKER-URL");
-}
-
-function setPhotoStatus(text, type = "") {
-  const el = $("#photoName");
-  el.textContent = text;
-  el.dataset.type = type;
-}
-
-function renderChips() {
-  const c = $("#chips");
-  c.innerHTML = "";
-
-  state.ingredients.forEach((ingredient, i) => {
-    const chip = document.createElement("span");
-    chip.className = "chip";
-    chip.innerHTML = `${escapeHtml(ingredient)}<button type="button" aria-label="삭제">×</button>`;
-    chip.querySelector("button").onclick = () => {
-      state.ingredients.splice(i, 1);
-      renderChips();
-    };
-    c.appendChild(chip);
+function renderChips(){
+  const c=$('#chips'); c.innerHTML='';
+  state.ingredients.forEach((x,i)=>{
+    const el=document.createElement('span');
+    el.className='chip';
+    el.innerHTML=`${escapeHtml(x)}<button aria-label="삭제">×</button>`;
+    el.querySelector('button').onclick=()=>{state.ingredients.splice(i,1);renderChips()};
+    c.appendChild(el)
   });
 }
-
-async function resizeImageToDataURL(file) {
-  const dataUrl = await new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = () => resolve(r.result);
-    r.onerror = reject;
-    r.readAsDataURL(file);
-  });
-
-  const img = await new Promise((resolve, reject) => {
-    const i = new Image();
-    i.onload = () => resolve(i);
-    i.onerror = reject;
-    i.src = dataUrl;
-  });
-
-  const maxSide = 1600;
-  let w = img.width;
-  let h = img.height;
-  const scale = Math.min(1, maxSide / Math.max(w, h));
-  w = Math.max(1, Math.round(w * scale));
-  h = Math.max(1, Math.round(h * scale));
-
-  const canvas = document.createElement("canvas");
-  canvas.width = w;
-  canvas.height = h;
-  canvas.getContext("2d").drawImage(img, 0, 0, w, h);
-
-  return canvas.toDataURL("image/jpeg", 0.82);
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+}
+function setPhotoStatus(text, type=''){
+  const el=$('#photoName');
+  el.textContent=text;
+  el.dataset.type=type;
+}
+function apiConfigured(){
+  return window.OBOK_AI_API && !window.OBOK_AI_API.includes('YOUR-WORKER-URL');
 }
 
-async function callApi(path, body) {
-  const base = window.OBOK_AI_API.replace(/\/$/, "");
-  const response = await fetch(`${base}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
+async function resizeImageToDataURL(file){
+  const dataUrl=await new Promise((resolve,reject)=>{
+    const r=new FileReader();
+    r.onload=()=>resolve(r.result); r.onerror=reject; r.readAsDataURL(file);
   });
-
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.error || `서버 오류 (${response.status})`);
-  }
-  return data;
+  const img=await new Promise((resolve,reject)=>{
+    const i=new Image(); i.onload=()=>resolve(i); i.onerror=reject; i.src=dataUrl;
+  });
+  const maxSide=1600;
+  let w=img.width,h=img.height;
+  const scale=Math.min(1,maxSide/Math.max(w,h));
+  w=Math.max(1,Math.round(w*scale)); h=Math.max(1,Math.round(h*scale));
+  const canvas=document.createElement('canvas'); canvas.width=w; canvas.height=h;
+  canvas.getContext('2d').drawImage(img,0,0,w,h);
+  return canvas.toDataURL('image/jpeg',0.82);
 }
 
-// ----------------------------
-// Photo recognition
-// ----------------------------
-$("#photo").addEventListener("change", async e => {
-  const file = e.target.files[0];
-  if (!file) return;
+$('#photo').addEventListener('change',async e=>{
+  const file=e.target.files[0];
+  if(!file)return;
 
-  state.ingredients = [];
-  state.aiRecipes = [];
+  state.ingredients=[];
   renderChips();
-  show("#ingredients");
+  show('#ingredients');
 
-  if (!apiConfigured()) {
-    setPhotoStatus("⚠️ AI 서버가 아직 연결되지 않았어요. 재료를 직접 입력해 주세요.", "error");
+  if(!apiConfigured()){
+    setPhotoStatus('⚠️ AI 서버 주소가 아직 연결되지 않았어요. 아래에서 재료를 직접 입력해 주세요.','error');
     return;
   }
 
-  try {
-    setPhotoStatus("🔍 오복이가 냉장고 사진을 살펴보고 있어요…", "loading");
-    const imageDataUrl = await resizeImageToDataURL(file);
-    const data = await callApi("/analyze-fridge", { imageDataUrl });
+  try{
+    setPhotoStatus('🔍 오복이가 냉장고 사진을 살펴보고 있어요…','loading');
+    const imageDataUrl=await resizeImageToDataURL(file);
 
-    state.ingredients = Array.isArray(data.ingredients)
-      ? data.ingredients.filter(Boolean).slice(0, 15)
+    const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/analyze-fridge`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({imageDataUrl})
+    });
+
+    const data=await resp.json().catch(()=>({}));
+    if(!resp.ok) throw new Error(data.error || `서버 오류 (${resp.status})`);
+
+    state.ingredients=Array.isArray(data.ingredients)
+      ? data.ingredients.filter(Boolean).slice(0,15)
       : [];
 
     renderChips();
 
-    if (state.ingredients.length) {
-      setPhotoStatus(
-        `✅ ${state.ingredients.length}가지 재료를 찾았어요. 틀린 재료는 지우고, 빠진 재료는 추가해 주세요.`,
-        "success"
-      );
-    } else {
-      setPhotoStatus(
-        "😊 눈에 띄는 재료를 찾지 못했어요. 그대로 추천받기를 누르면 오복이의 초간단 기본 메뉴를 알려드릴게요.",
-        "success"
-      );
+    if(state.ingredients.length){
+      setPhotoStatus(`✅ 오복이가 ${state.ingredients.length}가지 재료를 찾았어요. 맞는지 확인하고 수정해 주세요.`,'success');
+    }else{
+      setPhotoStatus('😊 눈에 띄는 재료를 찾지 못했어요. 냉장고가 비어 있다면 그대로 추천받기를 눌러도 됩니다.','success');
     }
-  } catch (err) {
+  }catch(err){
     console.error(err);
-    setPhotoStatus(
-      `⚠️ 사진 분석에 실패했어요. 재료를 직접 입력해도 됩니다. (${err.message})`,
-      "error"
-    );
+    setPhotoStatus(`⚠️ 사진 분석에 실패했어요. 재료를 직접 입력해도 됩니다. (${err.message})`,'error');
   }
 });
 
-$("#manualBtn").onclick = () => {
-  state.ingredients = [];
-  state.aiRecipes = [];
-  setPhotoStatus("가지고 있는 재료를 하나씩 추가해 주세요.");
-  renderChips();
-  show("#ingredients");
+$('#manualBtn').onclick=()=>{
+  state.ingredients=[];
+  setPhotoStatus('가지고 있는 재료를 하나씩 추가해 주세요.');
+  renderChips(); show('#ingredients');
 };
 
-function addIngredient() {
-  const input = $("#ingredientInput");
-  const value = input.value.trim();
-
-  if (value && !state.ingredients.includes(value)) {
-    state.ingredients.push(value);
-    renderChips();
-  }
-
-  input.value = "";
-  input.focus();
+function add(){
+  const v=$('#ingredientInput').value.trim();
+  if(v&&!state.ingredients.includes(v)){state.ingredients.push(v);renderChips()}
+  $('#ingredientInput').value=''
 }
+$('#addBtn').onclick=add;
+$('#ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')add()});
 
-$("#addBtn").onclick = addIngredient;
-$("#ingredientInput").addEventListener("keydown", e => {
-  if (e.key === "Enter") addIngredient();
-});
-
-// ----------------------------
-// Recipe generation
-// ----------------------------
-function renderRecipeCards(recipes) {
-  const grid = $("#recipeGrid");
-  grid.innerHTML = "";
-
-  recipes.forEach((r, index) => {
-    const card = document.createElement("article");
-    card.className = "recipe";
-    const products = Array.isArray(r.products) ? r.products : [];
-
-    card.innerHTML = `
-      <div class="emoji">${escapeHtml(r.emoji || "🍽️")}</div>
-      <h3>${escapeHtml(r.name)}</h3>
-      <div class="meta">⏱ ${escapeHtml(r.time || "20분")} · 👨‍🍳 ${escapeHtml(r.level || "쉬움")}</div>
-      <p>${escapeHtml(r.reason || "")}</p>
-      <span class="product-badge">${products.length ? escapeHtml(products.join(" + ")) : "오복 제품 활용"}</span>
-    `;
-
-    card.onclick = () => renderDetail(r);
-    grid.appendChild(card);
-  });
-
-  if (recipes.length) {
-    const controls = document.createElement("div");
-    controls.className = "recipe-actions";
-    controls.innerHTML = `
-      <button class="secondary" id="moreRecipesBtn">🔄 다른 요리 3개 추천받기</button>
-      <button class="secondary" id="customRequestBtn">💬 먹고 싶은 요리 직접 말하기</button>
-    `;
-    grid.appendChild(controls);
-
-    $("#moreRecipesBtn").onclick = () => generateRecipes({ refresh: true });
-    $("#customRequestBtn").onclick = openCustomRequest;
-  }
+function recipeScore(r){
+  const text=(r.name+' '+r.desc+' '+r.steps.join(' '));
+  return state.ingredients.reduce((n,x)=>n+(text.includes(x)?1:0),0);
 }
-
-function openCustomRequest() {
-  const grid = $("#recipeGrid");
-  const old = document.querySelector(".custom-request-box");
-  if (old) old.remove();
-
-  const box = document.createElement("div");
-  box.className = "custom-request-box";
-  box.innerHTML = `
-    <h3>💬 어떤 요리가 먹고 싶어요?</h3>
-    <p>예: "매콤한 거", "아이들이 먹기 좋은 반찬", "10분 안에", "술안주로"</p>
-    <div class="custom-request-row">
-      <input id="customRequestInput" maxlength="120" placeholder="원하는 맛, 상황, 조리시간 등을 적어주세요">
-      <button class="primary" id="customRequestSend">오복이에게 부탁하기</button>
-    </div>
-  `;
-  grid.appendChild(box);
-  $("#customRequestInput").focus();
-
-  $("#customRequestSend").onclick = () => {
-    const value = $("#customRequestInput").value.trim();
-    if (!value) return;
-    state.preference = value;
-    generateRecipes({ custom: true });
-  };
-  $("#customRequestInput").addEventListener("keydown", e => {
-    if (e.key === "Enter") $("#customRequestSend").click();
-  });
-}
-
-async function generateRecipes({ refresh = false, custom = false } = {}) {
-  const section = $("#recommendations");
-  const head = section.querySelector(".section-head");
-  const grid = $("#recipeGrid");
-
-  if (state.ingredients.length === 0) {
-    head.innerHTML = `
-      <span class="eyebrow">STEP 2</span>
-      <h2>냉장고가 비어 있어도 괜찮아요 😊</h2>
-      <p>오복이가 가장 간단한 한 끼를 준비했어요. <b>밥과 계란 2개</b>만 준비해 주세요!</p>
-    `;
-    state.aiRecipes = [FALLBACK_RECIPE];
-    renderRecipeCards(state.aiRecipes);
-    return;
-  }
-
-  if (!apiConfigured()) {
-    grid.innerHTML = `<div class="ai-error">AI 서버 연결을 확인해 주세요.</div>`;
-    return;
-  }
-
-  const modeText = custom && state.preference
-    ? `“${escapeHtml(state.preference)}” 조건으로`
-    : refresh
-      ? "새로운 메뉴로"
-      : "냉장고 재료와 조리시간을 보고";
-
-  head.innerHTML = `
-    <span class="eyebrow">STEP 2</span>
-    <h2>오복이가 메뉴를 생각하고 있어요… 👨‍🍳</h2>
-    <p>${modeText} 쉬운 메뉴 3가지를 고르고 있어요.</p>
-  `;
-  grid.innerHTML = `<div class="ai-loading">🍳 잠시만 기다려 주세요. 오복이가 레시피 3가지를 만들고 있어요…</div>`;
-
-  try {
-    const data = await callApi("/recommend-recipes", {
-      ingredients: state.ingredients,
-      people: $("#people").value,
-      time: $("#time").value,
-      preference: state.preference || "",
-      excludeNames: refresh ? state.shownRecipeNames.slice(-12) : []
-    });
-
-    state.aiRecipes = Array.isArray(data.recipes) ? data.recipes.slice(0, 3) : [];
-    if (!state.aiRecipes.length) throw new Error("추천 레시피를 받지 못했습니다.");
-
-    state.aiRecipes.forEach(r => {
-      if (r.name && !state.shownRecipeNames.includes(r.name)) {
-        state.shownRecipeNames.push(r.name);
-      }
-    });
-
-    head.innerHTML = `
-      <span class="eyebrow">STEP 2</span>
-      <h2>오늘은 이 요리 어때요?</h2>
-      <p>${state.preference ? `<b>“${escapeHtml(state.preference)}”</b> 요청을 반영했어요. ` : ""}
-      <b>${state.ingredients.map(escapeHtml).join(", ")}</b>을 활용한 메뉴 3가지예요.</p>
-    `;
-
-    renderRecipeCards(state.aiRecipes);
-  } catch (err) {
-    console.error(err);
-    head.innerHTML = `
-      <span class="eyebrow">STEP 2</span>
-      <h2>추천을 잠시 불러오지 못했어요</h2>
-      <p>재료를 다시 확인하고 한 번 더 시도해 주세요.</p>
-    `;
-    grid.innerHTML = `<div class="ai-error">⚠️ ${escapeHtml(err.message)}</div>`;
-  }
-}
-
-$("#recommendBtn").onclick = async () => {
-  state.preference = "";
-  state.shownRecipeNames = [];
-  show("#recommendations");
-  await generateRecipes();
+$('#recommendBtn').onclick=()=>{
+ const grid=$('#recipeGrid');grid.innerHTML='';
+ const empty=state.ingredients.length===0;
+ let list;
+ if(empty){
+   list=[recipes[0]];
+ }else{
+   list=recipes.filter(r=>!r.fallback).sort((a,b)=>recipeScore(b)-recipeScore(a)).slice(0,3);
+ }
+ const head=$('#recommendations .section-head');
+ if(empty){
+   head.innerHTML=`<span class="eyebrow">STEP 2</span><h2>냉장고가 비어 있어도 괜찮아요 😊</h2><p>오복이가 가장 간단한 한 끼를 준비했어요. <b>밥과 계란 2개</b>만 준비해 주세요!</p>`;
+ }else{
+   head.innerHTML=`<span class="eyebrow">STEP 2</span><h2>오늘은 이 요리 어때요?</h2><p>확인한 재료를 기준으로 쉬운 메뉴 3가지를 골랐어요.</p>`;
+ }
+ list.forEach(r=>{
+   const i=recipes.indexOf(r);
+   const el=document.createElement('article');el.className='recipe';
+   el.innerHTML=`<div class="emoji">${r.emoji}</div><h3>${r.name}</h3><div class="meta">⏱ ${r.time} · 👨‍🍳 ${r.level}</div><p>${r.desc}</p><span class="product-badge">${r.product} 사용</span>`;
+   el.onclick=()=>detail(i);grid.appendChild(el)
+ });
+ show('#recommendations')
 };
 
-function renderDetail(r) {
-  const recipeIngredients = Array.isArray(r.ingredients) ? r.ingredients : [];
-  const steps = Array.isArray(r.steps) ? r.steps.slice(0, 6) : [];
-  const products = Array.isArray(r.products) ? r.products : [];
-
-  const stepTitles = [
-    "재료 준비", "먼저 시작하기", "오복 양념 넣기",
-    "함께 조리하기", "맛있게 마무리", "완성!"
-  ];
-
-  $("#detailContent").innerHTML = `
-    <span class="eyebrow">STEP 3 · 오복이와 요리하기</span>
-    <h2 class="recipe-title">${escapeHtml(r.emoji || "🍽️")} ${escapeHtml(r.name)}</h2>
-    <p class="lead">
-      ${escapeHtml(r.reason || "")}<br>
-      <b>⏱ ${escapeHtml(r.time || "")}</b> ·
-      <b>난이도 ${escapeHtml(r.level || "")}</b>
-    </p>
-
-    ${recipeIngredients.length ? `
-      <div class="ingredient-box">
-        <h3>🥕 필요한 재료</h3>
-        <div class="ingredient-list">
-          ${recipeIngredients.map(x => `<span>${escapeHtml(x)}</span>`).join("")}
-        </div>
-      </div>
-    ` : ""}
-
-    <div class="steps">
-      ${steps.map((step, i) => `
-        <div class="step">
-          <b>${i + 1}. ${stepTitles[i] || "조리하기"}</b>
-          ${escapeHtml(step)}
-        </div>
-      `).join("")}
-    </div>
-
-    <div class="shop">
-      <h3>🛒 이 요리에 사용한 오복제품</h3>
-      <p class="lead">레시피를 먼저 완성하고, 필요한 오복제품은 아래에서 확인할 수 있어요.</p>
-
-      ${products.map(product => `
-        <div class="product">
-          <img src="${PRODUCT_IMAGES[product] || "../assets/soy.webp"}" alt="${escapeHtml(product)}">
-          <div class="product-copy">
-            <b>${escapeHtml(product)}</b>
-            <p>오복이 레시피에 사용된 제품입니다.</p>
-          </div>
-          <a class="buy disabled" href="#" title="실제 판매 URL 연결 예정">구매 링크 등록 예정</a>
-        </div>
-      `).join("")}
-    </div>
-  `;
-
-  show("#detail");
+function detail(i){
+ const r=recipes[i];
+ $('#detailContent').innerHTML=`
+  <span class="eyebrow">STEP 3 · 오복이와 요리하기</span>
+  <h2 class="recipe-title">${r.emoji} ${r.name}</h2>
+  <p class="lead">${r.desc}<br><b>냉장고 재료:</b> ${state.ingredients.map(escapeHtml).join(', ')||'냉장고가 비어 있어 기본 레시피를 추천했어요'}</p>
+  <div class="steps">${r.steps.map((s,j)=>`<div class="step"><b>${j+1}. ${['재료 준비','먼저 익히기','오복 양념 넣기','함께 볶기','맛있게 마무리','완성!'][j]}</b>${s}</div>`).join('')}</div>
+  <div class="shop"><h3>🛒 이 요리에 사용한 오복제품</h3><p class="lead">요리를 먼저 완성한 뒤, 필요한 제품을 여기서 바로 확인할 수 있어요.</p>
+  ${r.products.map(p=>`<div class="product"><img src="${p[1]}" alt="${p[0]}"><div class="product-copy"><b>${p[0]}</b><p>오복이 레시피에 사용된 제품입니다.</p></div><a class="buy disabled" href="#" title="실제 판매 URL 연결 예정">구매 링크 등록 예정</a></div>`).join('')}</div>`;
+ show('#detail')
 }
-
-$("#backBtn").onclick = () => show("#recommendations");
-
+$('#backBtn').onclick=()=>show('#recommendations');
 renderChips();
