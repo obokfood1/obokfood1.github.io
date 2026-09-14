@@ -497,6 +497,165 @@ aspect-ratio:auto!important;
   .mobile-chef-link{width:38px;padding:9px 0}
 }
 </style>
+
+<style id="obok-ai-home-hero-20260914">
+/* Desktop AI Chef CTA in navigation */
+.menu .ai-chef-nav{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ff8a1f,#ff5a16);
+  color:#fff!important;padding:10px 15px;border-radius:8px;
+  font-weight:800;box-shadow:0 7px 18px rgba(255,105,22,.26);
+  transition:.18s ease;position:relative;top:-1px;
+}
+.menu .ai-chef-nav:hover{
+  transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,105,22,.34);
+}
+
+/* Split hero */
+.obok-ai-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,56%) minmax(420px,44%)!important;
+  width:100%!important;height:clamp(500px,39vw,620px)!important;
+  min-height:0!important;aspect-ratio:auto!important;
+  background:#1f211f!important;overflow:hidden!important;
+}
+.obok-ai-hero-left{
+  position:relative;overflow:hidden;background:#222421;
+}
+.obok-ai-soy-photo{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center center;
+}
+.obok-ai-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,16,15,.80) 0%,rgba(15,16,15,.48) 38%,rgba(15,16,15,.10) 70%,rgba(15,16,15,0) 100%);
+}
+.obok-ai-hero-copy{
+  position:absolute;z-index:3;left:max(40px,calc((100vw - 1180px)/2));
+  top:50%;transform:translateY(-50%);max-width:520px;padding-right:22px;
+}
+.obok-ai-hero-copy .hero-kicker{
+  color:#f0ad3e!important;font-family:"Noto Sans KR",sans-serif!important;
+  font-size:14px!important;font-weight:800!important;letter-spacing:.15em!important;margin-bottom:16px!important;
+}
+.obok-ai-hero-copy h1{
+  color:#fff!important;font-family:"Noto Serif KR",serif!important;
+  font-size:clamp(38px,3.5vw,60px)!important;line-height:1.24!important;
+  font-weight:600!important;margin:0!important;text-shadow:0 2px 13px rgba(0,0,0,.28)!important;
+}
+.obok-ai-hero-copy .hero-lead{
+  color:rgba(255,255,255,.92)!important;font-size:clamp(16px,1.3vw,20px)!important;
+  line-height:1.72!important;margin:24px 0 0!important;font-weight:500!important;
+}
+
+/* AI panel */
+.obok-ai-hero-right{
+  position:relative;display:block;overflow:hidden;
+  background:
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.28),transparent 27%),
+    linear-gradient(135deg,#ffb04f 0%,#ff8a2e 50%,#ff6a1b 100%);
+  color:#2e2118;
+}
+.obok-ai-hero-right::before{
+  content:"";position:absolute;right:-8%;top:-12%;width:58%;height:125%;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0));
+  transform:rotate(7deg);border-radius:44px;
+}
+.obok-ai-panel{
+  position:absolute;z-index:3;left:7%;top:8%;width:62%;max-width:440px;
+  background:rgba(255,249,237,.96);border:3px solid rgba(255,255,255,.62);
+  border-radius:28px;padding:24px 25px 20px;
+  box-shadow:0 18px 45px rgba(137,63,15,.20);
+}
+.obok-ai-title{
+  font-size:clamp(28px,2.5vw,43px);font-weight:900;letter-spacing:-.055em;color:#32241c;
+  margin-bottom:16px;white-space:nowrap;
+}
+.obok-ai-title strong{color:#f25919}
+.obok-ai-message{
+  background:#fff;border-radius:19px;padding:17px 19px;line-height:1.48;
+  font-size:clamp(15px,1.35vw,20px);
+}
+.obok-ai-message b{font-size:1.03em}
+.obok-ai-message span,.obok-ai-message strong{color:#f05a1b}
+.obok-ai-message p{margin:4px 0 0;font-weight:700}
+.obok-ai-cta{
+  margin-top:16px;border-radius:999px;padding:14px 17px;background:linear-gradient(135deg,#ff7b1f,#f04e14);
+  color:#fff;font-weight:900;font-size:clamp(14px,1.25vw,18px);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 8px 20px rgba(240,78,20,.20);
+}
+.obok-ai-cta span{font-size:25px;line-height:.8}
+.obok-ai-steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;text-align:center
+}
+.obok-ai-steps div{font-size:11px}
+.obok-ai-steps span{
+  width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 7px;font-weight:900;color:#f05a1b;font-size:15px;
+}
+.obok-ai-steps b{display:block;font-size:12px}
+.obok-ai-steps small{display:block;color:#766254;margin-top:2px}
+.obok-ai-mascot-wrap{
+  position:absolute;z-index:4;right:1.2%;bottom:-2%;width:42%;max-width:360px;
+}
+.obok-ai-mascot{
+  width:100%;height:auto;filter:drop-shadow(0 18px 20px rgba(107,51,16,.22));
+}
+
+/* neutralize old hero-specific desktop rules */
+.obok-ai-hero .hero-picture,.obok-ai-hero>.hero-copy{display:none!important}
+.obok-ai-hero::after{display:none!important}
+
+@media(max-width:1050px){
+  .obok-ai-hero{grid-template-columns:55% 45%!important}
+  .obok-ai-panel{left:5%;width:66%;padding:20px}
+  .obok-ai-mascot-wrap{width:44%;right:-1%}
+}
+@media(max-width:768px){
+  .obok-ai-hero{
+    display:block!important;height:auto!important;background:#fff!important;overflow:visible!important;
+  }
+  .obok-ai-hero-left{
+    height:55vh;min-height:420px;max-height:560px;
+  }
+  .obok-ai-soy-photo{object-fit:cover;object-position:center center}
+  .obok-ai-hero-overlay{background:linear-gradient(180deg,rgba(20,21,20,.12),rgba(20,21,20,.58))}
+  .obok-ai-hero-copy{
+    left:22px;right:22px;top:auto;bottom:34px;transform:none;max-width:none;padding:0;
+  }
+  .obok-ai-hero-copy h1{font-size:36px!important}
+  .obok-ai-hero-copy .hero-lead{font-size:16px!important;margin-top:14px!important}
+  .obok-ai-hero-right{
+    min-height:590px;border-top:0;display:block;
+  }
+  .obok-ai-panel{
+    top:28px;left:18px;right:18px;width:auto;max-width:none;padding:22px 20px 18px;
+  }
+  .obok-ai-title{font-size:32px}
+  .obok-ai-message{font-size:16px}
+  .obok-ai-mascot-wrap{width:54%;right:-4%;bottom:1%}
+}
+@media(max-width:480px){
+  .obok-ai-hero-left{height:48vh;min-height:370px}
+  .obok-ai-hero-copy h1{font-size:31px!important}
+  .obok-ai-hero-right{min-height:610px}
+  .obok-ai-panel{left:12px;right:12px;top:18px}
+  .obok-ai-title{font-size:28px}
+  .obok-ai-steps b{font-size:11px}
+  .obok-ai-mascot-wrap{width:60%;right:-8%}
+}
+
+/* Mobile AI Chef button should use same warm orange identity */
+@media(max-width:960px){
+  .mobile-chef-link{
+    background:linear-gradient(135deg,#ff8a1f,#ff5a16)!important;
+    box-shadow:0 2px 8px rgba(255,105,22,.20)!important;
+  }
+  .mobile-chef-link:hover,.mobile-chef-link:focus{background:#f05a16!important}
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -509,7 +668,7 @@ aspect-ratio:auto!important;
       <a href="#philosophy">발효철학</a>
       <a href="#about">회사소개</a>
       <a href="#products">제품소개</a>
-      <a href="/chef/">👨‍🍳 AI 요리사</a>
+      <a class="ai-chef-nav" href="/chef/">👨‍🍳 오복 AI 셰프</a>
       <a href="#gifts">선물세트</a>
       <a href="#oem">OEM 생산</a>
       <a href="#story">회사 이야기</a>
@@ -532,19 +691,36 @@ aspect-ratio:auto!important;
 
 <main>
   <!-- OBOK Korean V16 FINAL: woman fermentation video + full-photo hero + products + gifts + HACCP -->
-  <section class="hero">
-    <picture class="hero-picture">
-      <source media="(max-width: 768px)" srcset="assets/obok-hero-ko-20260818.jpg">
-      <img class="obok-main-hero-image" src="assets/obok-hero-ko-20260818.jpg"
-           alt="황가 오복양조 간장과 원재료를 담은 오복식품 메인 이미지">
-    </picture>
-    <div class="hero-copy">
-      <div class="hero-copy-inner">
+  <section class="hero obok-ai-hero">
+    <div class="obok-ai-hero-left">
+      <img class="obok-ai-soy-photo" src="assets/obok-hero-soysauce-original.jpg"
+           alt="황가 오복양조 간장과 원재료">
+      <div class="obok-ai-hero-overlay"></div>
+      <div class="obok-ai-hero-copy">
         <div class="hero-kicker">SINCE 1952</div>
         <h1>70년 전통의 맛,<br>건강한 식탁의 시작</h1>
         <p class="hero-lead">1952년부터 지켜온 정직한 마음으로<br>좋은 재료만을 담아 만듭니다.</p>
       </div>
     </div>
+
+    <a class="obok-ai-hero-right" href="/chef/" aria-label="오복 AI 셰프 시작하기">
+      <div class="obok-ai-panel">
+        <div class="obok-ai-title">👨‍🍳 오복 <strong>AI 셰프</strong></div>
+        <div class="obok-ai-message">
+          <b>오복AI 셰프에게<br><span>냉장고 안에 식재료</span>를 보여주세요.</b>
+          <p>그러면 <strong>맛있는 요리 레시피</strong>를<br>추천해 드려요.</p>
+        </div>
+        <div class="obok-ai-cta">📷 지금 AI 셰프와 요리하기 <span>›</span></div>
+        <div class="obok-ai-steps">
+          <div><span>📷</span><b>냉장고 사진</b><small>찍어주세요</small></div>
+          <div><span>AI</span><b>식재료 분석</b><small>AI가 찾아요</small></div>
+          <div><span>🍲</span><b>레시피 추천</b><small>여러 메뉴 제안</small></div>
+        </div>
+      </div>
+      <div class="obok-ai-mascot-wrap">
+        <img src="assets/obok-ai-chef-mascot.png" alt="오복 AI 셰프 캐릭터" class="obok-ai-mascot">
+      </div>
+    </a>
   </section>
 
   <section id="philosophy" class="content philosophy">
