@@ -1,5 +1,5 @@
 const $=s=>document.querySelector(s);
-const state={ingredients:[]};
+const state={ingredients:[],photosAnalyzed:0};
 
 const recipes=[
  {name:'오복 간장 계란 덮밥',emoji:'🍳',time:'7분',level:'초간단',product:'오복 양조간장',desc:'냉장고가 비어 있어도 밥과 계란만 준비하면 금방 만들 수 있는 오복이의 기본 한 끼',fallback:true,steps:['따뜻한 밥 1공기와 계란 2개를 준비해요.','팬에 기름을 조금 두르고 계란후라이 2개를 만들어요.','밥 위에 계란후라이를 올려요.','오복 양조간장 1~1.5큰술을 골고루 둘러요.','오복 참기름 1작은술을 넣고, 있으면 김가루나 깨를 살짝 올려요.','노른자를 톡 터뜨려 밥과 잘 비비면 7분 만에 완성!'],products:[['오복 양조간장','../assets/soy.webp'],['오복 참기름','../assets/soy.webp']]},
@@ -52,50 +52,76 @@ async function resizeImageToDataURL(file){
 }
 
 $('#photo').addEventListener('change',async e=>{
-  const file=e.target.files[0];
-  if(!file)return;
+  const selected=Array.from(e.target.files||[]);
+  if(!selected.length)return;
 
-  state.ingredients=[];
-  renderChips();
   show('#ingredients');
 
   if(!apiConfigured()){
     setPhotoStatus('⚠️ AI 서버 주소가 아직 연결되지 않았어요. 아래에서 재료를 직접 입력해 주세요.','error');
+    e.target.value='';
+    return;
+  }
+
+  const remaining=Math.max(0,3-state.photosAnalyzed);
+  const files=selected.slice(0,remaining);
+
+  if(!files.length){
+    setPhotoStatus('📷 사진은 최대 3장까지 분석할 수 있어요. 재료를 확인한 뒤 요리 추천을 눌러주세요.','success');
+    e.target.value='';
     return;
   }
 
   try{
-    setPhotoStatus('🔍 오복이가 냉장고 사진을 살펴보고 있어요…','loading');
-    const imageDataUrl=await resizeImageToDataURL(file);
+    for(let i=0;i<files.length;i++){
+      const file=files[i];
+      const photoNo=state.photosAnalyzed+1;
+      setPhotoStatus(`🔍 ${photoNo}/3번째 사진을 분석하고 있어요…`,'loading');
 
-    const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/analyze-fridge`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({imageDataUrl})
-    });
+      const imageDataUrl=await resizeImageToDataURL(file);
+      const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/analyze-fridge`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({imageDataUrl})
+      });
 
-    const data=await resp.json().catch(()=>({}));
-    if(!resp.ok) throw new Error(data.error || `서버 오류 (${resp.status})`);
+      const data=await resp.json().catch(()=>({}));
+      if(!resp.ok) throw new Error(data.error || `서버 오류 (${resp.status})`);
 
-    state.ingredients=Array.isArray(data.ingredients)
-      ? data.ingredients.filter(Boolean).slice(0,15)
-      : [];
+      const found=Array.isArray(data.ingredients) ? data.ingredients.filter(Boolean) : [];
+      state.ingredients=[...new Set([...state.ingredients,...found])].slice(0,20);
+      state.photosAnalyzed++;
+      renderChips();
+    }
 
-    renderChips();
-
+    const left=3-state.photosAnalyzed;
     if(state.ingredients.length){
-      setPhotoStatus(`✅ 오복이가 ${state.ingredients.length}가지 재료를 찾았어요. 맞는지 확인하고 수정해 주세요.`,'success');
+      setPhotoStatus(
+        left>0
+          ? `✅ 사진 ${state.photosAnalyzed}장 분석 완료 · ${state.ingredients.length}가지 재료를 찾았어요. 다른 구역 사진을 ${left}장 더 추가할 수 있어요.`
+          : `✅ 사진 3장 분석 완료 · ${state.ingredients.length}가지 재료를 찾았어요. 맞는지 확인하고 수정해 주세요.`,
+        'success'
+      );
     }else{
-      setPhotoStatus('😊 눈에 띄는 재료를 찾지 못했어요. 냉장고가 비어 있다면 그대로 추천받기를 눌러도 됩니다.','success');
+      setPhotoStatus(
+        left>0
+          ? `😊 아직 뚜렷한 재료를 찾지 못했어요. 다른 구역 사진을 ${left}장 더 추가해 보세요.`
+          : '😊 3장을 확인했지만 뚜렷한 재료를 찾지 못했어요. 재료를 직접 입력해 주세요.',
+        'success'
+      );
     }
   }catch(err){
     console.error(err);
-    setPhotoStatus(`⚠️ 사진 분석에 실패했어요. 재료를 직접 입력해도 됩니다. (${err.message})`,'error');
+    setPhotoStatus(`⚠️ 사진 분석에 실패했어요. 다시 촬영하거나 재료를 직접 입력해 주세요. (${err.message})`,'error');
+  }finally{
+    // 같은 사진을 다시 선택하거나 카메라를 다시 열 수 있도록 초기화
+    e.target.value='';
   }
 });
 
 $('#manualBtn').onclick=()=>{
   state.ingredients=[];
+  state.photosAnalyzed=0;
   setPhotoStatus('가지고 있는 재료를 하나씩 추가해 주세요.');
   renderChips(); show('#ingredients');
 };

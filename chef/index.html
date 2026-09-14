@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>오복 AI 요리사 | 오복식품</title>
 <meta name="description" content="냉장고 사진이나 재료를 알려주면 오복이가 만들 수 있는 요리를 추천해드립니다.">
-<link rel="stylesheet" href="obok-chef.css?v=5.1">
+<link rel="stylesheet" href="obok-chef.css?v=5.2">
 </head>
 <body>
 <header class="topbar">
@@ -24,12 +24,12 @@
       <h1>냉장고에 뭐가 있어요?</h1>
       <p>사진 한 장 또는 재료 몇 가지만 알려주세요.<br>오복이가 오늘 만들기 쉬운 요리를 찾아드릴게요.</p>
       <div class="actions">
-        <label class="primary upload">📷 냉장고 사진 찍기
-          <input id="photo" type="file" accept="image/*" capture="environment">
+        <label class="primary upload">📷 냉장고 사진 찍기/추가 (최대 3장)
+          <input id="photo" type="file" accept="image/*" capture="environment" multiple>
         </label>
         <button class="secondary" id="manualBtn">🥕 재료 직접 입력</button>
       </div>
-      <small>※ 냉장고 사진을 촬영하면 AI가 사진 속 식재료를 확인합니다. 인식된 재료는 추천 전에 직접 수정할 수 있습니다.</small>
+      <small>※ 냉장고 전체·문쪽 선반·야채칸처럼 최대 3장까지 차례로 촬영할 수 있습니다. AI가 여러 사진의 재료를 합쳐 보여드리며, 추천 전에 직접 수정할 수 있습니다.</small>
     </div>
     <div class="chef-wrap">
       <img src="obok-chef.webp" alt="요리사 모자를 쓴 오복이">
@@ -66,7 +66,7 @@
 </main>
 
 <footer>© O'Bok Foods Co., Ltd. · 좋은 식탁, 행복한 오늘</footer>
-<script src="config.js?v=5.1"></script>
-<script src="obok-chef.js?v=5.1"></script>
+<script src="config.js?v=5.2"></script>
+<script src="obok-chef.js?v=5.2"></script>
 </body>
 </html>
