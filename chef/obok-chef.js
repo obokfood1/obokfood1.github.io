@@ -120,6 +120,11 @@ function productImage(name){
 function renderRecommendations(list,more=false){
   state.recommendations=list.map(normalizeRecipe);
   const grid=$('#recipeGrid'); grid.innerHTML='';
+
+  // 기존에 생성된 '다른 요리 3개 더 추천' 버튼이 있으면 먼저 제거
+  // (추천을 다시 받을 때 버튼이 계속 누적되는 현상 방지)
+  document.querySelectorAll('#moreRecipesBtn').forEach(el=>el.remove());
+
   const head=$('#recommendations .section-head');
   head.innerHTML=`<span class="eyebrow">STEP 2 · AI 추천</span><h2>${more?'다른 요리도 준비했어요!':'오늘은 이 요리 어때요?'}</h2><p>냉장고 재료와 선택한 인원·조리시간을 바탕으로 AI가 지금 만든 레시피예요.</p>`;
   state.recommendations.forEach((r,i)=>{
