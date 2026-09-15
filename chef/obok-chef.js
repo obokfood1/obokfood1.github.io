@@ -90,9 +90,28 @@ $('#manualBtn').onclick=()=>{
   renderChips(); show('#ingredients');
 };
 function add(){
-  const v=$('#ingredientInput').value.trim();
-  if(v&&!state.ingredients.includes(v)){state.ingredients.push(v);renderChips();}
+  const raw=$('#ingredientInput').value.trim();
+  const items=raw
+    .split(/[,，、;\n]+/)
+    .map(v=>v.trim())
+    .filter(Boolean);
+  if(items.length){
+    state.ingredients=[...new Set([...state.ingredients,...items])].slice(0,30);
+    renderChips();
+  }
   $('#ingredientInput').value='';
+}
+
+function commitPendingIngredients(){
+  const raw=$('#ingredientInput').value.trim();
+  if(!raw)return;
+  const items=raw
+    .split(/[,，、;\n]+/)
+    .map(v=>v.trim())
+    .filter(Boolean);
+  state.ingredients=[...new Set([...state.ingredients,...items])].slice(0,30);
+  $('#ingredientInput').value='';
+  renderChips();
 }
 $('#addBtn').onclick=add;
 $('#ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')add();});
@@ -140,6 +159,8 @@ function renderRecommendations(list,more=false){
   show('#recommendations');
 }
 async function requestAIRecipes(more=false){
+  // 사용자가 +추가 버튼을 누르지 않아도 입력창의 재료를 자동 등록
+  commitPendingIngredients();
   if(!apiConfigured()){alert('AI 서버가 연결되지 않았습니다.');return;}
   const btn=more?$('#moreRecipesBtn'):$('#recommendBtn');
   const old=btn?btn.textContent:'';
@@ -157,7 +178,7 @@ async function requestAIRecipes(more=false){
         ingredients:state.ingredients,
         people:$('#people').value,
         time:$('#time').value,
-        preference:'냉장고 재료를 최대한 활용하고, 가정에서 쉽게 만들 수 있으며, 서로 다른 종류의 요리 3가지를 추천해 주세요. 오복식품의 간장·고추장·된장·쌈장·참기름 등은 요리에 자연스럽게 어울릴 때만 활용해 주세요.',
+        preference:'사용자가 입력한 핵심 식재료를 요리의 중심으로 우선 활용해 주세요. 특히 닭고기·돼지고기·소고기·생선·두부·계란 같은 주재료가 있으면 이를 무시하고 단순한 대체 요리를 추천하지 마세요. 냉장고 재료를 최대한 활용하고, 가정에서 쉽게 만들 수 있으며, 서로 다른 종류의 요리 3가지를 추천해 주세요. 오복식품의 간장·고추장·된장·쌈장·참기름 등은 요리에 자연스럽게 어울릴 때만 활용해 주세요.',
         excludeNames:state.excludeNames
       })
     });
