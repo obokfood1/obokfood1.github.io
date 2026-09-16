@@ -159,39 +159,93 @@ function renderRecommendations(list,more=false){
   show('#recommendations');
 }
 async function requestAIRecipes(more=false){
-  // 사용자가 +추가 버튼을 누르지 않아도 입력창의 재료를 자동 등록
+  // 입력창에 적어 둔 재료도 자동 등록
   commitPendingIngredients();
-  if(!apiConfigured()){alert('AI 서버가 연결되지 않았습니다.');return;}
-  const btn=more?$('#moreRecipesBtn'):$('#recommendBtn');
-  const old=btn?btn.textContent:'';
-  if(btn){btn.disabled=true;btn.textContent='👨‍🍳 오복이가 새로운 메뉴를 고민하고 있어요…';}
-  try{
+
+  if(!apiConfigured()){
+    alert('AI 서버가 연결되지 않았습니다.');
+    return;
+  }
+
+  const btn = more ? $('#moreRecipesBtn') : $('#recommendBtn');
+  const old = btn ? btn.textContent : '';
+
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = more
+      ? '👨‍🍳 새로운 요리 3개를 만들고 있어요...'
+      : '👨‍🍳 오복이가 메뉴를 고민하고 있어요...';
+  }
+
+  try {
+
+    // "다른 요리 3개 더 추천"일 경우
+    // 지금까지 추천된 요리명을 제외 목록에 추가
     if(more){
-      state.excludeNames=[...new Set([...state.excludeNames,...state.recommendations.map(r=>r.name)])].slice(-12);
-    }else{
-      state.excludeNames=[];
+      const currentNames = state.recommendations
+        .map(r => r && r.name ? String(r.name).trim() : '')
+        .filter(Boolean);
+
+      state.excludeNames = [
+        ...new Set([
+          ...(state.excludeNames || []),
+          ...currentNames
+        ])
+      ].slice(-20);
+    } else {
+      state.excludeNames = [];
     }
-    const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-recipes`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        ingredients:state.ingredients,
-        people:$('#people').value,
-        time:$('#time').value,
-        preference:'사용자가 입력한 핵심 식재료를 요리의 중심으로 우선 활용해 주세요. 특히 닭고기·돼지고기·소고기·생선·두부·계란 같은 주재료가 있으면 이를 무시하고 단순한 대체 요리를 추천하지 마세요. 냉장고 재료를 최대한 활용하고, 가정에서 쉽게 만들 수 있으며, 서로 다른 종류의 요리 3가지를 추천해 주세요. 오복식품의 간장·고추장·된장·쌈장·참기름 등은 요리에 자연스럽게 어울릴 때만 활용해 주세요.',
-        excludeNames:state.excludeNames
-      })
-    });
-    const data=await resp.json().catch(()=>({}));
-    if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
-    const list=Array.isArray(data.recipes)?data.recipes:[];
-    if(!list.length)throw new Error('추천 레시피를 받지 못했습니다.');
-    renderRecommendations(list.slice(0,3),more);
-  }catch(err){
+
+    const resp = await fetch(
+      `${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-recipes`,
+      {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          ingredients: state.ingredients,
+          people: $('#people').value,
+          time: $('#time').value,
+          preference:
+            '사용자가 입력한 핵심 식재료를 요리의 중심으로 우선 활용해 주세요. ' +
+            '특히 닭고기, 돼지고기, 소고기, 생선, 두부, 계란 같은 주재료가 있으면 이를 무시하고 단순한 대체 요리를 추천하지 마세요. ' +
+            '냉장고 재료를 최대한 활용하고 가정에서 쉽게 만들 수 있는 요리를 추천해 주세요.',
+          excludeNames: state.excludeNames
+        })
+      }
+    );
+
+    const data = await resp.json().catch(()=>({}));
+
+    if(!resp.ok){
+      throw new Error(data.error || `서버 오류 (${resp.status})`);
+    }
+
+    const list = Array.isArray(data.recipes) ? data.recipes : [];
+
+    if(!list.length){
+      throw new Error('추천 레시피를 받지 못했습니다.');
+    }
+
+    // 새로 받은 요리 3개 표시
+    renderRecommendations(list.slice(0,3), more);
+
+  } catch(err) {
+
     console.error(err);
-    alert(`AI 레시피 추천에 실패했어요. 잠시 후 다시 시도해 주세요.\n${err.message}`);
-  }finally{
-    if(btn&&document.body.contains(btn)){btn.disabled=false;btn.textContent=old;}
+
+    alert(
+      `AI 레시피 추천에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`
+    );
+
+  } finally {
+
+    // 기존 버튼이 아직 화면에 존재할 때만 원상복구
+    if(btn && document.body.contains(btn)){
+      btn.disabled = false;
+      btn.textContent = old;
+    }
   }
 }
 $('#recommendBtn').onclick=()=>requestAIRecipes(false);
