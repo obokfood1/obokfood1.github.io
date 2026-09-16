@@ -278,15 +278,29 @@ homeChefMode.onclick=()=>selectChefMode('home'); schoolChefMode.onclick=()=>sele
 
 $('#schoolRecommendBtn').onclick=async()=>{
  if(!apiConfigured()){alert('AI 서버가 연결되지 않았습니다.');return;}
- const btn=$('#schoolRecommendBtn'),old=btn.textContent; btn.disabled=true;btn.textContent='👨‍🍳 한 주 식단을 구성하고 있어요...';
+ const btn=$('#schoolRecommendBtn'),old=btn.textContent; btn.disabled=true;btn.textContent='👨‍🍳 월~금 급식과 식재료를 구성하고 있어요...';
  try{
-  const preference=`학교급식 영양사를 위한 월~금 5일 식단 아이디어를 제안해 주세요. 대상은 ${$('#schoolLevel').value}, ${$('#schoolPeople').value}명입니다. 주식·국/찌개·주찬·부찬·김치류를 조화롭게 하고 육류·생선·달걀·두부·채소 등 식품군과 조리법이 반복되지 않게 하세요. 학생의 성장기 식사에서 다양한 식품군과 균형 잡힌 구성을 고려하되 영양기준 충족을 단정하지 마세요. 제외 식재료: ${$('#schoolExclude').value||'없음'}. 예산 참고: ${$('#schoolBudget').value||'미지정'}원. 추가 요청: ${$('#schoolRequest').value||'없음'}.`;
-  const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-recipes`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ingredients:[],people:`${$('#schoolPeople').value}명`,time:'주간 급식',preference,excludeNames:[]})});
+  const people=Math.max(1,Math.min(5000,Number($('#schoolPeople').value)||500));
+  const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-school-menu`,{
+   method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({schoolLevel:$('#schoolLevel').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',extraRequest:$('#schoolRequest').value||''})
+  });
   const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
-  const recipes=Array.isArray(data.recipes)?data.recipes:[]; if(!recipes.length)throw new Error('식단을 받지 못했습니다.');
-  const days=['월요일','화요일','수요일','목요일','금요일'],grid=$('#schoolMenuGrid');grid.innerHTML='';
-  recipes.slice(0,5).forEach((r,i)=>{const el=document.createElement('article');el.className='school-day';el.innerHTML=`<h3>${days[i]}</h3><h4>${escapeHtml(r.name||'급식 메뉴')}</h4><p>${escapeHtml(r.reason||r.desc||'')}</p><small><b>주요 식재료</b><br>${(Array.isArray(r.ingredients)?r.ingredients:[]).map(escapeHtml).join(', ')}</small>`;grid.appendChild(el);});
-  show('#schoolResults');
- }catch(err){console.error(err);alert(`학교급식 식단 생성에 실패했어요.\n\n${err.message}`)}
+  const days=Array.isArray(data.days)?data.days:[]; if(days.length!==5)throw new Error('월~금 5일 식단을 모두 받지 못했습니다.');
+  const grid=$('#schoolMenuGrid');grid.innerHTML='';
+  days.forEach(d=>{
+   const menu=(Array.isArray(d.menu)?d.menu:[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('');
+   const ing=(Array.isArray(d.ingredients)?d.ingredients:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
+   const products=(Array.isArray(d.obok_products)?d.obok_products:[]).map(x=>`<span class="school-product">${escapeHtml(x)}</span>`).join('');
+   const el=document.createElement('article');el.className='school-day';
+   el.innerHTML=`<h3>${escapeHtml(d.day||'')}</h3><ul class="school-menu-list">${menu}</ul><p class="balance-note">${escapeHtml(d.balance_note||'')}</p><h4>주요 식재료 · ${people.toLocaleString()}명 기준</h4><ul class="school-ingredients">${ing}</ul>${products?`<div class="school-products">${products}</div>`:''}`;
+   grid.appendChild(el);
+  });
+  const oldSummary=document.querySelector('#schoolResults .school-summary'); if(oldSummary)oldSummary.remove();
+  const summary=document.createElement('div');summary.className='card school-summary';
+  const shopping=(Array.isArray(data.weekly_shopping)?data.weekly_shopping:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
+  summary.innerHTML=`<div class="section-head"><span class="eyebrow">WEEKLY SHOPPING</span><h2>한 주 주요 식재료 취합</h2><p>${people.toLocaleString()}명 급식 기준 AI 예상 구매량입니다.</p></div><ul class="weekly-shopping">${shopping}</ul><p class="review-note">※ ${escapeHtml(data.review_note||'실제 제공 전 학교 영양사가 최종 검토해 주세요.')}</p>`;
+  $('#schoolResults').appendChild(summary); show('#schoolResults'); $('#schoolResults').scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(err){console.error(err);alert(`학교급식 식단 생성에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`)}
  finally{btn.disabled=false;btn.textContent=old;}
 };

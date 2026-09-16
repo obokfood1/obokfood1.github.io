@@ -64,3 +64,13 @@ footer{text-align:center;color:#948980;padding:30px}
 .school-form label{font-weight:900;display:flex;flex-direction:column;gap:8px}.school-form input,.school-form select,.school-form textarea{width:100%;border:1px solid #ddd;border-radius:14px;padding:14px;background:#fff;font:inherit}.school-wide{grid-column:1/-1}
 .school-menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.school-day{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}.school-day h3{color:var(--red)}.school-day p{line-height:1.65}.school-day small{color:var(--muted)}
 @media(max-width:760px){.mode-grid,.school-form,.school-menu-grid{grid-template-columns:1fr}.school-wide{grid-column:auto}.mode-heading h1,.school-hero h1{font-size:30px}}
+
+/* v6.1 school meal AI */
+.school-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+.school-day{padding:22px}.school-day h3{font-size:20px;margin:0 0 12px}.school-day h4{margin:18px 0 8px;font-size:14px}
+.school-menu-list{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:7px}.school-menu-list li{background:#fff6f3;border:1px solid #f4ddd6;border-radius:999px;padding:7px 10px;font-weight:800;font-size:14px}
+.balance-note{background:#faf8f4;border-radius:12px;padding:11px 12px;color:var(--muted);font-size:13px}
+.school-ingredients,.weekly-shopping{list-style:none;margin:0;padding:0}.school-ingredients li,.weekly-shopping li{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px dashed #e7e0d8;font-size:13px}.school-ingredients b,.weekly-shopping b{white-space:nowrap}
+.school-products{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.school-product{background:#fff0ef;color:var(--red);border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900}
+.school-summary{margin-top:20px}.weekly-shopping{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}.review-note{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:760px){.school-menu-grid,.weekly-shopping{grid-template-columns:1fr}}
