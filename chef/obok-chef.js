@@ -266,3 +266,27 @@ function detail(i){
 }
 $('#backBtn').onclick=()=>show('#recommendations');
 renderChips();
+
+// v6.0 mode selector + school meal prototype
+const homeChefMode=$('#homeChefMode'),schoolChefMode=$('#schoolChefMode'),homeChefPanel=$('#homeChefPanel'),schoolChefPanel=$('#schoolChefPanel');
+function selectChefMode(mode){
+ const school=mode==='school';
+ homeChefPanel.classList.toggle('hidden',school); schoolChefPanel.classList.toggle('hidden',!school);
+ homeChefMode.classList.toggle('active',!school); schoolChefMode.classList.toggle('active',school);
+}
+homeChefMode.onclick=()=>selectChefMode('home'); schoolChefMode.onclick=()=>selectChefMode('school');
+
+$('#schoolRecommendBtn').onclick=async()=>{
+ if(!apiConfigured()){alert('AI 서버가 연결되지 않았습니다.');return;}
+ const btn=$('#schoolRecommendBtn'),old=btn.textContent; btn.disabled=true;btn.textContent='👨‍🍳 한 주 식단을 구성하고 있어요...';
+ try{
+  const preference=`학교급식 영양사를 위한 월~금 5일 식단 아이디어를 제안해 주세요. 대상은 ${$('#schoolLevel').value}, ${$('#schoolPeople').value}명입니다. 주식·국/찌개·주찬·부찬·김치류를 조화롭게 하고 육류·생선·달걀·두부·채소 등 식품군과 조리법이 반복되지 않게 하세요. 학생의 성장기 식사에서 다양한 식품군과 균형 잡힌 구성을 고려하되 영양기준 충족을 단정하지 마세요. 제외 식재료: ${$('#schoolExclude').value||'없음'}. 예산 참고: ${$('#schoolBudget').value||'미지정'}원. 추가 요청: ${$('#schoolRequest').value||'없음'}.`;
+  const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-recipes`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ingredients:[],people:`${$('#schoolPeople').value}명`,time:'주간 급식',preference,excludeNames:[]})});
+  const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
+  const recipes=Array.isArray(data.recipes)?data.recipes:[]; if(!recipes.length)throw new Error('식단을 받지 못했습니다.');
+  const days=['월요일','화요일','수요일','목요일','금요일'],grid=$('#schoolMenuGrid');grid.innerHTML='';
+  recipes.slice(0,5).forEach((r,i)=>{const el=document.createElement('article');el.className='school-day';el.innerHTML=`<h3>${days[i]}</h3><h4>${escapeHtml(r.name||'급식 메뉴')}</h4><p>${escapeHtml(r.reason||r.desc||'')}</p><small><b>주요 식재료</b><br>${(Array.isArray(r.ingredients)?r.ingredients:[]).map(escapeHtml).join(', ')}</small>`;grid.appendChild(el);});
+  show('#schoolResults');
+ }catch(err){console.error(err);alert(`학교급식 식단 생성에 실패했어요.\n\n${err.message}`)}
+ finally{btn.disabled=false;btn.textContent=old;}
+};
