@@ -283,7 +283,7 @@ $('#schoolRecommendBtn').onclick=async()=>{
   const people=Math.max(1,Math.min(5000,Number($('#schoolPeople').value)||500));
   const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-school-menu`,{
    method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({schoolLevel:$('#schoolLevel').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',extraRequest:$('#schoolRequest').value||''})
+   body:JSON.stringify({schoolLevel:$('#schoolLevel').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',requiredMenus:$('#schoolRequiredMenus').value||'',excludedMenus:$('#schoolExcludedMenus').value||'',extraRequest:$('#schoolRequest').value||''})
   });
   const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
   const days=Array.isArray(data.days)?data.days:[]; if(days.length!==5)throw new Error('월~금 5일 식단을 모두 받지 못했습니다.');
