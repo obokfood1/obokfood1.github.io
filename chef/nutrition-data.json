@@ -1,0 +1,819 @@
+{
+  "version": "2026-10-01",
+  "notes": [
+    "간장 100mL / 자매품 100g 기준은 사용자 확인",
+    "오복 수치는 제공 이미지 원본 데이터 열에서 전사",
+    "일반 재료는 USDA 참고값; 원산지·품종·조리 상태에 따라 차이 발생"
+  ],
+  "foods": {
+    "fdc_168881": {
+      "name": "쌀(생쌀)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168881",
+      "source_description": "Rice, white, short-grain, enriched, uncooked",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168881/nutrients",
+      "values": {
+        "protein_g": 6.5,
+        "sodium_mg": 1.0,
+        "fat_g": 0.52,
+        "carbohydrate_g": 79.15,
+        "energy_kcal": 358.0
+      }
+    },
+    "fdc_168882": {
+      "name": "밥(익힌 흰쌀밥)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168882",
+      "source_description": "Rice, white, short-grain, enriched, cooked",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168882/nutrients",
+      "values": {
+        "carbohydrate_g": 28.73,
+        "energy_kcal": 130.0,
+        "fat_g": 0.19,
+        "protein_g": 2.36,
+        "sodium_mg": 0.0
+      }
+    },
+    "fdc_172448": {
+      "name": "두부(단단한 두부)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "172448",
+      "source_description": "Tofu, firm, prepared with calcium sulfate and magnesium chloride (nigari)",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172448/nutrients",
+      "values": {
+        "protein_g": 9.04,
+        "carbohydrate_g": 2.85,
+        "energy_kcal": 78.0,
+        "fat_g": 4.17,
+        "sodium_mg": 12.0
+      }
+    },
+    "fdc_172449": {
+      "name": "연두부",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "172449",
+      "source_description": "Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172449/nutrients",
+      "values": {
+        "energy_kcal": 61.0,
+        "carbohydrate_g": 1.18,
+        "protein_g": 7.17,
+        "fat_g": 3.69,
+        "sodium_mg": 8.0
+      }
+    },
+    "fdc_171287": {
+      "name": "달걀(껍질 제외, 생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "171287",
+      "source_description": "Egg, whole, raw, fresh",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171287/nutrients",
+      "values": {
+        "energy_kcal": 143.0,
+        "protein_g": 12.56,
+        "sodium_mg": 142.0,
+        "fat_g": 9.51,
+        "carbohydrate_g": 0.72
+      }
+    },
+    "fdc_170000": {
+      "name": "양파(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170000",
+      "source_description": "Onions, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170000/nutrients",
+      "values": {
+        "fat_g": 0.1,
+        "carbohydrate_g": 9.34,
+        "energy_kcal": 40.0,
+        "protein_g": 1.1,
+        "sodium_mg": 4.0
+      }
+    },
+    "fdc_171052": {
+      "name": "닭고기(껍질 없는 살, 생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "171052",
+      "source_description": "Chicken, broilers or fryers, meat only, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171052/nutrients",
+      "values": {
+        "fat_g": 3.08,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 119.0,
+        "protein_g": 21.39,
+        "sodium_mg": 77.0
+      }
+    },
+    "fdc_167812": {
+      "name": "돼지고기 삼겹살(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "167812",
+      "source_description": "Pork, fresh, belly, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/167812/nutrients",
+      "values": {
+        "fat_g": 53.01,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 518.0,
+        "sodium_mg": 32.0,
+        "protein_g": 9.34
+      }
+    },
+    "fdc_174030": {
+      "name": "다진 소고기(지방 10%, 생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "174030",
+      "source_description": "Beef, ground, 90% lean meat / 10% fat, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/174030/nutrients",
+      "values": {
+        "fat_g": 10.0,
+        "carbohydrate_g": 0.0,
+        "protein_g": 20.0,
+        "sodium_mg": 66.0,
+        "energy_kcal": 176.0
+      }
+    },
+    "fdc_169975": {
+      "name": "양배추(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169975",
+      "source_description": "Cabbage, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169975/nutrients",
+      "values": {
+        "fat_g": 0.1,
+        "carbohydrate_g": 5.8,
+        "energy_kcal": 25.0,
+        "protein_g": 1.28,
+        "sodium_mg": 18.0
+      }
+    },
+    "fdc_168451": {
+      "name": "무(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168451",
+      "source_description": "Radishes, oriental, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168451/nutrients",
+      "values": {
+        "carbohydrate_g": 4.1,
+        "energy_kcal": 18.0,
+        "protein_g": 0.6,
+        "sodium_mg": 21.0,
+        "fat_g": 0.1
+      }
+    },
+    "fdc_168462": {
+      "name": "시금치(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168462",
+      "source_description": "Spinach, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168462/nutrients",
+      "values": {
+        "protein_g": 2.86,
+        "sodium_mg": 79.0,
+        "fat_g": 0.39,
+        "carbohydrate_g": 3.63,
+        "energy_kcal": 23.0
+      }
+    },
+    "fdc_169242": {
+      "name": "표고버섯(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169242",
+      "source_description": "Mushrooms, shiitake, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169242/nutrients",
+      "values": {
+        "fat_g": 0.49,
+        "sodium_mg": 9.0,
+        "protein_g": 2.24,
+        "carbohydrate_g": 6.79,
+        "energy_kcal": 34.0
+      }
+    },
+    "fdc_169291": {
+      "name": "주키니호박(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169291",
+      "source_description": "Squash, summer, zucchini, includes skin, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169291/nutrients",
+      "values": {
+        "fat_g": 0.32,
+        "carbohydrate_g": 3.11,
+        "energy_kcal": 17.0,
+        "sodium_mg": 8.0,
+        "protein_g": 1.21
+      }
+    },
+    "fdc_170026": {
+      "name": "감자(껍질 포함, 생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170026",
+      "source_description": "Potatoes, flesh and skin, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170026/nutrients",
+      "values": {
+        "fat_g": 0.09,
+        "energy_kcal": 77.0,
+        "sodium_mg": 6.0,
+        "protein_g": 2.05,
+        "carbohydrate_g": 17.49
+      }
+    },
+    "fdc_168482": {
+      "name": "고구마(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168482",
+      "source_description": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168482/nutrients",
+      "values": {
+        "carbohydrate_g": 20.12,
+        "energy_kcal": 86.0,
+        "sodium_mg": 55.0,
+        "fat_g": 0.05,
+        "protein_g": 1.57
+      }
+    },
+    "fdc_168409": {
+      "name": "오이(껍질 포함, 생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168409",
+      "source_description": "Cucumber, with peel, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168409/nutrients",
+      "values": {
+        "carbohydrate_g": 3.63,
+        "energy_kcal": 15.0,
+        "sodium_mg": 2.0,
+        "fat_g": 0.11,
+        "protein_g": 0.65
+      }
+    },
+    "fdc_169230": {
+      "name": "마늘(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169230",
+      "source_description": "Garlic, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169230/nutrients",
+      "values": {
+        "carbohydrate_g": 33.06,
+        "energy_kcal": 149.0,
+        "sodium_mg": 17.0,
+        "protein_g": 6.36,
+        "fat_g": 0.5
+      }
+    },
+    "fdc_170005": {
+      "name": "쪽파(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170005",
+      "source_description": "Onions, spring or scallions (includes tops and bulb), raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170005/nutrients",
+      "values": {
+        "energy_kcal": 32.0,
+        "fat_g": 0.19,
+        "protein_g": 1.83,
+        "sodium_mg": 16.0,
+        "carbohydrate_g": 7.34
+      }
+    },
+    "fdc_170393": {
+      "name": "당근(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170393",
+      "source_description": "Carrots, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170393/nutrients",
+      "values": {
+        "sodium_mg": 69.0,
+        "protein_g": 0.93,
+        "fat_g": 0.24,
+        "carbohydrate_g": 9.58,
+        "energy_kcal": 41.0
+      }
+    },
+    "fdc_173672": {
+      "name": "고등어(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "173672",
+      "source_description": "Fish, mackerel, Pacific and jack, mixed species, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173672/nutrients",
+      "values": {
+        "fat_g": 7.89,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 158.0,
+        "sodium_mg": 86.0,
+        "protein_g": 20.07
+      }
+    },
+    "fdc_168448": {
+      "name": "호박(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168448",
+      "source_description": "Pumpkin, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168448/nutrients",
+      "values": {
+        "carbohydrate_g": 6.5,
+        "energy_kcal": 26.0,
+        "fat_g": 0.1,
+        "protein_g": 1.0,
+        "sodium_mg": 1.0
+      }
+    },
+    "fdc_170151": {
+      "name": "참깨(볶은 것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170151",
+      "source_description": "Seeds, sesame seeds, whole, roasted and toasted",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170151/nutrients",
+      "values": {
+        "fat_g": 48.0,
+        "carbohydrate_g": 25.74,
+        "energy_kcal": 565.0,
+        "protein_g": 16.96,
+        "sodium_mg": 11.0
+      }
+    },
+    "fdc_173468": {
+      "name": "소금",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "173468",
+      "source_description": "Salt, table",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173468/nutrients",
+      "values": {
+        "sodium_mg": 38758.0,
+        "protein_g": 0.0,
+        "fat_g": 0.0,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 0.0
+      }
+    },
+    "fdc_173647": {
+      "name": "물",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "173647",
+      "source_description": "Beverages, water, tap, drinking",
+      "source_url": "https://fdc.nal.usda.gov/food-details/173647/nutrients",
+      "values": {
+        "fat_g": 0.0,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 0.0,
+        "protein_g": 0.0,
+        "sodium_mg": 4.0
+      }
+    },
+    "fdc_169655": {
+      "name": "설탕",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169655",
+      "source_description": "Sugars, granulated",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169655/nutrients",
+      "values": {
+        "protein_g": 0.0,
+        "sodium_mg": 1.0,
+        "fat_g": 0.0,
+        "energy_kcal": 387.0,
+        "carbohydrate_g": 99.98
+      }
+    },
+    "fdc_169698": {
+      "name": "옥수수전분",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169698",
+      "source_description": "Cornstarch",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169698/nutrients",
+      "values": {
+        "fat_g": 0.05,
+        "carbohydrate_g": 91.27,
+        "energy_kcal": 381.0,
+        "protein_g": 0.26,
+        "sodium_mg": 9.0
+      }
+    },
+    "fdc_171016": {
+      "name": "참기름",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "171016",
+      "source_description": "Oil, sesame, salad or cooking",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171016/nutrients",
+      "values": {
+        "protein_g": 0.0,
+        "sodium_mg": 0.0,
+        "fat_g": 100.0,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 884.0
+      }
+    },
+    "fdc_171411": {
+      "name": "콩기름",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "171411",
+      "source_description": "Oil, soybean, salad or cooking",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171411/nutrients",
+      "values": {
+        "sodium_mg": 0.0,
+        "protein_g": 0.0,
+        "fat_g": 100.0,
+        "carbohydrate_g": 0.0,
+        "energy_kcal": 884.0
+      }
+    },
+    "fdc_170108": {
+      "name": "빨강 파프리카(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170108",
+      "source_description": "Peppers, sweet, red, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170108/nutrients",
+      "values": {
+        "energy_kcal": 26.0,
+        "sodium_mg": 4.0,
+        "carbohydrate_g": 6.03,
+        "protein_g": 0.99,
+        "fat_g": 0.3
+      }
+    },
+    "fdc_170931": {
+      "name": "후추",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170931",
+      "source_description": "Spices, pepper, black",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170931/nutrients",
+      "values": {
+        "fat_g": 3.26,
+        "carbohydrate_g": 63.95,
+        "energy_kcal": 251.0,
+        "protein_g": 10.39,
+        "sodium_mg": 20.0
+      }
+    },
+    "fdc_174210": {
+      "name": "새우(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "174210",
+      "source_description": "Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",
+      "source_url": "https://fdc.nal.usda.gov/food-details/174210/nutrients",
+      "values": {
+        "fat_g": 1.01,
+        "carbohydrate_g": 0.91,
+        "energy_kcal": 71.0,
+        "sodium_mg": 566.0,
+        "protein_g": 13.61
+      }
+    },
+    "fdc_168894": {
+      "name": "밀가루(중력분)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168894",
+      "source_description": "Wheat flour, white, all-purpose, enriched, bleached",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168894/nutrients",
+      "values": {
+        "sodium_mg": 2.0,
+        "protein_g": 10.33,
+        "fat_g": 0.98,
+        "carbohydrate_g": 76.31,
+        "energy_kcal": 364.0
+      }
+    },
+    "fdc_172217": {
+      "name": "우유(전지)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "172217",
+      "source_description": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+      "source_url": "https://fdc.nal.usda.gov/food-details/172217/nutrients",
+      "values": {
+        "carbohydrate_g": 4.78,
+        "energy_kcal": 61.0,
+        "fat_g": 3.27,
+        "sodium_mg": 43.0,
+        "protein_g": 3.15
+      }
+    },
+    "fdc_171688": {
+      "name": "사과(껍질 포함)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "171688",
+      "source_description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+      "source_url": "https://fdc.nal.usda.gov/food-details/171688/nutrients",
+      "values": {
+        "carbohydrate_g": 13.81,
+        "energy_kcal": 52.0,
+        "fat_g": 0.17,
+        "sodium_mg": 1.0,
+        "protein_g": 0.26
+      }
+    },
+    "fdc_169231": {
+      "name": "생강(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169231",
+      "source_description": "Ginger root, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169231/nutrients",
+      "values": {
+        "fat_g": 0.75,
+        "sodium_mg": 13.0,
+        "protein_g": 1.82,
+        "carbohydrate_g": 17.77,
+        "energy_kcal": 80.0
+      }
+    },
+    "fdc_169249": {
+      "name": "잎상추(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169249",
+      "source_description": "Lettuce, green leaf, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169249/nutrients",
+      "values": {
+        "carbohydrate_g": 2.87,
+        "energy_kcal": 15.0,
+        "protein_g": 1.36,
+        "sodium_mg": 28.0,
+        "fat_g": 0.15
+      }
+    },
+    "fdc_170379": {
+      "name": "브로콜리(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170379",
+      "source_description": "Broccoli, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170379/nutrients",
+      "values": {
+        "carbohydrate_g": 6.64,
+        "energy_kcal": 34.0,
+        "fat_g": 0.37,
+        "protein_g": 2.82,
+        "sodium_mg": 33.0
+      }
+    },
+    "fdc_169228": {
+      "name": "가지(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169228",
+      "source_description": "Eggplant, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169228/nutrients",
+      "values": {
+        "fat_g": 0.18,
+        "carbohydrate_g": 5.88,
+        "energy_kcal": 25.0,
+        "sodium_mg": 2.0,
+        "protein_g": 0.98
+      }
+    },
+    "fdc_170457": {
+      "name": "토마토(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170457",
+      "source_description": "Tomatoes, red, ripe, raw, year round average",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170457/nutrients",
+      "values": {
+        "carbohydrate_g": 3.89,
+        "energy_kcal": 18.0,
+        "fat_g": 0.2,
+        "sodium_mg": 5.0,
+        "protein_g": 0.88
+      }
+    },
+    "fdc_169251": {
+      "name": "양송이버섯(생것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "169251",
+      "source_description": "Mushrooms, white, raw",
+      "source_url": "https://fdc.nal.usda.gov/food-details/169251/nutrients",
+      "values": {
+        "fat_g": 0.34,
+        "sodium_mg": 5.0,
+        "protein_g": 3.09,
+        "carbohydrate_g": 3.26,
+        "energy_kcal": 22.0
+      }
+    },
+    "fdc_168908": {
+      "name": "소면(마른 것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168908",
+      "source_description": "Noodles, japanese, somen, dry",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168908/nutrients",
+      "values": {
+        "protein_g": 11.35,
+        "sodium_mg": 1840.0,
+        "fat_g": 0.81,
+        "carbohydrate_g": 74.1,
+        "energy_kcal": 356.0
+      }
+    },
+    "fdc_168909": {
+      "name": "소면(익힌 것)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "168909",
+      "source_description": "Noodles, japanese, somen, cooked",
+      "source_url": "https://fdc.nal.usda.gov/food-details/168909/nutrients",
+      "values": {
+        "fat_g": 0.18,
+        "carbohydrate_g": 27.54,
+        "energy_kcal": 131.0,
+        "protein_g": 4.0,
+        "sodium_mg": 161.0
+      }
+    },
+    "fdc_170392": {
+      "name": "김치(USDA 배추김치 참고값)",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "USDA FoodData Central SR Legacy (2018)",
+      "source_id": "170392",
+      "source_description": "Cabbage, kimchi",
+      "source_url": "https://fdc.nal.usda.gov/food-details/170392/nutrients",
+      "values": {
+        "fat_g": 0.5,
+        "carbohydrate_g": 2.4,
+        "energy_kcal": 15.0,
+        "protein_g": 1.1,
+        "sodium_mg": 498.0
+      }
+    },
+    "obok_hwangga": {
+      "name": "황가 오복양조",
+      "basis_unit": "mL",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "오복양조(황가)",
+      "source_id": "hwangga",
+      "values": {
+        "energy_kcal": 68,
+        "carbohydrate_g": 7.1,
+        "protein_g": 9,
+        "fat_g": 0.4,
+        "sodium_mg": 5145
+      }
+    },
+    "obok_soup": {
+      "name": "우리콩 국간장",
+      "basis_unit": "mL",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "오복 우리콩 국간장",
+      "source_id": "soup",
+      "values": {
+        "energy_kcal": 38.5,
+        "carbohydrate_g": 4.2,
+        "protein_g": 5.2,
+        "fat_g": 0.1,
+        "sodium_mg": 7090
+      }
+    },
+    "obok_doenjang": {
+      "name": "우리콩 된장",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "우리콩 재래식된장",
+      "source_id": "doenjang",
+      "values": {
+        "energy_kcal": 149.6,
+        "carbohydrate_g": 18.4,
+        "protein_g": 14.5,
+        "fat_g": 2,
+        "sodium_mg": 3605.1
+      }
+    },
+    "obok_wheat": {
+      "name": "우리밀 고추장",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "우리밀 고추장",
+      "source_id": "wheat",
+      "values": {
+        "energy_kcal": 224.7,
+        "carbohydrate_g": 50.8,
+        "protein_g": 3.8,
+        "fat_g": 0.7,
+        "sodium_mg": 2265.5
+      }
+    },
+    "obok_royal": {
+      "name": "황실고추장",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "황실 고추장",
+      "source_id": "royal",
+      "values": {
+        "energy_kcal": 226.4,
+        "carbohydrate_g": 51,
+        "protein_g": 3.8,
+        "fat_g": 0.8,
+        "sodium_mg": 2291.9
+      }
+    },
+    "obok_ssam": {
+      "name": "오복 양념쌈장",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "양념쌈장",
+      "source_id": "ssam",
+      "values": {
+        "energy_kcal": 228.8,
+        "carbohydrate_g": 45.8,
+        "protein_g": 6,
+        "fat_g": 2.4,
+        "sodium_mg": 2511.3
+      }
+    },
+    "obok_chun": {
+      "name": "오복 춘장",
+      "basis_unit": "g",
+      "basis_amount": 100,
+      "source": "오복식품 제공 제품사양 원본 데이터",
+      "source_row": "중화요리춘장",
+      "source_id": "chun",
+      "values": {
+        "energy_kcal": 157,
+        "carbohydrate_g": 26.5,
+        "protein_g": 11,
+        "fat_g": 1,
+        "sodium_mg": 3168.6
+      }
+    }
+  }
+}

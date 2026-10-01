@@ -76,3 +76,5 @@ footer{text-align:center;color:#948980;padding:30px}
 @media(max-width:760px){.school-menu-grid,.weekly-shopping{grid-template-columns:1fr}}
 
 .nutrition-info{margin-top:24px;padding:18px;background:#f5f7f2;border-radius:14px;line-height:1.7}.nutrition-info h3,.nutrition-info h4{margin-top:0}.school-day ol{padding-left:22px;line-height:1.8}.prefs{flex-wrap:wrap}
+
+.nutrition-table{width:100%;border-collapse:collapse;margin:12px 0}.nutrition-table th,.nutrition-table td{padding:8px;border-bottom:1px solid #dce2d7;text-align:left}.nutrition-table td{text-align:right;font-weight:700}
