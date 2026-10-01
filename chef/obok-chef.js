@@ -1,3 +1,31 @@
+let language='ko';
+try{language=localStorage.getItem('obok-chef-language')==='en'?'en':'ko';}catch{}
+const L=(ko,en)=>language==='en'?en:ko;
+function localizedError(data){
+ if(!data.error)return '';
+ if(language!=='en')return data.error;
+ const messages={RATE_LIMITED:'Too many requests. Please wait a minute and try again.',AI_TIMEOUT:'The AI response timed out. Please try again shortly.',AI_UPSTREAM_RATE_LIMIT:'The AI service is busy. Please try again shortly.',AI_BUSY:'The AI service is temporarily unavailable. Please try again shortly.'};
+ return messages[data.code] || (/[가-힣]/.test(data.error)?'The request failed. Please try again shortly.':data.error);
+}
+const PRODUCT_EN={
+ '황가 오복양조':'OBOK Hwangga Brewed Soy Sauce','오복 양조간장':'OBOK Brewed Soy Sauce',
+ '우리콩 국간장':'OBOK Soybean Soup Soy Sauce','우리콩 된장':'OBOK Soybean Doenjang',
+ '우리밀 고추장':'OBOK Wheat Gochujang','황실고추장':'OBOK Hwangsil Gochujang',
+ '오복 양념쌈장':'OBOK Seasoned Ssamjang','오복 춘장':'OBOK Chunjang'
+};
+function displayProduct(name){return language==='en'?(PRODUCT_EN[name]||name):name;}
+function displayDay(day){return language==='en'?({월요일:'Monday',화요일:'Tuesday',수요일:'Wednesday',목요일:'Thursday',금요일:'Friday'}[day]||day):day;}
+let activeRequests=0;
+function setBusy(busy){activeRequests=Math.max(0,activeRequests+(busy?1:-1));document.querySelectorAll('[data-language]').forEach(b=>b.disabled=activeRequests>0);}
+function applyLanguage(){
+ document.documentElement.lang=language;
+ document.querySelector('meta[name="description"]').content=L('냉장고 사진이나 재료를 알려주면 오복이가 만들 수 있는 요리를 추천해드립니다.','Discover recipes from fridge photos or ingredients with OBOK AI Chef.');
+ document.title=L('오복 AI 셰프 | 오복식품','OBOK AI Chef | OBOK Foods');
+ document.querySelectorAll('[data-ko][data-en]').forEach(el=>el.textContent=el.dataset[language]);
+ document.querySelectorAll('[data-en-placeholder]').forEach(el=>el.placeholder=el.getAttribute('data-'+language+'-placeholder'));
+ document.querySelectorAll('[data-en-alt]').forEach(el=>el.alt=el.getAttribute('data-'+language+'-alt'));
+ document.querySelectorAll('[data-language]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.language===language)));
+}
 const $=s=>document.querySelector(s);
 const state={ingredients:[],recommendations:[],excludeNames:[],photosAnalyzed:0};
 
@@ -10,7 +38,7 @@ function renderChips(){
   state.ingredients.forEach((x,i)=>{
     const el=document.createElement('span');
     el.className='chip';
-    el.innerHTML=`${escapeHtml(x)}<button aria-label="삭제">×</button>`;
+    el.innerHTML=`${escapeHtml(x)}<button aria-label="${L('삭제','Remove')}">×</button>`;
     el.querySelector('button').onclick=()=>{state.ingredients.splice(i,1);renderChips()};
     c.appendChild(el);
   });
@@ -46,27 +74,28 @@ $('#photo').addEventListener('change',async e=>{
   show('#ingredients');
 
   if(!apiConfigured()){
-    setPhotoStatus('⚠️ AI 서버 주소가 연결되지 않았어요. 아래에서 재료를 직접 입력해 주세요.','error');
+    setPhotoStatus(L("⚠️ AI 서버 주소가 연결되지 않았어요. 아래에서 재료를 직접 입력해 주세요.","⚠️ The AI server is not connected. Enter ingredients below."),'error');
     e.target.value=''; return;
   }
 
   const remaining=Math.max(0,3-state.photosAnalyzed);
   const files=selected.slice(0,remaining);
   if(!files.length){
-    setPhotoStatus('📷 사진은 최대 3장까지 분석할 수 있어요.','success');
+    setPhotoStatus(L("📷 사진은 최대 3장까지 분석할 수 있어요.","📷 You can analyze up to 3 photos."),'success');
     e.target.value=''; return;
   }
 
+  setBusy(true);
   try{
     for(const file of files){
       const photoNo=state.photosAnalyzed+1;
-      setPhotoStatus(`🔍 ${photoNo}/3번째 사진을 AI가 살펴보고 있어요…`,'loading');
+      setPhotoStatus(`${L(`🔍 ${photoNo}/3번째 사진을 AI가 살펴보고 있어요…`,`🔍 AI is checking photo ${photoNo}/3…`)}`,'loading');
       const imageDataUrl=await resizeImageToDataURL(file);
       const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/analyze-fridge`,{
-        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageDataUrl})
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageDataUrl,language})
       });
       const data=await resp.json().catch(()=>({}));
-      if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
+      if(!resp.ok)throw new Error(localizedError(data)||`${L(`서버 오류 (${resp.status})`,`Server error (${resp.status})`)}`);
       const found=Array.isArray(data.ingredients)?data.ingredients.filter(Boolean):[];
       state.ingredients=[...new Set([...state.ingredients,...found])].slice(0,30);
       state.photosAnalyzed++; renderChips();
@@ -74,19 +103,19 @@ $('#photo').addEventListener('change',async e=>{
     const left=3-state.photosAnalyzed;
     setPhotoStatus(
       state.ingredients.length
-        ? `✅ 사진 ${state.photosAnalyzed}장 분석 완료 · ${state.ingredients.length}가지 재료를 찾았어요.${left?` 다른 구역 사진을 ${left}장 더 추가할 수 있어요.`:' 맞는지 확인해 주세요.'}`
-        : `😊 뚜렷한 재료를 찾지 못했어요.${left?` 다른 구역 사진을 ${left}장 더 추가해 보세요.`:''}`,
+        ? `${L(`✅ 사진 ${state.photosAnalyzed}장 분석 완료 · ${state.ingredients.length}가지 재료를 찾았어요.`,`✅ ${state.photosAnalyzed} photos analyzed · ${state.ingredients.length} ingredients found.`)}${left?`${L(` 다른 구역 사진을 ${left}장 더 추가할 수 있어요.`,` You can add ${left} more photos.`)}`:L(" 맞는지 확인해 주세요."," Please check the ingredients.")}`
+        : `${L(`😊 뚜렷한 재료를 찾지 못했어요.`,`😊 No clear ingredients were found.`)}${left?`${L(` 다른 구역 사진을 ${left}장 더 추가해 보세요.`,` Try ${left} more photos of another area.`)}`:''}`,
       'success'
     );
   }catch(err){
     console.error(err);
-    setPhotoStatus(`⚠️ 사진 분석에 실패했어요. (${err.message})`,'error');
-  }finally{e.target.value='';}
+    setPhotoStatus(`${L(`⚠️ 사진 분석에 실패했어요. (${err.message})`,`⚠️ Photo analysis failed. (${err.message})`)}`,'error');
+  }finally{e.target.value='';setBusy(false);}
 });
 
 $('#manualBtn').onclick=()=>{
   state.ingredients=[]; state.photosAnalyzed=0; state.excludeNames=[];
-  setPhotoStatus('가지고 있는 재료를 하나씩 추가해 주세요.');
+  setPhotoStatus(L("가지고 있는 재료를 하나씩 추가해 주세요.","Add the ingredients you have."));
   renderChips(); show('#ingredients');
 };
 function add(){
@@ -119,12 +148,12 @@ $('#ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')add();})
 function normalizeRecipe(r){
   const products=Array.isArray(r.products)?r.products:[];
   return {
-    name:String(r.name||'오늘의 오복 요리'),
+    name:String(r.name||L("오늘의 오복 요리","Today’s OBOK recipe")),
     emoji:String(r.emoji||'🍲'),
-    time:String(r.time||$('#time').value||'20분'),
-    level:String(r.level||'쉬움'),
+    time:String(r.time||$('#time').value||L("20분","20 min")),
+    level:String(r.level||L("쉬움","Easy")),
     product:String(r.product||products[0]||'오복 양조간장'),
-    desc:String(r.desc||r.reason||'냉장고 재료를 활용한 오복 AI 셰프 추천 메뉴입니다.'),
+    desc:String(r.desc||r.reason||L("냉장고 재료를 활용한 오복 AI 셰프 추천 메뉴입니다.","An OBOK AI recipe using your fridge ingredients.")),
     reason:String(r.reason||''),
     ingredients:Array.isArray(r.ingredients)?r.ingredients:[],
     steps:Array.isArray(r.steps)?r.steps:[],
@@ -146,15 +175,15 @@ function productImage(name){
   return '../assets/royal_soy.jpg';
 }
 function nutritionHtml(n){
- if(!n?.values)return '<section class="nutrition-info"><h3>예상 영양정보</h3><p>계산할 수 있는 영양자료가 없습니다. 서버 업데이트와 재료 자료를 확인해 주세요.</p></section>';
+ if(!n?.values)return `<section class="nutrition-info"><h3>${L('예상 영양정보','Estimated nutrition')}</h3><p>${L('계산할 수 있는 영양자료가 없습니다.','No nutrition data available.')}</p></section>`;
  const v=n.values;
- const title=n.complete?'1인분 예상 영양정보':'확인된 재료만 합산 · 1인분 예상값';
- const rows=[['열량',v.energy_kcal,'kcal'],['탄수화물',v.carbohydrate_g,'g'],['단백질',v.protein_g,'g'],['지방',v.fat_g,'g'],['나트륨',v.sodium_mg,'mg']];
- return `<section class="nutrition-info"><h3>${title}</h3><table class="nutrition-table"><tbody>${rows.map(([name,value,unit])=>`<tr><th scope="row">${name}</th><td>${escapeHtml(value)} ${unit}</td></tr>`).join('')}</tbody></table><p>${n.complete?'등록된 재료 모두 계산':'전체 요리의 영양값이 아닙니다. 계산 제외: '+escapeHtml((n.missing||[]).join(', '))} · ${escapeHtml(n.matched_count)}/${escapeHtml(n.total_count)}개 재료 반영</p><small>${escapeHtml(n.note||'')}<br>출처: ${escapeHtml((n.sources||[]).join(' / '))}</small></section>`;
+ const title=n.complete?L('1인분 예상 영양정보','Estimated nutrition per serving'):L('확인된 재료만 합산 · 1인분 예상값','Known ingredients only · estimate per serving');
+ const rows=[[L('열량','Energy'),v.energy_kcal,'kcal'],[L('탄수화물','Carbohydrate'),v.carbohydrate_g,'g'],[L('단백질','Protein'),v.protein_g,'g'],[L('지방','Fat'),v.fat_g,'g'],[L('나트륨','Sodium'),v.sodium_mg,'mg']];
+ return `<section class="nutrition-info"><h3>${title}</h3><table class="nutrition-table"><tbody>${rows.map(([name,value,unit])=>`<tr><th scope="row">${name}</th><td>${escapeHtml(value)} ${unit}</td></tr>`).join('')}</tbody></table><p>${n.complete?L('등록된 재료 모두 계산','All listed ingredients included'):L('전체 요리의 영양값이 아닙니다. 계산 제외: ','Not the nutrition of the whole dish. Excluded: ')+escapeHtml((n.missing||[]).join(', '))} · ${escapeHtml(n.matched_count)}/${escapeHtml(n.total_count)} ${L('개 재료 반영','ingredients included')}</p><small>${L(n.note||'','Estimate based on total ingredient quantities divided by servings. Cooking losses, leftover sauces and actual portions are not included. General ingredients use USDA reference values; products vary.')}<br>${L('출처:','Sources:')} ${escapeHtml((n.sources||[]).map(x=>language==='en'?x.replace('오복식품 제공 제품사양 원본 데이터','Original OBOK product specifications'):x).join(' / '))}</small></section>`;
 }
 function productSizeText(options,name){
  const item=options.find(x=>x.name===name);
- return item?.sizes?.length ? '확인된 포장규격: '+item.sizes.join(' / ') : '포장규격은 영업팀에 확인해 주세요.';
+ return item?.sizes?.length ? L('확인된 포장규격: ','Confirmed package size: ')+item.sizes.join(' / ') : L('포장규격은 영업팀에 확인해 주세요.','Ask our sales team for package sizes.');
 }
 function renderRecommendations(list,more=false){
   state.recommendations=list.map(normalizeRecipe);
@@ -165,15 +194,15 @@ function renderRecommendations(list,more=false){
   document.querySelectorAll('#moreRecipesBtn').forEach(el=>el.remove());
 
   const head=$('#recommendations .section-head');
-  head.innerHTML=`<span class="eyebrow">STEP 2 · AI 추천</span><h2>${more?'다른 요리도 준비했어요!':'오늘은 이 요리 어때요?'}</h2><p>냉장고 재료와 선택한 인원·조리시간을 바탕으로 AI가 지금 만든 레시피예요.</p>`;
+  head.innerHTML=`<span class="eyebrow">${L(`STEP 2 · AI 추천`,`STEP 2 · AI suggestions`)}</span><h2>${more?L("다른 요리도 준비했어요!","Here are some more recipes!"):L("오늘은 이 요리 어때요?","How about these recipes?")}</h2><p>${L(`냉장고 재료와 선택한 인원·조리시간을 바탕으로 AI가 지금 만든 레시피예요.`,`AI recipes based on your ingredients, servings and cooking time.`)}</p>`;
   state.recommendations.forEach((r,i)=>{
     const el=document.createElement('article'); el.className='recipe';
-    el.innerHTML=`<div class="emoji">${escapeHtml(r.emoji)}</div><h3>${escapeHtml(r.name)}</h3><div class="meta">⏱ ${escapeHtml(r.time)} · 👨‍🍳 ${escapeHtml(r.level)}</div><p>${escapeHtml(r.desc)}</p><span class="product-badge">${escapeHtml(r.product)} 사용</span>`;
+    el.innerHTML=`<div class="emoji">${escapeHtml(r.emoji)}</div><h3>${escapeHtml(r.name)}</h3><div class="meta">⏱ ${escapeHtml(r.time)} · 👨‍🍳 ${escapeHtml(r.level)}</div><p>${escapeHtml(r.desc)}</p><span class="product-badge">${escapeHtml(displayProduct(r.product))} ${L("사용","used")}</span>`;
     el.onclick=()=>detail(i); grid.appendChild(el);
   });
   const moreBtn=document.createElement('button');
   moreBtn.className='primary wide'; moreBtn.id='moreRecipesBtn';
-  moreBtn.textContent='✨ 다른 요리 3개 더 추천';
+  moreBtn.textContent=L("✨ 다른 요리 3개 더 추천","✨ Suggest 3 more recipes");
   moreBtn.onclick=()=>requestAIRecipes(true);
   grid.after(moreBtn);
   show('#recommendations');
@@ -181,10 +210,10 @@ function renderRecommendations(list,more=false){
 async function requestAIRecipes(more=false){
   // 입력창에 적어 둔 재료도 자동 등록
   commitPendingIngredients();
-  if(!state.ingredients.length){alert('재료를 한 가지 이상 입력해 주세요.');return;}
+  if(!state.ingredients.length){alert(L("재료를 한 가지 이상 입력해 주세요.","Please enter at least one ingredient."));return;}
 
   if(!apiConfigured()){
-    alert('AI 서버가 연결되지 않았습니다.');
+    alert(L("AI 서버가 연결되지 않았습니다.","The AI server is not connected."));
     return;
   }
 
@@ -194,10 +223,11 @@ async function requestAIRecipes(more=false){
   if(btn){
     btn.disabled = true;
     btn.textContent = more
-      ? '👨‍🍳 새로운 요리 3개를 만들고 있어요...'
-      : '👨‍🍳 오복이가 메뉴를 고민하고 있어요...';
+      ? L("👨‍🍳 새로운 요리 3개를 만들고 있어요...","👨‍🍳 Creating 3 more recipes...")
+      : L("👨‍🍳 오복이가 메뉴를 고민하고 있어요...","👨‍🍳 OBOK is thinking of recipes...");
   }
 
+  setBusy(true);
   try {
 
     // "다른 요리 3개 더 추천"일 경우
@@ -225,6 +255,7 @@ async function requestAIRecipes(more=false){
           'Content-Type':'application/json'
         },
         body:JSON.stringify({
+          language,
           ingredients: state.ingredients,
           season: $('#season').value,
           people: $('#people').value,
@@ -241,13 +272,13 @@ async function requestAIRecipes(more=false){
     const data = await resp.json().catch(()=>({}));
 
     if(!resp.ok){
-      throw new Error(data.error || `서버 오류 (${resp.status})`);
+      throw new Error(localizedError(data) || `${L(`서버 오류 (${resp.status})`,`Server error (${resp.status})`)}`);
     }
 
     const list = Array.isArray(data.recipes) ? data.recipes : [];
 
     if(!list.length){
-      throw new Error('추천 레시피를 받지 못했습니다.');
+      throw new Error(L("추천 레시피를 받지 못했습니다.","No recipes were returned."));
     }
 
     // 새로 받은 요리 3개 표시
@@ -258,10 +289,11 @@ async function requestAIRecipes(more=false){
     console.error(err);
 
     alert(
-      `AI 레시피 추천에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`
+      `${L(`AI 레시피 추천에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`,`Recipe generation failed.\nPlease try again shortly.\n\n${err.message}`)}`
     );
 
   } finally {
+    setBusy(false);
 
     // 기존 버튼이 아직 화면에 존재할 때만 원상복구
     if(btn && document.body.contains(btn)){
@@ -275,15 +307,15 @@ $('#recommendBtn').onclick=()=>requestAIRecipes(false);
 function detail(i){
   const r=state.recommendations[i]; if(!r)return;
   const ing=r.ingredients.length?r.ingredients:state.ingredients;
-  const steps=r.steps.length?r.steps:['재료를 준비해 주세요.','재료를 먹기 좋은 크기로 손질해 주세요.','팬이나 냄비에서 재료를 익혀 주세요.','추천된 오복 양념으로 간을 맞춰 주세요.','재료가 충분히 익도록 마무리해 주세요.','접시에 담아 맛있게 즐겨 주세요.'];
+  const steps=r.steps.length?r.steps:[L("재료를 준비해 주세요.","Prepare the ingredients."),L("재료를 먹기 좋은 크기로 손질해 주세요.","Cut the ingredients into bite-size pieces."),L("팬이나 냄비에서 재료를 익혀 주세요.","Cook the ingredients in a pan or pot."),L("추천된 오복 양념으로 간을 맞춰 주세요.","Season with the recommended OBOK products."),L("재료가 충분히 익도록 마무리해 주세요.","Finish cooking the ingredients thoroughly."),L("접시에 담아 맛있게 즐겨 주세요.","Serve and enjoy.")];
   let products=r.products;
   if(!products.length&&r.product)products=[r.product];
   $('#detailContent').innerHTML=`
-    <span class="eyebrow">STEP 3 · 오복 AI 셰프와 요리하기</span>
+    <span class="eyebrow">${L(`STEP 3 · 오복 AI 셰프와 요리하기`,`STEP 3 · Cook with OBOK AI Chef`)}</span>
     <h2 class="recipe-title">${escapeHtml(r.emoji)} ${escapeHtml(r.name)}</h2>
-    <p class="lead">${escapeHtml(r.desc)}<br><b>${escapeHtml(r.servings)} 기준 · ${escapeHtml(r.season)}</b><br><b>사용 재료:</b> ${ing.map(escapeHtml).join(', ')||'기본 식재료'}</p>
-    <div class="steps">${steps.map((s,j)=>`<div class="step"><b>${j+1}. 조리 단계</b>${escapeHtml(s)}</div>`).join('')}</div>
-    ${products.length?`<div class="shop"><h3>🛒 이 요리에 어울리는 오복제품</h3><p class="lead">AI가 레시피에 자연스럽게 어울리는 오복 제품을 함께 제안했어요.</p>${products.map(p=>{const name=Array.isArray(p)?p[0]:p;return `<div class="product"><img src="${productImage(name)}" alt="${escapeHtml(name)}"><div class="product-copy"><b>${escapeHtml(name)}</b><p>${escapeHtml(productSizeText(r.product_options,name))}</p></div></div>`}).join('')}</div>`:''}`;
+    <p class="lead">${escapeHtml(r.desc)}<br><b>${L(`${escapeHtml(r.servings)} 기준 · ${escapeHtml(r.season)}`,`${escapeHtml(r.servings)} · ${escapeHtml(r.season)}`)}</b><br><b>${L(`사용 재료:`,`Ingredients:`)}</b> ${ing.map(escapeHtml).join(', ')||L("기본 식재료","Basic ingredients")}</p>
+    <div class="steps">${steps.map((s,j)=>`<div class="step"><b>${j+1}. ${L(`조리 단계`,`Cooking step`)}</b>${escapeHtml(s)}</div>`).join('')}</div>
+    ${products.length?`<div class="shop"><h3>${L(`🛒 이 요리에 어울리는 오복제품`,`🛒 OBOK products for this recipe`)}</h3><p class="lead">${L(`AI가 레시피에 자연스럽게 어울리는 오복 제품을 함께 제안했어요.`,`OBOK products suggested for this recipe.`)}</p>${products.map(p=>{const name=Array.isArray(p)?p[0]:p;return `<div class="product"><img src="${productImage(name)}" alt="${escapeHtml(displayProduct(name))}"><div class="product-copy"><b>${escapeHtml(displayProduct(name))}</b><p>${escapeHtml(productSizeText(r.product_options,name))}</p></div></div>`}).join('')}</div>`:''}`;
   $('#detailContent').insertAdjacentHTML('beforeend',nutritionHtml(r.nutrition));
   show('#detail');
 }
@@ -300,31 +332,45 @@ function selectChefMode(mode){
 homeChefMode.onclick=()=>selectChefMode('home'); schoolChefMode.onclick=()=>selectChefMode('school');
 
 $('#schoolRecommendBtn').onclick=async()=>{
- if(!apiConfigured()){alert('AI 서버가 연결되지 않았습니다.');return;}
- const btn=$('#schoolRecommendBtn'),old=btn.textContent; btn.disabled=true;btn.textContent='👨‍🍳 월~금 급식과 식재료를 구성하고 있어요...';
+ if(!apiConfigured()){alert(L("AI 서버가 연결되지 않았습니다.","The AI server is not connected."));return;}
+ setBusy(true);
+ const btn=$('#schoolRecommendBtn'),old=btn.textContent; btn.disabled=true;btn.textContent=L("👨‍🍳 월~금 급식과 식재료를 구성하고 있어요...","👨‍🍳 Planning Monday–Friday meals and ingredients...");
  try{
   const people=Math.max(1,Math.min(5000,Math.floor(Number($('#schoolPeople').value)||500)));
   const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-school-menu`,{
    method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({schoolLevel:$('#schoolLevel').value,season:$('#schoolSeason').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',requiredMenus:$('#schoolRequiredMenus').value||'',excludedMenus:$('#schoolExcludedMenus').value||'',extraRequest:$('#schoolRequest').value||''})
+   body:JSON.stringify({language,schoolLevel:$('#schoolLevel').value,season:$('#schoolSeason').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',requiredMenus:$('#schoolRequiredMenus').value||'',excludedMenus:$('#schoolExcludedMenus').value||'',extraRequest:$('#schoolRequest').value||''})
   });
-  const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(data.error||`서버 오류 (${resp.status})`);
-  const days=Array.isArray(data.days)?data.days:[]; if(days.length!==5)throw new Error('월~금 5일 식단을 모두 받지 못했습니다.');
+  const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(localizedError(data)||`${L(`서버 오류 (${resp.status})`,`Server error (${resp.status})`)}`);
+  const days=Array.isArray(data.days)?data.days:[]; if(days.length!==5)throw new Error(L("월~금 5일 식단을 모두 받지 못했습니다.","A complete 5-day menu was not returned."));
   const grid=$('#schoolMenuGrid');grid.innerHTML='';
   days.forEach(d=>{
    const menu=(Array.isArray(d.menu)?d.menu:[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('');
    const ing=(Array.isArray(d.ingredients)?d.ingredients:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
-   const products=(Array.isArray(d.obok_products)?d.obok_products:[]).map(x=>`<span class="school-product">${escapeHtml(x)} · ${escapeHtml(productSizeText(d.product_options||[],x))}</span>`).join('');
+   const products=(Array.isArray(d.obok_products)?d.obok_products:[]).map(x=>`<span class="school-product">${escapeHtml(displayProduct(x))} · ${escapeHtml(productSizeText(d.product_options||[],x))}</span>`).join('');
    const el=document.createElement('article');el.className='school-day';
-   el.innerHTML=`<h3>${escapeHtml(d.day||'')}</h3><ul class="school-menu-list">${menu}</ul><p class="balance-note">${escapeHtml(d.balance_note||'')}</p><h4>주요 식재료 · ${people.toLocaleString()}명 기준</h4><ul class="school-ingredients">${ing}</ul>${products?`<div class="school-products">${products}</div>`:''}`;
-   el.insertAdjacentHTML('beforeend',`<h4>주찬 조리과정</h4><ol>${(d.cooking_steps||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')||'<li>서버 코드 업데이트 후 제공됩니다.</li>'}</ol>${nutritionHtml(d.nutrition)}`);
+   el.innerHTML=`<h3>${escapeHtml(displayDay(d.day||''))}</h3><ul class="school-menu-list">${menu}</ul><p class="balance-note">${escapeHtml(d.balance_note||'')}</p><h4>${L(`주요 식재료 · `,`Ingredients · `)}${L(`${people.toLocaleString()}명 기준`,`${people.toLocaleString()} students`)}</h4><ul class="school-ingredients">${ing}</ul>${products?`<div class="school-products">${products}</div>`:''}`;
+   el.insertAdjacentHTML('beforeend',`<h4>${L(`주찬 조리과정`,`Main dish cooking steps`)}</h4><ol>${(d.cooking_steps||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')||`<li>${L('서버 코드 업데이트 후 제공됩니다.','Available after the server update.')}</li>`}</ol>${nutritionHtml(d.nutrition)}`);
    grid.appendChild(el);
   });
   const oldSummary=document.querySelector('#schoolResults .school-summary'); if(oldSummary)oldSummary.remove();
   const summary=document.createElement('div');summary.className='card school-summary';
   const shopping=(Array.isArray(data.weekly_shopping)?data.weekly_shopping:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
-  summary.innerHTML=`<div class="section-head"><span class="eyebrow">WEEKLY SHOPPING</span><h2>한 주 주요 식재료 취합</h2><p>${people.toLocaleString()}명 급식 기준 AI 예상 구매량입니다.</p></div><ul class="weekly-shopping">${shopping}</ul><p class="review-note">※ ${escapeHtml(data.review_note||'실제 제공 전 학교 영양사가 최종 검토해 주세요.')}</p>`;
+  summary.innerHTML=`<div class="section-head"><span class="eyebrow">WEEKLY SHOPPING</span><h2>${L(`한 주 주요 식재료 취합`,`Weekly ingredient shopping list`)}</h2><p>${L(`${people.toLocaleString()}명 급식 기준 AI 예상 구매량입니다.`,`AI estimated shopping quantities for ${people.toLocaleString()} students.`)}</p></div><ul class="weekly-shopping">${shopping}</ul><p class="review-note">※ ${escapeHtml(data.review_note||L("실제 제공 전 학교 영양사가 최종 검토해 주세요.","Have a qualified school nutritionist review the plan before serving."))}</p>`;
   $('#schoolResults').appendChild(summary); show('#schoolResults'); $('#schoolResults').scrollIntoView({behavior:'smooth',block:'start'});
- }catch(err){console.error(err);alert(`학교급식 식단 생성에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`)}
- finally{btn.disabled=false;btn.textContent=old;}
+ }catch(err){console.error(err);alert(`${L(`학교급식 식단 생성에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`,`School meal generation failed.\nPlease try again shortly.\n\n${err.message}`)}`)}
+ finally{btn.disabled=false;btn.textContent=old;setBusy(false);}
 };
+
+applyLanguage();
+document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>{
+ if(activeRequests||language===button.dataset.language)return;
+ language=button.dataset.language;
+ try{localStorage.setItem('obok-chef-language',language);}catch{}
+ state.recommendations=[];state.excludeNames=[];
+ ['#recommendations','#detail','#schoolResults'].forEach(id=>$(id).classList.add('hidden'));
+ $('#recipeGrid').innerHTML='';$('#detailContent').innerHTML='';$('#schoolMenuGrid').innerHTML='';
+ document.querySelectorAll('#moreRecipesBtn,.school-summary').forEach(el=>el.remove());
+ applyLanguage();renderChips();
+ if(!$('#ingredients').classList.contains('hidden'))setPhotoStatus(L('재료를 확인하고 새 언어로 추천받아 주세요.','Check your ingredients and request recipes in the selected language.'));
+}));

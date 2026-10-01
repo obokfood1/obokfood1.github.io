@@ -5,7 +5,7 @@ body{margin:0;background:#fbf6ee;color:var(--ink);font-family:Pretendard,"Noto S
 .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#111}
 .brand-symbol{width:48px;height:48px;object-fit:contain;border-radius:50%}
 .brand strong{font-size:25px;font-weight:900;letter-spacing:-.05em}
-.brand span{font-size:21px;font-weight:800;border-left:1px solid #d7d7d7;padding-left:18px;margin-left:7px}
+.brand>span{font-size:21px;font-weight:800;border-left:1px solid #d7d7d7;padding-left:18px;margin-left:7px}
 .home{color:#666;text-decoration:none;font-weight:800;font-size:17px;display:flex;align-items:center;gap:7px}
 .home-icon{font-size:28px;line-height:1}
 main{max-width:1180px;margin:auto;padding:48px 18px 80px}
@@ -45,7 +45,7 @@ button,.upload{border:0;border-radius:16px;padding:16px 23px;font-size:17px;font
 .buy{display:inline-block;background:var(--red);color:white;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:900}.buy.disabled{background:#aaa;pointer-events:none}
 footer{text-align:center;color:#948980;padding:30px}
 @media(max-width:760px){
- .topbar{height:64px;padding:0 14px}.brand-symbol{width:36px;height:36px}.brand strong{font-size:20px}.brand span{font-size:17px;padding-left:11px;margin-left:2px}.home{font-size:0}.home-icon{font-size:28px}
+ .topbar{height:64px;padding:0 14px}.brand-symbol{width:36px;height:36px}.brand strong{font-size:20px}.brand>span{font-size:17px;padding-left:11px;margin-left:2px}.home{font-size:0}.home-icon{font-size:28px}
  main{padding:14px 12px 52px}.card{border-radius:22px;padding:20px}.hero{grid-template-columns:1fr;min-height:auto;padding:26px 22px 18px}
  .hero h1{font-size:38px;margin-top:12px}.hero p{font-size:16px}.chef-wrap{order:-1;height:auto;margin:-4px 0 8px}.chef-wrap img{width:270px}
  .actions{flex-direction:column;margin-top:22px}.actions>*{width:100%;text-align:center}.hero small{font-size:12px}
@@ -59,7 +59,7 @@ footer{text-align:center;color:#948980;padding:30px}
 
 .mode-section{margin-bottom:26px}.mode-heading{text-align:center;margin-bottom:20px}.mode-heading h1{font-size:38px;margin:8px 0 10px}.mode-heading p{color:var(--muted)}
 .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mode-card{background:#fff;border:2px solid var(--line);border-radius:24px;padding:25px;text-align:left;box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:5px 15px}
-.mode-card:hover,.mode-card.active{border-color:var(--red);background:#fffaf8}.mode-icon{font-size:34px;grid-row:1/3}.mode-card strong{font-size:22px}.mode-card span:last-child{font-size:14px;color:var(--muted);line-height:1.55}
+.mode-card:hover,.mode-card.active{border-color:var(--red);background:#fffaf8}.mode-icon{font-size:34px;grid-row:1/3}.mode-card strong{font-size:22px}.mode-card>span:last-child{font-size:14px;color:var(--muted);line-height:1.55}
 .school-hero h1{font-size:38px;margin:12px 0}.school-hero>p{color:var(--muted);line-height:1.7}.school-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
 .school-form label{font-weight:900;display:flex;flex-direction:column;gap:8px}.school-form input,.school-form select,.school-form textarea{width:100%;border:1px solid #ddd;border-radius:14px;padding:14px;background:#fff;font:inherit}.school-wide{grid-column:1/-1}
 .school-menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.school-day{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}.school-day h3{color:var(--red)}.school-day p{line-height:1.65}.school-day small{color:var(--muted)}
@@ -78,3 +78,7 @@ footer{text-align:center;color:#948980;padding:30px}
 .nutrition-info{margin-top:24px;padding:18px;background:#f5f7f2;border-radius:14px;line-height:1.7}.nutrition-info h3,.nutrition-info h4{margin-top:0}.school-day ol{padding-left:22px;line-height:1.8}.prefs{flex-wrap:wrap}
 
 .nutrition-table{width:100%;border-collapse:collapse;margin:12px 0}.nutrition-table th,.nutrition-table td{padding:8px;border-bottom:1px solid #dce2d7;text-align:left}.nutrition-table td{text-align:right;font-weight:700}
+
+.header-actions{display:flex;align-items:center;gap:20px}.language-switch{display:flex;border:1px solid #ddd;border-radius:12px;padding:3px;gap:3px}.language-switch button{font-size:14px;padding:8px 11px;border-radius:9px;background:transparent;color:#555}.language-switch button[aria-pressed="true"]{background:var(--red);color:white}.language-switch button:disabled{opacity:.6;cursor:wait}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #3f8d43;outline-offset:3px}
+html[lang="en"] .hero h1{font-size:44px;letter-spacing:-.025em}html[lang="en"] .brand>span{font-size:20px}html[lang="en"] .prefs label{gap:10px}html[lang="en"] .prefs select{max-width:60%}
+@media(max-width:760px){.header-actions{gap:8px}.language-switch button{font-size:12px;padding:7px 8px}.brand>span{padding-left:7px!important;margin-left:0!important;font-size:15px!important}.brand{gap:6px}.brand strong{font-size:17px}.brand-symbol{width:30px;height:30px}html[lang="en"] .hero h1{font-size:34px}.add-row input{min-width:0}.add-row button{padding:12px}.school-ingredients b,.weekly-shopping b{white-space:normal}}
