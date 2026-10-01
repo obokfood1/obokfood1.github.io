@@ -74,3 +74,5 @@ footer{text-align:center;color:#948980;padding:30px}
 .school-products{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.school-product{background:#fff0ef;color:var(--red);border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900}
 .school-summary{margin-top:20px}.weekly-shopping{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}.review-note{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.6}
 @media(max-width:760px){.school-menu-grid,.weekly-shopping{grid-template-columns:1fr}}
+
+.nutrition-info{margin-top:24px;padding:18px;background:#f5f7f2;border-radius:14px;line-height:1.7}.nutrition-info h3,.nutrition-info h4{margin-top:0}.school-day ol{padding-left:22px;line-height:1.8}.prefs{flex-wrap:wrap}

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>오복 AI 요리사 | 오복식품</title>
 <meta name="description" content="냉장고 사진이나 재료를 알려주면 오복이가 만들 수 있는 요리를 추천해드립니다.">
-<link rel="stylesheet" href="obok-chef.css?v=6.1">
+<link rel="stylesheet" href="obok-chef.css?v=9.0">
 </head>
 <body>
 <header class="topbar">
@@ -56,8 +56,8 @@
       <button id="addBtn">+ 추가</button>
     </div>
     <div class="prefs">
-      <label>인원<select id="people"><option>1명</option><option selected>2명</option><option>3~4명</option><option>5명 이상</option></select></label>
-      <label>조리시간<select id="time"><option>10분 이내</option><option selected>20분 이내</option><option>30분 이내</option><option>상관없음</option></select></label>
+      <label>인원<select id="people"><option>1명</option><option selected>2명</option><option>3명</option><option>4명</option><option>5명</option><option>6명</option></select></label>
+      <label>계절<select id="season"><option value="자동">현재 계절</option><option>봄</option><option>여름</option><option>가을</option><option>겨울</option></select></label><label>조리시간<select id="time"><option>10분 이내</option><option selected>20분 이내</option><option>30분 이내</option><option>상관없음</option></select></label>
     </div>
     <button class="primary wide" id="recommendBtn">🍳 이 재료로 요리 추천받기</button>
   </section>
@@ -80,7 +80,7 @@
       <div class="school-form">
         <label>학교급<select id="schoolLevel"><option>초등학교</option><option selected>중학교</option><option>고등학교</option></select></label>
         <label>급식 인원<input id="schoolPeople" type="number" min="1" max="5000" value="500"></label>
-        <label>식단 기간<select id="schoolPeriod"><option selected>월~금 5일</option></select></label>
+        <label>계절<select id="schoolSeason"><option value="자동">현재 계절</option><option>봄</option><option>여름</option><option>가을</option><option>겨울</option></select></label><label>식단 기간<select id="schoolPeriod"><option selected>월~금 5일</option></select></label>
         <label>1인당 식재료 예산(선택)<input id="schoolBudget" type="number" min="0" step="100" placeholder="예: 4500"></label>
         <label class="school-wide">알레르기·제외 식재료<input id="schoolExclude" placeholder="예: 땅콩, 새우 / 없으면 비워두세요"></label>
         <label class="school-wide">꼭 포함할 음식(선택)<input id="schoolRequiredMenus" placeholder="예: 수요일 잔치국수, 금요일 제육볶음"></label>
@@ -98,7 +98,7 @@
 </main>
 
 <footer>© O'Bok Foods Co., Ltd. · 좋은 식탁, 행복한 오늘</footer>
-<script src="config.js?v=6.1"></script>
-<script src="obok-chef.js?v=6.1"></script>
+<script src="config.js?v=9.0"></script>
+<script src="obok-chef.js?v=9.0"></script>
 </body>
 </html>
