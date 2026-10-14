@@ -8,12 +8,28 @@ function localizedError(data){
  return messages[data.code] || (/[가-힣]/.test(data.error)?'The request failed. Please try again shortly.':data.error);
 }
 const PRODUCT_EN={
- '황가 오복양조':'OBOK Hwangga Brewed Soy Sauce','오복 양조간장':'OBOK Brewed Soy Sauce',
- '우리콩 국간장':'OBOK Soybean Soup Soy Sauce','우리콩 된장':'OBOK Soybean Doenjang',
- '우리밀 고추장':'OBOK Wheat Gochujang','황실고추장':'OBOK Hwangsil Gochujang',
- '오복 양념쌈장':'OBOK Seasoned Ssamjang','오복 춘장':'OBOK Chunjang'
+ '오복 황가 양조간장':'OBOK Hwangga Brewed Soy Sauce','오복 양조간장':'OBOK Brewed Soy Sauce',
+ '오복 우리콩 국간장':'OBOK Soybean Soup Soy Sauce','오복 우리콩 된장':'OBOK Soybean Doenjang',
+ '오복 우리밀 고추장':'OBOK Wheat Gochujang','오복 황실고추장':'OBOK Hwangsil Gochujang',
+ '오복 우리콩 간장':'OBOK Soybean Soy Sauce','오복 양념쌈장':'OBOK Seasoned Ssamjang','오복 춘장':'OBOK Chunjang'
 };
-function displayProduct(name){return language==='en'?(PRODUCT_EN[name]||name):name;}
+const SCHOOL_PRODUCTS=['오복 우리밀 고추장','오복 우리콩 된장','오복 우리콩 간장','오복 우리콩 국간장'];
+const PRODUCT_ALIASES={'우리밀 고추장':'오복 우리밀 고추장','우리콩 된장':'오복 우리콩 된장','우리콩 간장':'오복 우리콩 간장','우리콩 국간장':'오복 우리콩 국간장','황실고추장':'오복 황실고추장','황가 오복양조':'오복 황가 양조간장'};
+function canonicalProduct(name){const n=String(Array.isArray(name)?name[0]:name||'').trim();return PRODUCT_ALIASES[n]||n;}
+function brandText(text,school=false){
+ let value=String(text||'');
+ // One pass, longest names first: prevents duplicate 오복 prefixes and confusion with 국간장.
+ const names=['오복 우리콩 국간장','오복 우리콩 간장','오복 우리콩 된장','오복 우리밀 고추장',...Object.keys(PRODUCT_EN),...Object.keys(PRODUCT_ALIASES)].sort((a,b)=>b.length-a.length);
+ value=value.replace(new RegExp(names.join('|'),'g'),match=>canonicalProduct(match));
+ if(school){value=value.replace(/(?<![가-힣])(?:고추장|된장|국간장|간장)(?![가-힣])/g,(match,offset)=>value.slice(Math.max(0,offset-10),offset).match(/오복 우리(?:밀|콩) $/)?match:({'고추장':'오복 우리밀 고추장','된장':'오복 우리콩 된장','간장':'오복 우리콩 간장','국간장':'오복 우리콩 국간장'}[match]));}
+ return value;
+}
+function displayProduct(name){const n=canonicalProduct(name);return language==='en'?(PRODUCT_EN[n]||n):n;}
+function ingredientLabel(item,school=false){return brandText(typeof item==='string'?item:[item?.name,item?.quantity||item?.household||''].filter(Boolean).join(' '),school);}
+function usedSchoolProducts(day){
+ const ingredients=(day.ingredients||[]).map(x=>brandText(x.name||'',true));
+ return SCHOOL_PRODUCTS.filter(p=>ingredients.some(x=>x.includes(p)||x.includes(PRODUCT_EN[p])));
+}
 function displayDay(day){return language==='en'?({월요일:'Monday',화요일:'Tuesday',수요일:'Wednesday',목요일:'Thursday',금요일:'Friday'}[day]||day):day;}
 let activeRequests=0;
 function setBusy(busy){activeRequests=Math.max(0,activeRequests+(busy?1:-1));document.querySelectorAll('[data-language]').forEach(b=>b.disabled=activeRequests>0);}
@@ -146,17 +162,17 @@ $('#addBtn').onclick=add;
 $('#ingredientInput').addEventListener('keydown',e=>{if(e.key==='Enter')add();});
 
 function normalizeRecipe(r){
-  const products=Array.isArray(r.products)?r.products:[];
+  const products=(Array.isArray(r.products)?r.products:[]).map(canonicalProduct);
   return {
     name:String(r.name||L("오늘의 오복 요리","Today’s OBOK recipe")),
     emoji:String(r.emoji||'🍲'),
     time:String(r.time||$('#time').value||L("20분","20 min")),
     level:String(r.level||L("쉬움","Easy")),
-    product:String(r.product||products[0]||'오복 양조간장'),
-    desc:String(r.desc||r.reason||L("냉장고 재료를 활용한 오복 AI 셰프 추천 메뉴입니다.","An OBOK AI recipe using your fridge ingredients.")),
+    product:canonicalProduct(r.product||products[0]||''),
+    desc:brandText(r.desc||r.reason||L("냉장고 재료를 활용한 오복 AI 셰프 추천 메뉴입니다.","An OBOK AI recipe using your fridge ingredients.")),
     reason:String(r.reason||''),
-    ingredients:Array.isArray(r.ingredients)?r.ingredients:[],
-    steps:Array.isArray(r.steps)?r.steps:[],
+    ingredients:Array.isArray(r.ingredients)?r.ingredients.map(x=>ingredientLabel(x)):[],
+    steps:Array.isArray(r.steps)?r.steps.map(x=>brandText(x)):[],
     servings:String(r.servings||$('#people').value),
     season:String(r.season||''),
     product_options:Array.isArray(r.product_options)?r.product_options:[],
@@ -166,6 +182,7 @@ function normalizeRecipe(r){
 }
 function productImage(name){
   const n=String(name||'');
+  if(n.includes('우리콩 간장'))return ''; // Product image is not yet supplied; do not display another soy sauce.
   if(n.includes('국간장'))return '../assets/soybean_soup_soy.jpg';
   if(n.includes('된장'))return '../assets/doenjang_500.jpg';
   if(n.includes('쌈장'))return '../assets/ssamjang_500.jpg';
@@ -197,8 +214,8 @@ function renderRecommendations(list,more=false){
   head.innerHTML=`<span class="eyebrow">${L(`STEP 2 · AI 추천`,`STEP 2 · AI suggestions`)}</span><h2>${more?L("다른 요리도 준비했어요!","Here are some more recipes!"):L("오늘은 이 요리 어때요?","How about these recipes?")}</h2><p>${L(`냉장고 재료와 선택한 인원·조리시간을 바탕으로 AI가 지금 만든 레시피예요.`,`AI recipes based on your ingredients, servings and cooking time.`)}</p>`;
   state.recommendations.forEach((r,i)=>{
     const el=document.createElement('article'); el.className='recipe';
-    el.innerHTML=`<div class="emoji">${escapeHtml(r.emoji)}</div><h3>${escapeHtml(r.name)}</h3><div class="meta">⏱ ${escapeHtml(r.time)} · 👨‍🍳 ${escapeHtml(r.level)}</div><p>${escapeHtml(r.desc)}</p><span class="product-badge">${escapeHtml(displayProduct(r.product))} ${L("사용","used")}</span>`;
-    el.onclick=()=>detail(i); grid.appendChild(el);
+    el.innerHTML=`<div class="emoji">${escapeHtml(r.emoji)}</div><h3>${escapeHtml(r.name)}</h3><div class="meta">⏱ ${escapeHtml(r.time)} · 👨‍🍳 ${escapeHtml(r.level)}</div><p>${escapeHtml(r.desc)}</p>${r.product?`<span class="product-badge">${escapeHtml(displayProduct(r.product))} ${L("사용","used")}</span>`:''}<section class="quick-recipe"><h4>${L('간단 레시피','Quick recipe')}</h4>${r.ingredients.length?`<p class="quick-ingredients"><b>${L('재료:','Ingredients:')}</b> ${r.ingredients.map(escapeHtml).join(', ')}</p>`:''}${r.steps.length?`<ol>${r.steps.slice(0,3).map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ol>`:`<p>${L('조리과정이 누락되었습니다. 다시 추천받아 주세요.','Cooking steps are missing. Please request new recipes.')}</p>`}<button type="button" class="recipe-detail-btn">${L('전체 레시피 보기','View full recipe')}</button></section>`;
+    el.querySelector(".recipe-detail-btn").onclick=()=>detail(i); grid.appendChild(el);
   });
   const moreBtn=document.createElement('button');
   moreBtn.className='primary wide'; moreBtn.id='moreRecipesBtn';
@@ -263,7 +280,7 @@ async function requestAIRecipes(more=false){
           preference:
             '사용자가 입력한 핵심 식재료를 요리의 중심으로 우선 활용해 주세요. ' +
             '특히 닭고기, 돼지고기, 소고기, 생선, 두부, 계란 같은 주재료가 있으면 이를 무시하고 단순한 대체 요리를 추천하지 마세요. ' +
-            '냉장고 재료를 최대한 활용하고 가정에서 쉽게 만들 수 있는 요리를 추천해 주세요.',
+            '냉장고 재료를 최대한 활용하고 가정에서 쉽게 만들 수 있는 요리를 추천해 주세요. 재료와 분량, 불 세기와 시간 및 조리단계를 반드시 반환해 주세요. 오복 제품은 재료명과 조리단계에서도 반드시 오복으로 시작하는 정식 제품명을 사용해 주세요.',
           excludeNames: state.excludeNames
         })
       }
@@ -315,7 +332,7 @@ function detail(i){
     <h2 class="recipe-title">${escapeHtml(r.emoji)} ${escapeHtml(r.name)}</h2>
     <p class="lead">${escapeHtml(r.desc)}<br><b>${L(`${escapeHtml(r.servings)} 기준 · ${escapeHtml(r.season)}`,`${escapeHtml(r.servings)} · ${escapeHtml(r.season)}`)}</b><br><b>${L(`사용 재료:`,`Ingredients:`)}</b> ${ing.map(escapeHtml).join(', ')||L("기본 식재료","Basic ingredients")}</p>
     <div class="steps">${steps.map((s,j)=>`<div class="step"><b>${j+1}. ${L(`조리 단계`,`Cooking step`)}</b>${escapeHtml(s)}</div>`).join('')}</div>
-    ${products.length?`<div class="shop"><h3>${L(`🛒 이 요리에 어울리는 오복제품`,`🛒 OBOK products for this recipe`)}</h3><p class="lead">${L(`AI가 레시피에 자연스럽게 어울리는 오복 제품을 함께 제안했어요.`,`OBOK products suggested for this recipe.`)}</p>${products.map(p=>{const name=Array.isArray(p)?p[0]:p;return `<div class="product"><img src="${productImage(name)}" alt="${escapeHtml(displayProduct(name))}"><div class="product-copy"><b>${escapeHtml(displayProduct(name))}</b><p>${escapeHtml(productSizeText(r.product_options,name))}</p></div></div>`}).join('')}</div>`:''}`;
+    ${products.length?`<div class="shop"><h3>${L(`🛒 이 요리에 어울리는 오복제품`,`🛒 OBOK products for this recipe`)}</h3><p class="lead">${L(`AI가 레시피에 자연스럽게 어울리는 오복 제품을 함께 제안했어요.`,`OBOK products suggested for this recipe.`)}</p>${products.map(p=>{const name=Array.isArray(p)?p[0]:p;return `<div class="product">${productImage(name)?`<img src="${productImage(name)}" alt="${escapeHtml(displayProduct(name))}">`:""}<div class="product-copy"><b>${escapeHtml(displayProduct(name))}</b><p>${escapeHtml(productSizeText(r.product_options,name))}</p></div></div>`}).join('')}</div>`:''}`;
   $('#detailContent').insertAdjacentHTML('beforeend',nutritionHtml(r.nutrition));
   show('#detail');
 }
@@ -339,23 +356,23 @@ $('#schoolRecommendBtn').onclick=async()=>{
   const people=Math.max(1,Math.min(5000,Math.floor(Number($('#schoolPeople').value)||500)));
   const resp=await fetch(`${window.OBOK_AI_API.replace(/\/$/,'')}/recommend-school-menu`,{
    method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({language,schoolLevel:$('#schoolLevel').value,season:$('#schoolSeason').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',requiredMenus:$('#schoolRequiredMenus').value||'',excludedMenus:$('#schoolExcludedMenus').value||'',extraRequest:$('#schoolRequest').value||''})
+   body:JSON.stringify({language,schoolLevel:$('#schoolLevel').value,season:$('#schoolSeason').value,people,budget:Number($('#schoolBudget').value)||0,exclude:$('#schoolExclude').value||'',requiredMenus:$('#schoolRequiredMenus').value||'',excludedMenus:$('#schoolExcludedMenus').value||'',extraRequest:($('#schoolRequest').value||'')+'\n학교급식 오복 제품은 오복 우리밀 고추장, 오복 우리콩 된장, 오복 우리콩 간장, 오복 우리콩 국간장 4개만 사용하세요. 실제 사용한 제품을 재료와 사용량, obok_products에 반드시 표시하세요. 다른 오복 제품은 사용하지 마세요.'})
   });
   const data=await resp.json().catch(()=>({})); if(!resp.ok)throw new Error(localizedError(data)||`${L(`서버 오류 (${resp.status})`,`Server error (${resp.status})`)}`);
   const days=Array.isArray(data.days)?data.days:[]; if(days.length!==5)throw new Error(L("월~금 5일 식단을 모두 받지 못했습니다.","A complete 5-day menu was not returned."));
   const grid=$('#schoolMenuGrid');grid.innerHTML='';
   days.forEach(d=>{
    const menu=(Array.isArray(d.menu)?d.menu:[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('');
-   const ing=(Array.isArray(d.ingredients)?d.ingredients:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
-   const products=(Array.isArray(d.obok_products)?d.obok_products:[]).map(x=>`<span class="school-product">${escapeHtml(displayProduct(x))} · ${escapeHtml(productSizeText(d.product_options||[],x))}</span>`).join('');
+   const ing=(Array.isArray(d.ingredients)?d.ingredients:[]).map(x=>`<li><span>${escapeHtml(language==='ko'?brandText(x.name||'',true):x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
+   const products=usedSchoolProducts(d).map(x=>`<span class="school-product">${escapeHtml(displayProduct(x))} · ${escapeHtml(productSizeText(d.product_options||[],x))}</span>`).join('');
    const el=document.createElement('article');el.className='school-day';
    el.innerHTML=`<h3>${escapeHtml(displayDay(d.day||''))}</h3><ul class="school-menu-list">${menu}</ul><p class="balance-note">${escapeHtml(d.balance_note||'')}</p><h4>${L(`주요 식재료 · `,`Ingredients · `)}${L(`${people.toLocaleString()}명 기준`,`${people.toLocaleString()} students`)}</h4><ul class="school-ingredients">${ing}</ul>${products?`<div class="school-products">${products}</div>`:''}`;
-   el.insertAdjacentHTML('beforeend',`<h4>${L(`주찬 조리과정`,`Main dish cooking steps`)}</h4><ol>${(d.cooking_steps||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('')||`<li>${L('서버 코드 업데이트 후 제공됩니다.','Available after the server update.')}</li>`}</ol>${nutritionHtml(d.nutrition)}`);
+   el.insertAdjacentHTML('beforeend',`<h4>${L(`주찬 조리과정`,`Main dish cooking steps`)}</h4><ol>${(d.cooking_steps||[]).map(x=>`<li>${escapeHtml(brandText(x,true))}</li>`).join('')||`<li>${L('서버 코드 업데이트 후 제공됩니다.','Available after the server update.')}</li>`}</ol>${nutritionHtml(d.nutrition)}`);
    grid.appendChild(el);
   });
   const oldSummary=document.querySelector('#schoolResults .school-summary'); if(oldSummary)oldSummary.remove();
   const summary=document.createElement('div');summary.className='card school-summary';
-  const shopping=(Array.isArray(data.weekly_shopping)?data.weekly_shopping:[]).map(x=>`<li><span>${escapeHtml(x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
+  const shopping=(Array.isArray(data.weekly_shopping)?data.weekly_shopping:[]).map(x=>`<li><span>${escapeHtml(language==='ko'?brandText(x.name||'',true):x.name||'')}</span><b>${escapeHtml(x.quantity||'')}</b></li>`).join('');
   summary.innerHTML=`<div class="section-head"><span class="eyebrow">WEEKLY SHOPPING</span><h2>${L(`한 주 주요 식재료 취합`,`Weekly ingredient shopping list`)}</h2><p>${L(`${people.toLocaleString()}명 급식 기준 AI 예상 구매량입니다.`,`AI estimated shopping quantities for ${people.toLocaleString()} students.`)}</p></div><ul class="weekly-shopping">${shopping}</ul><p class="review-note">※ ${escapeHtml(data.review_note||L("실제 제공 전 학교 영양사가 최종 검토해 주세요.","Have a qualified school nutritionist review the plan before serving."))}</p>`;
   $('#schoolResults').appendChild(summary); show('#schoolResults'); $('#schoolResults').scrollIntoView({behavior:'smooth',block:'start'});
  }catch(err){console.error(err);alert(`${L(`학교급식 식단 생성에 실패했어요.\n잠시 후 다시 시도해 주세요.\n\n${err.message}`,`School meal generation failed.\nPlease try again shortly.\n\n${err.message}`)}`)}
