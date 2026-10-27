@@ -35,6 +35,7 @@ export default {async fetch(request,env){const origin=request.headers.get('Origi
  if(origin&&!allowed.includes(origin))throw fail('허용되지 않은 사이트입니다.',403);
  if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
  const path=new URL(request.url).pathname.replace(/^\/staff\/api(?=\/|$)/,'');
+ if((path==='/'||path==='/health')&&request.method==='GET')return json({ok:true,service:'obok-staff-api',message:'직원용 서버 코드가 배포되었습니다. 로그인과 사진 분석에는 계정·AI·저장소 설정이 필요합니다.'});
  if(path==='/login'&&request.method==='POST'){await limited(env.LOGIN_LIMITER,request.headers.get('CF-Connecting-IP')||'unknown');const b=await body(request);const list=users(env);const username=String(b.username||'').slice(0,80),password=String(b.password||'');if(password.length>256)throw fail('아이디 또는 비밀번호를 확인해 주세요.',401);const u=list.find(x=>x.username===username);const salt=u?.salt||'0'.repeat(32),expected=u?.hash||'0'.repeat(64);const hash=await hashPassword(password,salt);if(!equal(hash,expected)||!u)throw fail('아이디 또는 비밀번호를 확인해 주세요.',401);const token=await sign({kind:'session',username:u.username,exp:Date.now()+8*3600000},env);return json({token,user:{name:u.name||u.username,role:u.role==='admin'?'admin':'staff'}});}
  const u=await authenticate(request,env);
  if(path==='/analyze'&&request.method==='POST'){await limited(env.ANALYSIS_LIMITER,u.username);return json(await analyze(await body(request),env,u));}

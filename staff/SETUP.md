@@ -4,6 +4,8 @@
 
 ## 1. 별도 Worker와 저장소 준비
 
+Cloudflare 웹 편집기를 사용하는 경우에는 기본 `worker.js` 전체를 `staff/worker-dashboard.js` 내용으로 교체하고 Deploy를 누릅니다. 이 파일은 `node staff/build-dashboard.mjs`로 생성하는 단일 파일 버전이며, 별도의 import 파일 추가가 필요 없습니다. 기본 배포 후에는 루트 주소 또는 `/health`에 서버 배포 안내가 표시됩니다. 아래 저장소·비밀값·요청 제한 바인딩은 별도로 설정해야 합니다.
+
 Cloudflare 계정에서 D1 데이터베이스 `obok-shelf-records`, 비공개 R2 버킷 `obok-shelf-photos`를 만듭니다. R2 공개 접근은 켜지 않습니다. 실제 D1 ID를 `wrangler.jsonc`에 입력하고, `schema.sql`을 D1에서 실행합니다. 본 폴더에서 `wrangler deploy`로 별도 Worker를 배포합니다. Wrangler가 없는 환경에서는 설치 후 실행합니다. 유효한 구독과 권한이 필요합니다.
 
 배포 후 DB, PHOTOS, LOGIN_LIMITER, ANALYSIS_LIMITER 바인딩을 확인합니다. 로그인은 IP별 1분에 5회, 분석·저장은 직원별 1분에 6회 제한입니다. Cloudflare의 분산 제한은 과금 상한을 보장하지 않으므로 AI 제공자에서도 사용 예산을 설정합니다.
