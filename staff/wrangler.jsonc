@@ -3,9 +3,10 @@
   "main": "worker.mjs",
   "compatibility_date": "2026-10-01",
   "vars": {
+    "OPENAI_MODEL": "gpt-4.1",
     "ALLOWED_ORIGINS": "https://obokfoods.com,https://www.obokfoods.com,https://obokfood1.github.io"
   },
-  "d1_databases": [{ "binding": "DB", "database_name": "obok-shelf-records", "database_id": "REPLACE_WITH_CREATED_DATABASE_ID" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "obok-shelf-records", "database_id": "5a4f3bd9-af36-4806-b951-131a1e801ddd" }],
   "r2_buckets": [{ "binding": "PHOTOS", "bucket_name": "obok-shelf-photos" }],
   "ratelimits": [
     { "name": "LOGIN_LIMITER", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } },

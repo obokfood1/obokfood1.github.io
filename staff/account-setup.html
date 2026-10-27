@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>오복식품 관리자 비밀번호 설정</title>
+<style>
+body{font:16px/1.7 system-ui,sans-serif;background:#f6f4ef;color:#242424;margin:0;padding:24px}main{max-width:640px;margin:24px auto;background:white;padding:32px;border-radius:16px}h1{font-size:25px}label{display:block;margin:18px 0 6px}input,textarea,button{font:inherit;box-sizing:border-box}input,textarea{width:100%;padding:12px;border:1px solid #bbb;border-radius:6px}button{padding:12px 20px;background:#a32626;color:white;border:0;border-radius:6px;cursor:pointer;margin:18px 8px 0 0}button:disabled{opacity:.5}textarea{height:170px;font-size:13px;word-break:break-all}small{color:#666}#message{color:#9b2323}code{background:#eee;padding:3px 6px}
+</style>
+<main>
+<h1>관리자 비밀번호 설정</h1>
+<p>아이디 <strong>obokadmin</strong> · 표시 이름 <strong>영업관리자</strong></p>
+<p>이 파일을 내려받아 Chrome에서 여세요. 비밀번호는 이 컴퓨터 안에서만 처리되며 외부로 전송되지 않습니다.</p>
+<form id="form">
+<label for="password">사용할 비밀번호 (12~256자)</label>
+<input id="password" type="password" minlength="12" maxlength="256" autocomplete="new-password" required>
+<label for="confirm">비밀번호 다시 입력</label>
+<input id="confirm" type="password" minlength="12" maxlength="256" autocomplete="new-password" required>
+<button id="generate" type="submit">설정값 만들기</button>
+</form>
+<p id="message" role="status"></p>
+<section id="result" hidden>
+<label for="output">Cloudflare에 붙여 넣을 계정 설정값</label>
+<textarea id="output" readonly spellcheck="false"></textarea>
+<button id="copy" type="button">설정값 복사</button>
+<p>Cloudflare 직원용 서버 Settings → Add variable</p>
+<ul><li>Key: <code>STAFF_USERS_JSON</code></li><li>Value: 위 설정값 전체 붙여 넣기</li><li>Secret: 체크 → Add variable and deploy</li></ul>
+<small>직원 계정이 이미 등록되어 있다면 이 값만으로 덮어쓰지 마세요. 이 도구는 첫 관리자 계정용입니다. 비밀번호와 설정값을 채팅이나 공개 저장소에 올리지 마세요.</small>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const hex=bytes=>Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+async function makeAccount(password){
+ const salt=crypto.getRandomValues(new Uint8Array(16));
+ const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);
+ const bits=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',iterations:100000,salt},key,256);
+ return [{username:'obokadmin',name:'영업관리자',role:'admin',salt:hex(salt),hash:hex(new Uint8Array(bits))}];
+}
+$('form').addEventListener('submit',async event=>{
+ event.preventDefault();$('result').hidden=true;$('output').value='';
+ if($('password').value.length<12||$('password').value.length>256){$('message').textContent='비밀번호를 12~256자로 입력해 주세요.';return;}
+ if($('password').value!==$('confirm').value){$('message').textContent='두 비밀번호가 일치하지 않습니다.';return;}
+ if(!globalThis.crypto?.subtle){$('message').textContent='이 파일을 내려받은 뒤 Chrome에서 직접 열어 주세요.';return;}
+ $('generate').disabled=true;
+ try{$('output').value=JSON.stringify(await makeAccount($('password').value));$('result').hidden=false;$('password').value='';$('confirm').value='';$('message').textContent='설정값이 만들어졌습니다. 비밀번호는 따로 기억해 두세요.';}
+ catch{$('message').textContent='생성하지 못했습니다. 파일을 Chrome에서 다시 열어 주세요.';}
+ finally{$('generate').disabled=false;}
+});
+$('copy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText($('output').value);$('message').textContent='설정값을 복사했습니다.';}
+ catch{$('output').focus();$('output').select();$('message').textContent='설정값이 선택됐습니다. Ctrl+C로 복사해 주세요.';}
+});
+</script>
+</html>
