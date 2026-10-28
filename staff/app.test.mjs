@@ -6,7 +6,7 @@ import {BRANDS,cleanItems,summarize} from './shared.mjs';
 
 test('saved survey remains readable when its photos have expired',async()=>{
   const elements=new Map();
-  const element=()=>({value:'',textContent:'',style:{},children:[],classList:{add(){},remove(){}},append(...nodes){this.children.push(...nodes);},replaceChildren(){this.children=[];},setAttribute(){},scrollIntoView(){},querySelectorAll(){return [];}});
+  const element=()=>({value:'',textContent:'',style:{},children:[],classList:{add(){},remove(){}},append(...nodes){this.children.push(...nodes);},replaceChildren(){this.children=[];},setAttribute(){},scrollIntoView(){},reset(){},querySelectorAll(){return [];}});
   const get=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
   const record={store:'시험마트',branch:'본점',category:'간장',date:'2026-10-01',layout:'continuous',memo:'보관된 조사',photos:['record/0.jpg'],items:[{brand:'오복',facings:3,image_index:0,x:0,y:0,w:0,h:0,note:''},{brand:'샘표',facings:7,image_index:0,x:0,y:0,w:0,h:0,note:''}]};
   const context=vm.createContext({BRANDS,cleanItems,summarize,Intl,Date,window:{OBOK_STAFF_API:'https://example.test'},document:{getElementById:get,createElement:element},fetch:async url=>url.includes('/photos/')?{status:404,ok:false}:{ok:true,json:async()=>record}});
@@ -23,7 +23,7 @@ test('saved survey remains readable when its photos have expired',async()=>{
 
 async function saveFixture(fetch){
   const elements=new Map();
-  const element=()=>({value:'',textContent:'',style:{},classList:{add(){},remove(){}},append(){},replaceChildren(){},setAttribute(){},scrollIntoView(){},querySelectorAll(){return [];}});
+  const element=()=>({value:'',textContent:'',style:{},classList:{add(){},remove(){}},append(){},replaceChildren(){},setAttribute(){},scrollIntoView(){},reset(){},querySelectorAll(){return [];}});
   const get=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id);};
   const context=vm.createContext({BRANDS,cleanItems,summarize,Intl,Date,window:{OBOK_STAFF_API:'https://example.test'},document:{getElementById:get,createElement:element},fetch});
   const source=(await readFile(new URL('./app.js',import.meta.url),'utf8')).replace(/^import[^\n]+\n/,'');
@@ -65,4 +65,22 @@ test('failed save has no success state and permits retry',async()=>{
   assert.equal(f.get('save-status').className,'save-status error');
   await f.run("$('save').onclick()");
   assert.equal(calls,2);
+});
+
+
+test('first-login UI restricts workspace and clears issued credentials on logout',async()=>{
+ const f=await saveFixture(async()=>{throw Error('unexpected request');});
+ f.run("applySession({token:'temporary-session',user:{username:'sales01',name:'영업 직원',role:'staff',mustChangePassword:true,canChangePassword:true}})");
+ assert.equal(f.get('workspace').hidden,true);
+ assert.equal(f.get('password-card').hidden,false);
+ assert.equal(f.get('password-cancel').hidden,true);
+ assert.equal(f.get('accounts-tab').hidden,true);
+ f.run("applySession({token:'permanent-session',user:{username:'sales01',name:'영업 직원',role:'staff',mustChangePassword:false,canChangePassword:true}})");
+ assert.equal(f.get('workspace').hidden,false);
+ assert.equal(f.get('password-card').hidden,true);
+ f.get('issued-credentials').value='test-only temporary credentials';
+ f.run('logout()');
+ assert.equal(f.get('issued-credentials').value,'');
+ assert.equal(f.get('workspace').hidden,true);
+ assert.equal(f.get('password-tab').hidden,true);
 });
