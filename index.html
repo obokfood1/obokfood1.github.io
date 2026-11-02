@@ -35,7 +35,10 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border
 .brand{display:flex;align-items:center;gap:11px;font-weight:800}
 .brand img{width:40px;height:40px;object-fit:contain}
 .brand small{display:block;font-size:10px;letter-spacing:.18em;color:#777;margin-top:3px}
-.menu{display:flex;gap:26px;font-size:14px}
+.menu{display:flex;gap:clamp(8px,1.1vw,20px);font-size:clamp(12px,.85vw,14px);align-items:center;flex-wrap:nowrap;white-space:nowrap;flex-shrink:0}
+.menu a{white-space:nowrap;word-break:keep-all;flex-shrink:0}
+.nav{gap:clamp(10px,1.2vw,20px)}
+.brand,.lang{flex-shrink:0}
 .lang{position:relative}
 .lang summary{cursor:pointer;list-style:none;border:1px solid #d6d6d6;padding:10px 14px;border-radius:4px}
 .lang-list{display:none;position:absolute;right:0;top:46px;background:#fff;border:1px solid #ddd;width:150px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
