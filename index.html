@@ -865,6 +865,92 @@ footer{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
   }
 }
 </style>
+<style id="obok-body-refinement-20261102">
+/* 2026-11 homepage body refinement: header and hero deliberately untouched */
+main > section.content{scroll-margin-top:88px}
+main > section.content .container{max-width:1180px}
+main > section.content h2{font-weight:650;letter-spacing:-.045em;line-height:1.28}
+main > section.content .kicker{letter-spacing:.15em;font-size:12px}
+main > section.content .section-copy{max-width:670px;line-height:1.85}
+main > section.content:not(.oem):not(.contact) .kicker{color:#aa302e}
+main > section.content{padding-top:clamp(64px,7vw,104px);padding-bottom:clamp(64px,7vw,104px)}
+.philosophy-wrap,.why-story,.story-wrap{gap:clamp(28px,5vw,68px)}
+.philosophy .video-shell,.story-video{border-radius:18px}
+.philosophy-card{border:1px solid #e8dbcc;border-radius:12px;padding:20px;transition:transform .2s ease}
+.why-head{margin-bottom:34px}
+.why-photo img{border-radius:16px}
+.why-photo-label{border-radius:0 8px 0 16px}
+.why-copy h3{white-space:normal;text-wrap:balance}
+.why-grid-spaced{margin-top:38px}
+.why-card{border-radius:14px;padding:28px 22px;background:#fff;box-shadow:0 8px 26px rgba(47,29,21,.035);transition:transform .2s ease,box-shadow .2s ease}
+.why-card strong{font-size:26px}
+.why-card h3{font-size:18px;line-height:1.4}
+.products-head{align-items:end;margin-bottom:32px}
+.products-head .section-copy{max-width:390px;font-size:15px}
+.product-grid{gap:20px}
+.product-card{border:1px solid #eadfd5;border-radius:15px;padding:17px;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.product-card:hover,.why-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(47,29,21,.10)}
+.product-card:hover{border-color:#dbc8b9}
+.product-image{height:230px;border-radius:10px;background:#faf7f3}
+.product-image img{padding:12px;transition:transform .24s ease}
+.product-card:hover .product-image img{transform:scale(1.045)}
+.product-card .tag{letter-spacing:.1em;font-size:11px;margin-top:16px}
+.product-card h3{font-size:18px;line-height:1.5}
+.product-card p{min-height:42px}
+.gifts{background:#faf6f0}
+.gift-grid{gap:24px}
+.gift-card{border-radius:16px;padding:20px;overflow:hidden;box-shadow:0 10px 28px rgba(47,29,21,.04)}
+.gift-card img{border-radius:10px;background:#fcfaf7}
+.gift-card h3{font-size:20px}
+.oem{background:#2b1b16}
+.oem-grid{gap:12px;background:transparent}
+.oem-grid div{border:1px solid rgba(255,255,255,.17);background:rgba(255,255,255,.045);border-radius:12px;padding:26px 22px}
+.oem-grid b{font-size:17px;line-height:1.5}
+.story-copy .quote{max-width:510px}
+.quality{background:#faf8f5}
+.quality-grid{gap:18px}
+.quality-box{border-radius:14px;background:#fff;box-shadow:0 8px 24px rgba(47,29,21,.035)}
+.quality-box h3{font-size:20px}
+.haccp-photo{border-radius:16px;margin-top:28px;padding:clamp(16px,3vw,30px)}
+.haccp-cert-grid figure{min-width:0}
+.haccp-cert-grid img{border:1px solid #eee6dd;border-radius:7px}
+.haccp-cert-grid figcaption{font-size:13px;word-break:keep-all}
+.contact{background:#1c1411}
+.contact-title{white-space:normal;text-wrap:balance}
+.contact-info .email{font-size:clamp(22px,2.6vw,35px)}
+.contact-info .email a{color:#ff8588;text-decoration:none;overflow-wrap:anywhere}
+.contact-info .email a:hover{text-decoration:underline}
+.obok-section-action{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:38px}
+.obok-section-action-light{justify-content:flex-start}
+.obok-btn{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:48px;border-radius:8px;padding:13px 22px;font-weight:750;font-size:14px;text-decoration:none;transition:transform .2s ease,background .2s ease}
+.obok-btn:hover{transform:translateY(-2px)}
+.obok-btn:focus-visible{outline:3px solid #d39960;outline-offset:3px}
+.obok-btn-primary{background:#b61520;color:#fff}
+.obok-btn-primary:hover{background:#94111a;color:#fff}
+.obok-btn-ghost{border:1px solid #d9c9ba;color:#37271f;background:#fff}
+.obok-btn-light{color:#271711;background:#fff4e7}
+.obok-btn-outline-light{color:#fff;border:1px solid rgba(255,255,255,.5)}
+@media(max-width:960px){.products-head{display:block}.products-head .section-copy{max-width:680px}.why-story,.philosophy-wrap,.story-wrap{gap:32px}}
+@media(max-width:650px){
+ main > section.content{padding-top:62px;padding-bottom:62px}
+ main > section.content h2{font-size:clamp(29px,7.5vw,36px)}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .product-card{padding:10px;border-radius:12px}
+ .product-image{height:clamp(126px,38vw,195px)}
+ .product-image img{padding:5px}
+ .product-card .tag{font-size:9px;margin-top:12px}
+ .product-card h3{font-size:15px;margin:6px 0}
+ .product-card p{font-size:12px;min-height:0}
+ .why-grid,.philosophy-cards,.gift-grid,.oem-grid,.quality-grid{grid-template-columns:1fr}
+ .why-card,.quality-box{padding:23px}
+ .haccp-cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .obok-section-action{margin-top:27px;gap:10px}
+ .obok-btn{width:100%;font-size:14px}
+ .contact-info .email{font-size:clamp(20px,5.5vw,29px)}
+}
+@media(hover:none){.product-card:hover,.why-card:hover,.obok-btn:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.product-card,.product-image img,.why-card,.obok-btn{transition:none}}
+</style>
 </head>
 <body>
 <header>
@@ -1039,6 +1125,7 @@ footer{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
           <span class="tag">BULK</span><h3>고추장 14kg</h3><p>대량 조리와 식품 제조를 위한 업소용 제품</p>
         </article>
       </div>
+      <div class="obok-section-action"><a class="obok-btn obok-btn-primary" href="/brochure/">전체 제품 브로셔 보기 <span aria-hidden="true">↗</span></a><a class="obok-btn obok-btn-ghost" href="#contact">제품·규격 문의 <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -1071,6 +1158,7 @@ footer{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
         <div><b>생산·품질관리</b><span>안정적인 생산과 공정관리</span></div>
         <div><b>수출 지원</b><span>라벨·포장·규격서 맞춤 대응</span></div>
       </div>
+      <div class="obok-section-action obok-section-action-light"><a class="obok-btn obok-btn-light" href="mailto:sjnoh@obok.co.kr?subject=OBOK%20OEM%20Inquiry">OEM·수출 상담 이메일 <span aria-hidden="true">↗</span></a><a class="obok-btn obok-btn-outline-light" href="/brochure/">제품 브로셔 <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -1122,7 +1210,7 @@ footer{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
       </div>
       <div class="contact-info">
         <div class="kicker">EXPORT & OEM INQUIRY</div>
-        <div class="email">sjnoh@obok.co.kr</div>
+        <div class="email"><a href="mailto:sjnoh@obok.co.kr" aria-label="오복식품 수출 및 OEM 문의 이메일 보내기">sjnoh@obok.co.kr</a></div>
         <div>OBOK FOODS CO., LTD.</div>
         <div>Busan, Republic of Korea</div>
         <div><a href="tel:+82512058911" style="color: inherit; text-decoration: none;">+82-51-205-8911</a></div>
